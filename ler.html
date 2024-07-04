@@ -1,0 +1,1791 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Consulta LER</title>
+    <link rel="stylesheet" type="text/css" href="../CSS/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="icon" href="../ICON/icon2.ico" type="image/x-icon">
+</head>
+<body>
+
+<div class="container">
+
+<h1>LISTADO EUROPEO DE RESIDUOS</h1>
+
+<br>
+
+<label for="dropdown">Selecciona un código LER:</label>
+<br>
+<select id="dropdown" onchange="mostrarInformacion()">
+  <option value="">Selecciona LER</option>
+  <option value="item1">010101</option>
+  <option value="item2">010102</option>
+  <option value="item3">010304*</option>
+  <option value="item4">010305*</option>
+  <option value="item5">010306</option>
+  <option value="item6">010307*</option>
+  <option value="item7">010308</option>
+  <option value="item8">010309</option>
+  <option value="item9">010399</option>
+  <option value="item10">010407*</option>
+  <option value="item11">010408</option>
+  <option value="item12">010409</option>
+  <option value="item13">010410</option>
+  <option value="item14">010411</option>
+  <option value="item15">010412</option>
+  <option value="item16">010413</option>
+  <option value="item17">010499</option>
+  <option value="item18">010504</option>
+  <option value="item19">010505*</option>
+  <option value="item20">010506*</option>
+  <option value="item21">010507</option>
+  <option value="item22">010508</option>
+  <option value="item23">010599</option>
+  <option value="item24">020101</option>
+  <option value="item25">020102</option>
+  <option value="item26">020103</option>
+  <option value="item27">020104</option>
+  <option value="item28">020106</option>
+  <option value="item29">020107</option>
+  <option value="item30">020108*</option>
+  <option value="item31">020109</option>
+  <option value="item32">020110</option>
+  <option value="item33">020199</option>
+  <option value="item34">020201</option>
+  <option value="item35">020202</option>
+  <option value="item36">020203</option>
+  <option value="item37">020204</option>
+  <option value="item38">020299</option>
+  <option value="item39">020301</option>
+  <option value="item40">020302</option>
+  <option value="item41">020303</option>
+  <option value="item42">020304</option>
+  <option value="item43">020305</option>
+  <option value="item44">020399</option>
+  <option value="item45">020401</option>
+  <option value="item46">020402</option>
+  <option value="item47">020403</option>
+  <option value="item48">020499</option>
+  <option value="item49">020501</option>
+  <option value="item50">020502</option>
+  <option value="item51">020599</option>
+  <option value="item52">020601</option>
+  <option value="item53">020602</option>
+  <option value="item54">020603</option>
+  <option value="item55">020699</option>
+  <option value="item56">020701</option>
+  <option value="item57">020702</option>
+  <option value="item58">020703</option>
+  <option value="item59">020704</option>
+  <option value="item60">020705</option>
+  <option value="item61">020799</option>
+  <option value="item62">030101</option>
+  <option value="item63">030104*</option>
+  <option value="item64">030105</option>
+  <option value="item65">030199</option>
+  <option value="item66">030201*</option>
+  <option value="item67">030202*</option>
+  <option value="item68">030203*</option>
+  <option value="item69">030204*</option>
+  <option value="item70">030205*</option>
+  <option value="item71">030299</option>
+  <option value="item72">030301</option>
+  <option value="item73">030302</option>
+  <option value="item74">030305</option>
+  <option value="item75">030307</option>
+  <option value="item76">030308</option>
+  <option value="item77">030309</option>
+  <option value="item78">030310</option>
+  <option value="item79">030311</option>
+  <option value="item80">030399</option>
+  <option value="item81">040101</option>
+  <option value="item82">040102</option>
+  <option value="item83">040103*</option>
+  <option value="item84">040104</option>
+  <option value="item85">040105</option>
+  <option value="item86">040106</option>
+  <option value="item87">040107</option>
+  <option value="item88">040108</option>
+  <option value="item89">040109</option>
+  <option value="item90">040199</option>
+  <option value="item91">040209</option>
+  <option value="item92">040210</option>
+  <option value="item93">040214*</option>
+  <option value="item94">040215</option>
+  <option value="item95">040216*</option>
+  <option value="item96">040217</option>
+  <option value="item97">040219*</option>
+  <option value="item98">040220</option>
+  <option value="item99">040221</option>
+  <option value="item100">040222</option>
+  <option value="item101">040299</option>
+  <option value="item102">050102*</option>
+  <option value="item103">050103*</option>
+  <option value="item104">050104*</option>
+  <option value="item105">050105*</option>
+  <option value="item106">050106*</option>
+  <option value="item107">050107*</option>
+  <option value="item108">050108*</option>
+  <option value="item109">050109*</option>
+  <option value="item110">050110</option>
+  <option value="item111">050111*</option>
+  <option value="item112">050112*</option>
+  <option value="item113">050113</option>
+  <option value="item114">050114</option>
+  <option value="item115">050115*</option>
+  <option value="item116">050116</option>
+  <option value="item117">050117</option>
+  <option value="item118">050199</option>
+  <option value="item119">050601*</option>
+  <option value="item120">050603*</option>
+  <option value="item121">050604</option>
+  <option value="item122">050699</option>
+  <option value="item123">050701*</option>
+  <option value="item124">050702</option>
+  <option value="item125">050799</option>
+  <option value="item126">060101*</option>
+  <option value="item127">060102*</option>
+  <option value="item128">060103*</option>
+  <option value="item129">060104*</option>
+  <option value="item130">060105*</option>
+  <option value="item131">060106*</option>
+  <option value="item132">060199</option>
+  <option value="item133">060201*</option>
+  <option value="item134">060203*</option>
+  <option value="item135">060204*</option>
+  <option value="item136">060205*</option>
+  <option value="item137">060299</option>
+  <option value="item138">060311*</option>
+  <option value="item139">060313*</option>
+  <option value="item140">060314</option>
+  <option value="item141">060315*</option>
+  <option value="item142">060316</option>
+  <option value="item143">060399</option>
+  <option value="item144">060403*</option>
+  <option value="item145">060404*</option>
+  <option value="item146">060405*</option>
+  <option value="item147">060499</option>
+  <option value="item148">060502*</option>
+  <option value="item149">060503</option>
+  <option value="item150">060602*</option>
+  <option value="item151">060603</option>
+  <option value="item152">060699</option>
+  <option value="item153">060701*</option>
+  <option value="item154">060702*</option>
+  <option value="item155">060703*</option>
+  <option value="item156">060704*</option>
+  <option value="item157">060799</option>
+  <option value="item158">060802*</option>
+  <option value="item159">060899</option>
+  <option value="item160">060902</option>
+  <option value="item161">060903*</option>
+  <option value="item162">060904</option>
+  <option value="item163">060999</option>
+  <option value="item164">061002*</option>
+  <option value="item165">061099</option>
+  <option value="item166">061101</option>
+  <option value="item167">061199</option>
+  <option value="item168">061301*</option>
+  <option value="item169">061302*</option>
+  <option value="item170">061303</option>
+  <option value="item171">061304*</option>
+  <option value="item172">061305*</option>
+  <option value="item173">061399</option>
+  <option value="item174">070101*</option>
+  <option value="item175">070103*</option>
+  <option value="item176">070104*</option>
+  <option value="item177">070107*</option>
+  <option value="item178">070108*</option>
+  <option value="item179">070109*</option>
+  <option value="item180">070110*</option>
+  <option value="item181">070111*</option>
+  <option value="item182">070112</option>
+  <option value="item183">070199</option>
+  <option value="item184">070201*</option>
+  <option value="item185">070203*</option>
+  <option value="item186">070204*</option>
+  <option value="item187">070207*</option>
+  <option value="item188">070208*</option>
+  <option value="item189">070209*</option>
+  <option value="item190">070210*</option>
+  <option value="item191">070211*</option>
+  <option value="item192">070212</option>
+  <option value="item193">070213</option>
+  <option value="item194">070214*</option>
+  <option value="item195">070215*</option>
+  <option value="item196">070216*</option>
+  <option value="item197">070217</option>
+  <option value="item198">070299</option>
+  <option value="item199">070301*</option>
+  <option value="item200">070303*</option>
+  <option value="item201">070304*</option>
+  <option value="item202">070307*</option>
+  <option value="item203">070308*</option>
+  <option value="item204">070309*</option>
+  <option value="item205">070310*</option>
+  <option value="item206">070311*</option>
+  <option value="item207">070312</option>
+  <option value="item208">070399</option>
+  <option value="item209">070401*</option>
+  <option value="item210">070403*</option>
+  <option value="item211">070404*</option>
+  <option value="item212">070407*</option>
+  <option value="item213">070408*</option>
+  <option value="item214">070409*</option>
+  <option value="item215">070410*</option>
+  <option value="item216">070411*</option>
+  <option value="item217">070412</option>
+  <option value="item218">070413*</option>
+  <option value="item219">070499</option>
+  <option value="item220">070501*</option>
+  <option value="item221">070503*</option>
+  <option value="item222">070504*</option>
+  <option value="item223">070507*</option>
+  <option value="item224">070508*</option>
+  <option value="item225">070509*</option>
+  <option value="item226">070510*</option>
+  <option value="item227">070511*</option>
+  <option value="item228">070512</option>
+  <option value="item229">070513*</option>
+  <option value="item230">070514</option>
+  <option value="item231">070599</option>
+  <option value="item232">070601*</option>
+  <option value="item233">070603*</option>
+  <option value="item234">070604*</option>
+  <option value="item235">070607*</option>
+  <option value="item236">070608*</option>
+  <option value="item237">070609*</option>
+  <option value="item238">070610*</option>
+  <option value="item239">070611*</option>
+  <option value="item240">070612</option>
+  <option value="item241">070699</option>
+  <option value="item242">070701*</option>
+  <option value="item243">070703*</option>
+  <option value="item244">070704*</option>
+  <option value="item245">070707*</option>
+  <option value="item246">070708*</option>
+  <option value="item247">070709*</option>
+  <option value="item248">070710*</option>
+  <option value="item249">070711*</option>
+  <option value="item250">070712</option>
+  <option value="item251">070799</option>
+  <option value="item252">080111*</option>
+  <option value="item253">080112</option>
+  <option value="item254">080113*</option>
+  <option value="item255">080114</option>
+  <option value="item256">080115*</option>
+  <option value="item257">080116</option>
+  <option value="item258">080117*</option>
+  <option value="item259">080118</option>
+  <option value="item260">080119*</option>
+  <option value="item261">080120</option>
+  <option value="item262">080121*</option>
+  <option value="item263">080199</option>
+  <option value="item264">080201</option>
+  <option value="item265">080202</option>
+  <option value="item266">080203</option>
+  <option value="item267">080299</option>
+  <option value="item268">080307</option>
+  <option value="item269">080308</option>
+  <option value="item270">080312*</option>
+  <option value="item271">080313</option>
+  <option value="item272">080314*</option>
+  <option value="item273">080315</option>
+  <option value="item274">080316*</option>
+  <option value="item275">080317*</option>
+  <option value="item276">080318</option>
+  <option value="item277">080319*</option>
+  <option value="item278">080399</option>
+  <option value="item279">080409*</option>
+  <option value="item280">080410</option>
+  <option value="item281">080411*</option>
+  <option value="item282">080412</option>
+  <option value="item283">080413*</option>
+  <option value="item284">080414</option>
+  <option value="item285">080415*</option>
+  <option value="item286">080416</option>
+  <option value="item287">080417*</option>
+  <option value="item288">080499</option>
+  <option value="item289">080501*</option>
+  <option value="item290">090101*</option>
+  <option value="item291">090102*</option>
+  <option value="item292">090103*</option>
+  <option value="item293">090104*</option>
+  <option value="item294">090105*</option>
+  <option value="item295">090106*</option>
+  <option value="item296">090107</option>
+  <option value="item297">090108</option>
+  <option value="item298">090110</option>
+  <option value="item299">090111*</option>
+  <option value="item300">090112</option>
+  <option value="item301">090113*</option>
+  <option value="item302">090199</option>
+  <option value="item303">100101</option>
+  <option value="item304">100102</option>
+  <option value="item305">100103</option>
+  <option value="item306">100104*</option>
+  <option value="item307">100105</option>
+  <option value="item308">100107</option>
+  <option value="item309">100109*</option>
+  <option value="item310">100113*</option>
+  <option value="item311">100114*</option>
+  <option value="item312">100115</option>
+  <option value="item313">100116*</option>
+  <option value="item314">100117</option>
+  <option value="item315">100118*</option>
+  <option value="item316">100119</option>
+  <option value="item317">100120*</option>
+  <option value="item318">100121</option>
+  <option value="item319">100122*</option>
+  <option value="item320">100123</option>
+  <option value="item321">100124</option>
+  <option value="item322">100125</option>
+  <option value="item323">100126</option>
+  <option value="item324">100199</option>
+  <option value="item325">100201</option>
+  <option value="item326">100202</option>
+  <option value="item327">100207*</option>
+  <option value="item328">100208</option>
+  <option value="item329">100210</option>
+  <option value="item330">100211*</option>
+  <option value="item331">100212</option>
+  <option value="item332">100213*</option>
+  <option value="item333">100214</option>
+  <option value="item334">100215</option>
+  <option value="item335">100299</option>
+  <option value="item336">100302</option>
+  <option value="item337">100304*</option>
+  <option value="item338">100305</option>
+  <option value="item339">100308*</option>
+  <option value="item340">100309*</option>
+  <option value="item341">100315*</option>
+  <option value="item342">100316</option>
+  <option value="item343">100317*</option>
+  <option value="item344">100318</option>
+  <option value="item345">100319*</option>
+  <option value="item346">100320</option>
+  <option value="item347">100321*</option>
+  <option value="item348">100322</option>
+  <option value="item349">100323*</option>
+  <option value="item350">100324</option>
+  <option value="item351">100325*</option>
+  <option value="item352">100326</option>
+  <option value="item353">100327*</option>
+  <option value="item354">100328</option>
+  <option value="item355">100329*</option>
+  <option value="item356">100330</option>
+  <option value="item357">100399</option>
+  <option value="item358">100401*</option>
+  <option value="item359">100402*</option>
+  <option value="item360">100403*</option>
+  <option value="item361">100404*</option>
+  <option value="item362">100405*</option>
+  <option value="item363">100406*</option>
+  <option value="item364">100407*</option>
+  <option value="item365">100409*</option>
+  <option value="item366">100410</option>
+  <option value="item367">100499</option>
+  <option value="item368">100501</option>
+  <option value="item369">100503*</option>
+  <option value="item370">100504</option>
+  <option value="item371">100505*</option>
+  <option value="item372">100506*</option>
+  <option value="item373">100508*</option>
+  <option value="item374">100509</option>
+  <option value="item375">100510*</option>
+  <option value="item376">100511</option>
+  <option value="item377">100599</option>
+  <option value="item378">100601</option>
+  <option value="item379">100602</option>
+  <option value="item380">100603*</option>
+  <option value="item381">100604</option>
+  <option value="item382">100606*</option>
+  <option value="item383">100607*</option>
+  <option value="item384">100609*</option>
+  <option value="item385">100610</option>
+  <option value="item386">100699</option>
+  <option value="item387">100701</option>
+  <option value="item388">100702</option>
+  <option value="item389">100703</option>
+  <option value="item390">100704</option>
+  <option value="item391">100705</option>
+  <option value="item392">100707*</option>
+  <option value="item393">100708</option>
+  <option value="item394">100799</option>
+  <option value="item395">100804</option>
+  <option value="item396">100808*</option>
+  <option value="item397">100809</option>
+  <option value="item398">100810*</option>
+  <option value="item399">100811</option>
+  <option value="item400">100812*</option>
+  <option value="item401">100813</option>
+  <option value="item402">100814</option>
+  <option value="item403">100815*</option>
+  <option value="item404">100816</option>
+  <option value="item405">100817*</option>
+  <option value="item406">100818</option>
+  <option value="item407">100819*</option>
+  <option value="item408">100820</option>
+  <option value="item409">100899</option>
+  <option value="item410">100903</option>
+  <option value="item411">100905*</option>
+  <option value="item412">100906</option>
+  <option value="item413">100907*</option>
+  <option value="item414">100908</option>
+  <option value="item415">100909*</option>
+  <option value="item416">100910</option>
+  <option value="item417">100911*</option>
+  <option value="item418">100912</option>
+  <option value="item419">100913*</option>
+  <option value="item420">100914</option>
+  <option value="item421">100915*</option>
+  <option value="item422">100916</option>
+  <option value="item423">100999</option>
+  <option value="item424">101003</option>
+  <option value="item425">101005*</option>
+  <option value="item426">101006</option>
+  <option value="item427">101007*</option>
+  <option value="item428">101008</option>
+  <option value="item429">101009*</option>
+  <option value="item430">101010</option>
+  <option value="item431">101011*</option>
+  <option value="item432">101012</option>
+  <option value="item433">101013*</option>
+  <option value="item434">101014</option>
+  <option value="item435">101015*</option>
+  <option value="item436">101016</option>
+  <option value="item437">101099</option>
+  <option value="item438">101103</option>
+  <option value="item439">101105</option>
+  <option value="item440">101109*</option>
+  <option value="item441">101110</option>
+  <option value="item442">101111*</option>
+  <option value="item443">101112</option>
+  <option value="item444">101113*</option>
+  <option value="item445">101114</option>
+  <option value="item446">101115*</option>
+  <option value="item447">101116</option>
+  <option value="item448">101117*</option>
+  <option value="item449">101118</option>
+  <option value="item450">101119*</option>
+  <option value="item451">101120</option>
+  <option value="item452">101199</option>
+  <option value="item453">101201</option>
+  <option value="item454">101203</option>
+  <option value="item455">101205</option>
+  <option value="item456">101206</option>
+  <option value="item457">101208</option>
+  <option value="item458">101209*</option>
+  <option value="item459">101210</option>
+  <option value="item460">101211*</option>
+  <option value="item461">101212</option>
+  <option value="item462">101213</option>
+  <option value="item463">101299</option>
+  <option value="item464">101301</option>
+  <option value="item465">101304</option>
+  <option value="item466">101306</option>
+  <option value="item467">101307</option>
+  <option value="item468">101309*</option>
+  <option value="item469">101310</option>
+  <option value="item470">101311</option>
+  <option value="item471">101312*</option>
+  <option value="item472">101313</option>
+  <option value="item473">101314</option>
+  <option value="item474">101399</option>
+  <option value="item475">101401*</option>
+  <option value="item476">110105*</option>
+  <option value="item477">110106*</option>
+  <option value="item478">110107*</option>
+  <option value="item479">110108*</option>
+  <option value="item480">110109*</option>
+  <option value="item481">110110</option>
+  <option value="item482">110111*</option>
+  <option value="item483">110112</option>
+  <option value="item484">110113*</option>
+  <option value="item485">110114</option>
+  <option value="item486">110115*</option>
+  <option value="item487">110116*</option>
+  <option value="item488">110198*</option>
+  <option value="item489">110199</option>
+  <option value="item490">110202*</option>
+  <option value="item491">110203</option>
+  <option value="item492">110205*</option>
+  <option value="item493">110206</option>
+  <option value="item494">110207*</option>
+  <option value="item495">110299</option>
+  <option value="item496">110301*</option>
+  <option value="item497">110302*</option>
+  <option value="item498">110501</option>
+  <option value="item499">110502</option>
+  <option value="item500">110503*</option>
+  <option value="item501">110504*</option>
+  <option value="item502">110599</option>
+  <option value="item503">120101</option>
+  <option value="item504">120102</option>
+  <option value="item505">120103</option>
+  <option value="item506">120104</option>
+  <option value="item507">120105</option>
+  <option value="item508">120106*</option>
+  <option value="item509">120107*</option>
+  <option value="item510">120108*</option>
+  <option value="item511">120109*</option>
+  <option value="item512">120110*</option>
+  <option value="item513">120112*</option>
+  <option value="item514">120113</option>
+  <option value="item515">120114*</option>
+  <option value="item516">120115</option>
+  <option value="item517">120116*</option>
+  <option value="item518">120117</option>
+  <option value="item519">120118*</option>
+  <option value="item520">120119*</option>
+  <option value="item521">120120*</option>
+  <option value="item522">120121</option>
+  <option value="item523">120199</option>
+  <option value="item524">120301*</option>
+  <option value="item525">120302*</option>
+  <option value="item526">130101*</option>
+  <option value="item527">130104*</option>
+  <option value="item528">130105*</option>
+  <option value="item529">130109*</option>
+  <option value="item530">130110*</option>
+  <option value="item531">130111*</option>
+  <option value="item532">130112*</option>
+  <option value="item533">130113*</option>
+  <option value="item534">130204*</option>
+  <option value="item535">130205*</option>
+  <option value="item536">130206*</option>
+  <option value="item537">130207*</option>
+  <option value="item538">130208*</option>
+  <option value="item539">130301*</option>
+  <option value="item540">130306*</option>
+  <option value="item541">130307*</option>
+  <option value="item542">130308*</option>
+  <option value="item543">130309*</option>
+  <option value="item544">130310*</option>
+  <option value="item545">130401*</option>
+  <option value="item546">130402*</option>
+  <option value="item547">130403*</option>
+  <option value="item548">130501*</option>
+  <option value="item549">130502*</option>
+  <option value="item550">130503*</option>
+  <option value="item551">130506*</option>
+  <option value="item552">130507*</option>
+  <option value="item553">130508*</option>
+  <option value="item554">130701*</option>
+  <option value="item555">130702*</option>
+  <option value="item556">130703*</option>
+  <option value="item557">130801*</option>
+  <option value="item558">130802*</option>
+  <option value="item559">130899*</option>
+  <option value="item560">140601*</option>
+  <option value="item561">140602*</option>
+  <option value="item562">140603*</option>
+  <option value="item563">140604*</option>
+  <option value="item564">140605</option>
+  <option value="item565">150101</option>
+  <option value="item566">150102</option>
+  <option value="item567">150103</option>
+  <option value="item568">150104</option>
+  <option value="item569">150105</option>
+  <option value="item570">150106</option>
+  <option value="item571">150107</option>
+  <option value="item572">150109</option>
+  <option value="item573">150110*</option>
+  <option value="item574">150111*</option>
+  <option value="item575">150202*</option>
+  <option value="item576">150203</option>
+  <option value="item577">160103</option>
+  <option value="item578">160104</option>
+  <option value="item579">160106</option>
+  <option value="item580">160107*</option>
+  <option value="item581">160108*</option>
+  <option value="item582">160109*</option>
+  <option value="item583">160110*</option>
+  <option value="item584">160111*</option>
+  <option value="item585">160112</option>
+  <option value="item586">160113*</option>
+  <option value="item587">160114*</option>
+  <option value="item588">160115</option>
+  <option value="item589">160116</option>
+  <option value="item590">160117</option>
+  <option value="item591">160118</option>
+  <option value="item592">160119</option>
+  <option value="item593">160120</option>
+  <option value="item594">160121*</option>
+  <option value="item595">160199</option>
+  <option value="item596">160209*</option>
+  <option value="item597">160210*</option>
+  <option value="item598">160211*</option>
+  <option value="item598-1">16021111*</option>
+  <option value="item598-2">16021112*</option>
+  <option value="item599">160212*</option>
+  <option value="item600">160213*</option>
+  <option value="item600-1">16021313*</option>
+  <option value="item600-2">16021321*</option>
+  <option value="item600-3">16021322*</option>
+  <option value="item600-4">16021341*</option>
+  <option value="item600-5">16021351*</option>
+  <option value="item601">160214</option>
+  <option value="item602">160215*</option>
+  <option value="item603">160216</option>
+  <option value="item604">160303*</option>
+  <option value="item605">160304</option>
+  <option value="item606">160305*</option>
+  <option value="item607">160306</option>
+  <option value="item608">160401*</option>
+  <option value="item609">160402*</option>
+  <option value="item610">160403*</option>
+  <option value="item611">160504*</option>
+  <option value="item612">160505</option>
+  <option value="item613">160506*</option>
+  <option value="item614">160507*</option>
+  <option value="item615">160508*</option>
+  <option value="item616">160509</option>
+  <option value="item617">160601*</option>
+  <option value="item618">160602*</option>
+  <option value="item619">160603*</option>
+  <option value="item620">160604</option>
+  <option value="item621">160605</option>
+  <option value="item622">160606*</option>
+  <option value="item623">160708*</option>
+  <option value="item624">160709*</option>
+  <option value="item625">160799</option>
+  <option value="item626">160801</option>
+  <option value="item627">160802*</option>
+  <option value="item628">160803</option>
+  <option value="item629">160804</option>
+  <option value="item630">160805*</option>
+  <option value="item631">160806*</option>
+  <option value="item632">160807*</option>
+  <option value="item633">160901*</option>
+  <option value="item634">160902*</option>
+  <option value="item635">160903*</option>
+  <option value="item636">160904*</option>
+  <option value="item637">161001*</option>
+  <option value="item638">161002</option>
+  <option value="item639">161003*</option>
+  <option value="item640">161004</option>
+  <option value="item641">161101*</option>
+  <option value="item642">161102</option>
+  <option value="item643">161103*</option>
+  <option value="item644">161104</option>
+  <option value="item645">161105*</option>
+  <option value="item646">161106</option>
+  <option value="item647">170101</option>
+  <option value="item648">170102</option>
+  <option value="item649">170103</option>
+  <option value="item650">170106*</option>
+  <option value="item651">170107</option>
+  <option value="item652">170201</option>
+  <option value="item653">170202</option>
+  <option value="item654">170203</option>
+  <option value="item655">170204*</option>
+  <option value="item656">170301*</option>
+  <option value="item657">170302</option>
+  <option value="item658">170303*</option>
+  <option value="item659">170401</option>
+  <option value="item660">170402</option>
+  <option value="item661">170403</option>
+  <option value="item662">170404</option>
+  <option value="item663">170405</option>
+  <option value="item664">170406</option>
+  <option value="item665">170407</option>
+  <option value="item666">170409*</option>
+  <option value="item667">170410*</option>
+  <option value="item668">170411</option>
+  <option value="item669">170503*</option>
+  <option value="item670">170504</option>
+  <option value="item671">170505*</option>
+  <option value="item672">170506</option>
+  <option value="item673">170507*</option>
+  <option value="item674">170508</option>
+  <option value="item675">170601*</option>
+  <option value="item676">170603*</option>
+  <option value="item677">170604</option>
+  <option value="item678">170605*</option>
+  <option value="item679">170801*</option>
+  <option value="item680">170802</option>
+  <option value="item681">170901*</option>
+  <option value="item682">170902*</option>
+  <option value="item683">170903*</option>
+  <option value="item684">170904</option>
+  <option value="item685">180101</option>
+  <option value="item686">180102</option>
+  <option value="item687">180103*</option>
+  <option value="item688">180104</option>
+  <option value="item689">180106*</option>
+  <option value="item690">180107</option>
+  <option value="item691">180108*</option>
+  <option value="item692">180109</option>
+  <option value="item693">180110*</option>
+  <option value="item694">180201</option>
+  <option value="item695">180202*</option>
+  <option value="item696">180203</option>
+  <option value="item697">180205*</option>
+  <option value="item698">180206</option>
+  <option value="item699">180207*</option>
+  <option value="item700">180208</option>
+  <option value="item701">190102</option>
+  <option value="item702">190105*</option>
+  <option value="item703">190106*</option>
+  <option value="item704">190107*</option>
+  <option value="item705">190110*</option>
+  <option value="item706">190111*</option>
+  <option value="item707">190112</option>
+  <option value="item708">190113*</option>
+  <option value="item709">190114</option>
+  <option value="item710">190115*</option>
+  <option value="item711">190116</option>
+  <option value="item712">190117*</option>
+  <option value="item713">190118</option>
+  <option value="item714">190119</option>
+  <option value="item715">190199</option>
+  <option value="item716">190203</option>
+  <option value="item717">190204*</option>
+  <option value="item718">190205*</option>
+  <option value="item719">190206</option>
+  <option value="item720">190207*</option>
+  <option value="item721">190208*</option>
+  <option value="item722">190209*</option>
+  <option value="item723">190210</option>
+  <option value="item724">190211*</option>
+  <option value="item725">190299</option>
+  <option value="item726">190304*</option>
+  <option value="item727">190305</option>
+  <option value="item728">190306*</option>
+  <option value="item729">190307</option>
+  <option value="item730">190401</option>
+  <option value="item731">190402*</option>
+  <option value="item732">190403*</option>
+  <option value="item733">190404</option>
+  <option value="item734">190501</option>
+  <option value="item735">190502</option>
+  <option value="item736">190503</option>
+  <option value="item737">190599</option>
+  <option value="item738">190603</option>
+  <option value="item739">190604</option>
+  <option value="item740">190605</option>
+  <option value="item741">190606</option>
+  <option value="item742">190699</option>
+  <option value="item743">190702*</option>
+  <option value="item744">190703</option>
+  <option value="item745">190801</option>
+  <option value="item746">190802</option>
+  <option value="item747">190805</option>
+  <option value="item748">190806*</option>
+  <option value="item749">190807*</option>
+  <option value="item750">190808*</option>
+  <option value="item751">190809</option>
+  <option value="item752">190810*</option>
+  <option value="item753">190811*</option>
+  <option value="item754">190812</option>
+  <option value="item755">190813*</option>
+  <option value="item756">190814</option>
+  <option value="item757">190899</option>
+  <option value="item758">190901</option>
+  <option value="item759">190902</option>
+  <option value="item760">190903</option>
+  <option value="item761">190904</option>
+  <option value="item762">190905</option>
+  <option value="item763">190906</option>
+  <option value="item764">190999</option>
+  <option value="item765">191001</option>
+  <option value="item766">191002</option>
+  <option value="item767">191003*</option>
+  <option value="item768">191004</option>
+  <option value="item769">191005*</option>
+  <option value="item770">191006</option>
+  <option value="item771">191101*</option>
+  <option value="item772">191102*</option>
+  <option value="item773">191103*</option>
+  <option value="item774">191104*</option>
+  <option value="item775">191105*</option>
+  <option value="item776">191106</option>
+  <option value="item777">191107*</option>
+  <option value="item778">191199</option>
+  <option value="item779">191201</option>
+  <option value="item780">191202</option>
+  <option value="item781">191203</option>
+  <option value="item782">191204</option>
+  <option value="item783">191205</option>
+  <option value="item784">191206*</option>
+  <option value="item785">191207</option>
+  <option value="item786">191208</option>
+  <option value="item787">191209</option>
+  <option value="item788">191210</option>
+  <option value="item789">191211*</option>
+  <option value="item790">191212</option>
+  <option value="item791">191301*</option>
+  <option value="item792">191302</option>
+  <option value="item793">191303*</option>
+  <option value="item794">191304</option>
+  <option value="item795">191305*</option>
+  <option value="item796">191306</option>
+  <option value="item797">191307*</option>
+  <option value="item798">191308</option>
+  <option value="item799">200101</option>
+  <option value="item800">200102</option>
+  <option value="item801">200108</option>
+  <option value="item802">200110</option>
+  <option value="item803">200111</option>
+  <option value="item804">200113*</option>
+  <option value="item805">200114*</option>
+  <option value="item806">200115*</option>
+  <option value="item807">200117*</option>
+  <option value="item808">200119*</option>
+  <option value="item809">20012131*</option>
+  <option value="item810">20012311*</option>
+  <option value="item811">20012312*</option>
+  <option value="item812">200125</option>
+  <option value="item813">200126</option>
+  <option value="item814">200127</option>
+  <option value="item815">200128</option>
+  <option value="item816">200129*</option>
+  <option value="item817">200130</option>
+  <option value="item818">200131*</option>
+  <option value="item819">200132</option>
+  <option value="item820">200133*</option>
+  <option value="item821">200134</option>
+  <option value="item821-1">20013513*</option>
+  <option value="item821-2">20013521*</option>
+  <option value="item821-3">20013522*</option>
+  <option value="item821-4">20013541*</option>
+  <option value="item822">20013551*</option>
+  <option value="item823">20013561*</option>
+  <option value="item824">200136</option>
+  <option value="item825">200137*</option>
+  <option value="item826">200138</option>
+  <option value="item827">200139</option>
+  <option value="item828">200140</option>
+  <option value="item829">200141</option>
+  <option value="item830">200199</option>
+  <option value="item831">200201</option>
+  <option value="item832">200202</option>
+  <option value="item833">200203</option>
+  <option value="item834">200301</option>
+  <option value="item835">200302</option>
+  <option value="item836">200303</option>
+  <option value="item837">200304</option>
+  <option value="item838">200306</option>
+  <option value="item839">200307</option>
+  <option value="item840">200399</option>
+</select>
+
+<br>
+<br>
+<br>
+
+<div id="info">
+  <h3 id="info-title">Código LER:</h3>
+  <p id="item1-info" class="info" style="display: none;">Residuos de la extracción de minerales metálicos.</p>
+  <p id="item2-info" class="info" style="display: none;">Residuos de la extracción de minerales no metálicos.</p>
+  <p id="item3-info" class="info" style="display: none;">Estériles que generan ácido procedentes de la transformación de sulfuros.</p>
+  <p id="item4-info" class="info" style="display: none;">Otros estériles que contienen sustancias peligrosas.</p>
+  <p id="item5-info" class="info" style="display: none;">Estériles distintos de los mencionados en los códigos 01 03 04 y 01 03 05.</p>
+  <p id="item6-info" class="info" style="display: none;">Otros residuos que contienen sustancias peligrosas procedentes de la transformación física y química de minerales metálicos.</p>
+  <p id="item7-info" class="info" style="display: none;">Residuos de polvo y arenilla distintos de los mencionados en el código 01 03 07.</p>
+  <p id="item8-info" class="info" style="display: none;">Lodos rojos de la producción de alúmina distintos de los mencionados en el código 01 03 07.</p>
+  <p id="item9-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item10-info" class="info" style="display: none;">Residuos que contienen sustancias peligrosas procedentes de la transformación física y química de minerales no metálicos.</p>
+  <p id="item11-info" class="info" style="display: none;">Residuos de grava y rocas trituradas distintos de los mencionados en el código 01 04 07.</p>
+  <p id="item12-info" class="info" style="display: none;">Residuos de arena y arcillas.</p>
+  <p id="item13-info" class="info" style="display: none;">Residuos de polvo y arenilla distintos de los mencionados en el código 01 04 07.</p>
+  <p id="item14-info" class="info" style="display: none;">Residuos de la transformación de potasa y sal gema distintos de los mencionados en el código 01 04 07.</p>
+  <p id="item15-info" class="info" style="display: none;">Estériles y otros residuos del lavado y limpieza de minerales distintos de los mencionados en el código 01 04 07 y 01 04 11.</p>
+  <p id="item16-info" class="info" style="display: none;">Residuos del corte y serrado de piedra distintos de los mencionados en el código 01 04 07.</p>
+  <p id="item17-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item18-info" class="info" style="display: none;">Lodos y residuos de perforaciones que contienen agua dulce.</p>
+  <p id="item19-info" class="info" style="display: none;">Lodos y residuos de perforaciones que contienen hidrocarburos.</p>
+  <p id="item20-info" class="info" style="display: none;">Lodos y otros residuos de perforaciones que contienen sustancias peligrosas.</p>
+  <p id="item21-info" class="info" style="display: none;">Lodos y residuos de perforaciones que contienen sales de bario distintos de los mencionados en los códigos 01 05 05 y 01 05 06.</p>
+  <p id="item22-info" class="info" style="display: none;">Lodos y residuos de perforaciones que contienen cloruros distintos de los mencionados en los códigos 01 05 05 y 01 05 06.</p>
+  <p id="item23-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item24-info" class="info" style="display: none;">Lodos de lavado y limpieza.</p>
+  <p id="item25-info" class="info" style="display: none;">Residuos de tejidos de animales.</p>
+  <p id="item26-info" class="info" style="display: none;">Residuos de tejidos de vegetales.</p>
+  <p id="item27-info" class="info" style="display: none;">Residuos de plásticos (excepto embalajes).</p>
+  <p id="item28-info" class="info" style="display: none;">Heces de animales, orina y estiércol (incluida paja podrida) y efluentes recogidos selectivamente y tratados fuera del lugar donde se generan.</p>
+  <p id="item29-info" class="info" style="display: none;">Residuos de la silvicultura.</p>
+  <p id="item30-info" class="info" style="display: none;">Residuos agroquímicos que contienen sustancias peligrosas.</p>
+  <p id="item31-info" class="info" style="display: none;">Residuos agroquímicos distintos de los mencionados en el código 02 01 08.</p>
+  <p id="item32-info" class="info" style="display: none;">Residuos metálicos.</p>
+  <p id="item33-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item34-info" class="info" style="display: none;">Lodos de lavado y limpieza.</p>
+  <p id="item35-info" class="info" style="display: none;">Residuos de tejidos de animales.</p>
+  <p id="item36-info" class="info" style="display: none;">Materiales inadecuados para el consumo o la elaboración.</p>
+  <p id="item37-info" class="info" style="display: none;">Lodos del tratamiento in situ de efluentes.</p>
+  <p id="item38-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item39-info" class="info" style="display: none;">Lodos de lavado, limpieza, pelado, centrifugado y separación.</p>
+  <p id="item40-info" class="info" style="display: none;">Residuos de conservantes.</p>
+  <p id="item41-info" class="info" style="display: none;">Residuos de la extracción con disolventes.</p>
+  <p id="item42-info" class="info" style="display: none;">Materiales inadecuados para el consumo o la elaboración.</p>
+  <p id="item43-info" class="info" style="display: none;">Lodos del tratamiento in situ de efluentes.</p>
+  <p id="item44-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item45-info" class="info" style="display: none;">Tierra procedente de la limpieza y lavado de la remolacha.</p>
+  <p id="item46-info" class="info" style="display: none;">Carbonato cálcico fuera de especificación.</p>
+  <p id="item47-info" class="info" style="display: none;">Lodos del tratamiento in situ de efluentes.</p>
+  <p id="item48-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item49-info" class="info" style="display: none;">Materiales inadecuados para el consumo o la elaboración.</p>
+  <p id="item50-info" class="info" style="display: none;">Lodos del tratamiento in situ de efluentes.</p>
+  <p id="item51-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item52-info" class="info" style="display: none;">Materiales inadecuados para el consumo o la elaboración.</p>
+  <p id="item53-info" class="info" style="display: none;">Residuos de conservantes.</p>
+  <p id="item54-info" class="info" style="display: none;">Lodos del tratamiento in situ de efluentes.</p>
+  <p id="item55-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item56-info" class="info" style="display: none;">Residuos de lavado, limpieza y reducción mecánica de materias primas.</p>
+  <p id="item57-info" class="info" style="display: none;">Residuos de la destilación de alcoholes.</p>
+  <p id="item58-info" class="info" style="display: none;">Residuos del tratamiento químico.</p>
+  <p id="item59-info" class="info" style="display: none;">Materiales inadecuados para el consumo o la elaboración.</p>
+  <p id="item60-info" class="info" style="display: none;">Lodos del tratamiento in situ de efluentes.</p>
+  <p id="item61-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item62-info" class="info" style="display: none;">Residuos de corteza y corcho.</p>
+  <p id="item63-info" class="info" style="display: none;">Serrín, virutas, recortes, madera, tableros de partículas y chapas que contienen sustancias peligrosas.</p>
+  <p id="item64-info" class="info" style="display: none;">Serrín, virutas, recortes, madera, tableros de partículas y chapas distintos de los mencionados en el código 03 01 04.</p>
+  <p id="item65-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item66-info" class="info" style="display: none;">Conservantes de la madera orgánicos no halogenados.</p>
+  <p id="item67-info" class="info" style="display: none;">Conservantes de la madera organoclorados.</p>
+  <p id="item68-info" class="info" style="display: none;">Conservantes de la madera organometálicos.</p>
+  <p id="item69-info" class="info" style="display: none;">Conservantes de la madera inorgánicos.</p>
+  <p id="item70-info" class="info" style="display: none;">Otros conservantes de la madera que contienen sustancias peligrosas.</p>
+  <p id="item71-info" class="info" style="display: none;">Conservantes de la madera no especificados en otra categoría.</p>
+  <p id="item72-info" class="info" style="display: none;">Residuos de corteza y madera.</p>
+  <p id="item73-info" class="info" style="display: none;">Lodos de lejías verdes [procedentes de la recuperación de lejías de cocción].</p>
+  <p id="item74-info" class="info" style="display: none;">Lodos de destintado procedentes del reciclado de papel.</p>
+  <p id="item75-info" class="info" style="display: none;">Desechos, separados mecánicamente, de pasta elaborada a partir de residuos de papel y cartón.</p>
+  <p id="item76-info" class="info" style="display: none;">Residuos procedentes de la clasificación de papel y cartón destinados al reciclado.</p>
+  <p id="item77-info" class="info" style="display: none;">Residuos de lodos calizos.</p>
+  <p id="item78-info" class="info" style="display: none;">Desechos de fibras y lodos de fibras, de materiales de carga y de estucado, obtenidos por separación mecánica.</p>
+  <p id="item79-info" class="info" style="display: none;">Lodos del tratamiento in situ de efluentes distintos de los especificados en el código 03 03 10.</p>
+  <p id="item80-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item81-info" class="info" style="display: none;">Carnazas y serrajes de encalado.</p>
+  <p id="item82-info" class="info" style="display: none;">Residuos de encalado.</p>
+  <p id="item83-info" class="info" style="display: none;">Residuos de desengrasado que contienen disolventes sin fase líquida.</p>
+  <p id="item84-info" class="info" style="display: none;">Residuos líquidos de curtición que contienen cromo.</p>
+  <p id="item85-info" class="info" style="display: none;">Residuos líquidos de curtición que no contienen cromo.</p>
+  <p id="item86-info" class="info" style="display: none;">Lodos, en particular los procedentes del tratamiento in situ de efluentes, que contienen cromo.</p>
+  <p id="item87-info" class="info" style="display: none;">Lodos, en particular los procedentes del tratamiento in situ de efluentes, que no contienen cromo.</p>
+  <p id="item88-info" class="info" style="display: none;">Residuos de piel curtida [serrajes, rebajaduras, recortes, polvo de esmerilado] que contienen cromo.</p>
+  <p id="item89-info" class="info" style="display: none;">Residuos de confección y acabado.</p>
+  <p id="item90-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item91-info" class="info" style="display: none;">Residuos de materiales compuestos [tejidos impregnados, elastómeros, plastómeros].</p>
+  <p id="item92-info" class="info" style="display: none;">Materia orgánica de productos naturales [por ejemplo grasa, cera].</p>
+  <p id="item93-info" class="info" style="display: none;">Residuos del acabado que contienen disolventes orgánicos.</p>
+  <p id="item94-info" class="info" style="display: none;">Residuos del acabado distintos de los especificados en el código 04 02 14.</p>
+  <p id="item95-info" class="info" style="display: none;">Colorantes y pigmentos que contienen sustancias peligrosas.</p>
+  <p id="item96-info" class="info" style="display: none;">Colorantes y pigmentos distintos de los mencionados en el código 04 02 16.</p>
+  <p id="item97-info" class="info" style="display: none;">Lodos del tratamiento in situ de efluentes que contienen sustancias peligrosas.</p>
+  <p id="item98-info" class="info" style="display: none;">Lodos del tratamiento in situ de efluentes distintos de los mencionados en el código 04 02 19.</p>
+  <p id="item99-info" class="info" style="display: none;">Residuos de fibras textiles no procesadas.</p>
+  <p id="item100-info" class="info" style="display: none;">Residuos de fibras textiles procesadas.</p>
+  <p id="item101-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item102-info" class="info" style="display: none;">Lodos de desalación.</p>
+  <p id="item103-info" class="info" style="display: none;">Lodos de fondos de tanques.</p>
+  <p id="item104-info" class="info" style="display: none;">Lodos de alquil ácido.</p>
+  <p id="item105-info" class="info" style="display: none;">Derrames de hidrocarburos.</p>
+  <p id="item106-info" class="info" style="display: none;">Lodos oleosos procedentes de operaciones de mantenimiento de plantas o equipos.</p>
+  <p id="item107-info" class="info" style="display: none;">Alquitranes ácidos.</p>
+  <p id="item108-info" class="info" style="display: none;">Otros alquitranes.</p>
+  <p id="item109-info" class="info" style="display: none;">Lodos del tratamiento in situ de efluentes que contienen sustancias peligrosas.</p>
+  <p id="item110-info" class="info" style="display: none;">Lodos del tratamiento in situ de efluentes distintos de los mencionados en el código 05 01 09.</p>
+  <p id="item111-info" class="info" style="display: none;">Residuos procedentes de la limpieza de combustibles con bases.</p>
+  <p id="item112-info" class="info" style="display: none;">Hidrocarburos que contienen ácidos.</p>
+  <p id="item113-info" class="info" style="display: none;">Lodos procedentes del agua de alimentación de calderas.</p>
+  <p id="item114-info" class="info" style="display: none;">Residuos de columnas de refrigeración.</p>
+  <p id="item115-info" class="info" style="display: none;">Arcillas de filtración usadas.</p>
+  <p id="item116-info" class="info" style="display: none;">Residuos que contienen azufre procedentes de la desulfuración del petróleo.</p>
+  <p id="item117-info" class="info" style="display: none;">Betunes.</p>
+  <p id="item118-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item119-info" class="info" style="display: none;">Alquitranes ácidos.</p>
+  <p id="item120-info" class="info" style="display: none;">Otros alquitranes.</p>
+  <p id="item121-info" class="info" style="display: none;">Residuos de columnas de refrigeración.</p>
+  <p id="item122-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item123-info" class="info" style="display: none;">Residuos que contienen mercurio.</p>
+  <p id="item124-info" class="info" style="display: none;">Residuos que contienen azufre.</p>
+  <p id="item125-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item126-info" class="info" style="display: none;">Ácido sulfúrico y ácido sulfuroso.</p>
+  <p id="item127-info" class="info" style="display: none;">Ácido clorhídrico.</p>
+  <p id="item128-info" class="info" style="display: none;">Ácido fluorhídrico.</p>
+  <p id="item129-info" class="info" style="display: none;">Ácido fosfórico y ácido fosforoso.</p>
+  <p id="item130-info" class="info" style="display: none;">Ácido nítrico y ácido nitroso.</p>
+  <p id="item131-info" class="info" style="display: none;">Otros ácidos.</p>
+  <p id="item132-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item133-info" class="info" style="display: none;">Hidróxido cálcico.</p>
+  <p id="item134-info" class="info" style="display: none;">Hidróxido amónico.</p>
+  <p id="item135-info" class="info" style="display: none;">Hidróxido potásico e hidróxido sódico.</p>
+  <p id="item136-info" class="info" style="display: none;">Otras bases.</p>
+  <p id="item137-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item138-info" class="info" style="display: none;">Sales sólidas y soluciones que contienen cianuros.</p>
+  <p id="item139-info" class="info" style="display: none;">Sales sólidas y soluciones que contienen metales pesados.</p>
+  <p id="item140-info" class="info" style="display: none;">Sales sólidas y soluciones distintas de las mencionadas en los códigos 06 03 11 y 06 03 13.</p>
+  <p id="item141-info" class="info" style="display: none;">Óxidos metálicos que contienen metales pesados.</p>
+  <p id="item142-info" class="info" style="display: none;">Óxidos metálicos distintos de los mencionados en el código 06 03 15.</p>
+  <p id="item143-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item144-info" class="info" style="display: none;">Residuos que contienen arsénico.</p>
+  <p id="item145-info" class="info" style="display: none;">Residuos que contienen mercurio.</p>
+  <p id="item146-info" class="info" style="display: none;">Residuos que contienen otros metales pesados.</p>
+  <p id="item147-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item148-info" class="info" style="display: none;">Lodos del tratamiento in situ de efluentes que contienen sustancias peligrosas.</p>
+  <p id="item149-info" class="info" style="display: none;">Lodos del tratamiento in situ de efluentes distintos de los mencionados en el código 06 05 02.</p>
+  <p id="item150-info" class="info" style="display: none;">Residuos que contienen sulfuros peligrosos.</p>
+  <p id="item151-info" class="info" style="display: none;">Residuos que contienen sulfuros distintos de los mencionados en el código 06 06 02.</p>
+  <p id="item152-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item153-info" class="info" style="display: none;">Residuos de electrólisis que contienen amianto.</p>
+  <p id="item154-info" class="info" style="display: none;">Carbón activo procedente de la producción de cloro.</p>
+  <p id="item155-info" class="info" style="display: none;">Lodos de sulfato bárico que contienen mercurio.</p>
+  <p id="item156-info" class="info" style="display: none;">Soluciones y ácidos, por ejemplo, ácido de contacto.</p>
+  <p id="item157-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item158-info" class="info" style="display: none;">Residuos que contienen clorosilanos peligrosos.</p>
+  <p id="item159-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item160-info" class="info" style="display: none;">Escorias de fósforo.</p>
+  <p id="item161-info" class="info" style="display: none;">Residuos cálcicos de reacción que contienen o están contaminados con sustancias peligrosas.</p>
+  <p id="item162-info" class="info" style="display: none;">Residuos cálcicos de reacción distintos de los mencionados en el código 06 09 03.</p>
+  <p id="item163-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item164-info" class="info" style="display: none;">Residuos que contienen sustancias peligrosas.</p>
+  <p id="item165-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item166-info" class="info" style="display: none;">Residuos cálcicos de reacción procedentes de la producción de dióxido de titanio.</p>
+  <p id="item167-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item168-info" class="info" style="display: none;">Productos fitosanitarios inorgánicos, conservantes de la madera y otros biocidas.</p>
+  <p id="item169-info" class="info" style="display: none;">Carbón activo usado [excepto el código 06 07 02].</p>
+  <p id="item170-info" class="info" style="display: none;">Negro de carbono.</p>
+  <p id="item171-info" class="info" style="display: none;">Residuos procedentes de la transformación del amianto.</p>
+  <p id="item172-info" class="info" style="display: none;">Hollín.</p>
+  <p id="item173-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item174-info" class="info" style="display: none;">Líquidos de limpieza y licores madre acuosos.</p>
+  <p id="item175-info" class="info" style="display: none;">Disolventes, líquidos de limpieza y licores madre organo halogenados.</p>
+  <p id="item176-info" class="info" style="display: none;">Otros disolventes, líquidos de limpieza y licores madre orgánicos.</p>
+  <p id="item177-info" class="info" style="display: none;">Residuos de reacción y de destilación halogenados.</p>
+  <p id="item178-info" class="info" style="display: none;">Otros residuos de reacción y de destilación.</p>
+  <p id="item179-info" class="info" style="display: none;">Tortas de filtración y absorbentes usados halogenados.</p>
+  <p id="item180-info" class="info" style="display: none;">Otras tortas de filtración y absorbentes usados.</p>
+  <p id="item181-info" class="info" style="display: none;">Lodos del tratamiento in situ de efluentes que contienen sustancias peligrosas.</p>
+  <p id="item182-info" class="info" style="display: none;">Lodos del tratamiento in situ de efluentes distintos de los especificados en el código 07 01 11.</p>
+  <p id="item183-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item184-info" class="info" style="display: none;">Líquidos de limpieza y licores madre acuosos.</p>
+  <p id="item185-info" class="info" style="display: none;">Disolventes, líquidos de limpieza y licores madre organohalogenados.</p>
+  <p id="item186-info" class="info" style="display: none;">Otros disolventes, líquidos de limpieza y licores madre orgánicos.</p>
+  <p id="item187-info" class="info" style="display: none;">Residuos de reacción y de destilación halogenados.</p>
+  <p id="item188-info" class="info" style="display: none;">Otros residuos de reacción y de destilación.</p>
+  <p id="item189-info" class="info" style="display: none;">Tortas de filtración y absorbentes usados halogenados.</p>
+  <p id="item190-info" class="info" style="display: none;">Otras tortas de filtración y absorbentes usados.</p>
+  <p id="item191-info" class="info" style="display: none;">Lodos del tratamiento in situ de efluentes que contienen sustancias peligrosas.</p>
+  <p id="item192-info" class="info" style="display: none;">Lodos del tratamiento in situ de efluentes distintos de los especificados en el código 07 02 11.</p>
+  <p id="item193-info" class="info" style="display: none;">Residuos de plástico.</p>
+  <p id="item194-info" class="info" style="display: none;">Residuos procedentes de aditivos que contienen sustancias peligrosas.</p>
+  <p id="item195-info" class="info" style="display: none;">Residuos procedentes de aditivos, distintos de los especificados en el código 07 02 14.</p>
+  <p id="item196-info" class="info" style="display: none;">Residuos que contienen siliconas peligrosas.</p>
+  <p id="item197-info" class="info" style="display: none;">Residuos que contienen siliconas distintas de las mencionadas en el código 07 02 16.</p>
+  <p id="item198-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item199-info" class="info" style="display: none;">Líquidos de limpieza y licores madre acuosos.</p>
+  <p id="item200-info" class="info" style="display: none;">Disolventes, líquidos de limpieza y licores madre organohalogenados.</p>
+  <p id="item201-info" class="info" style="display: none;">Otros disolventes, líquidos de limpieza y licores madre orgánicos.</p>
+  <p id="item202-info" class="info" style="display: none;">Residuos de reacción y de destilación halogenados.</p>
+  <p id="item203-info" class="info" style="display: none;">Otros residuos de reacción y de destilación.</p>
+  <p id="item204-info" class="info" style="display: none;">Tortas de filtración y absorbentes usados halogenados.</p>
+  <p id="item205-info" class="info" style="display: none;">Otras tortas de filtración y absorbentes usados.</p>
+  <p id="item206-info" class="info" style="display: none;">Lodos del tratamiento in situ de efluentes que contienen sustancias peligrosas.</p>
+  <p id="item207-info" class="info" style="display: none;">Lodos del tratamiento in situ de efluentes distintos de los especificados en el código 07 03 11.</p>
+  <p id="item208-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item209-info" class="info" style="display: none;">Líquidos de limpieza y licores madre acuosos.</p>
+  <p id="item210-info" class="info" style="display: none;">Disolventes, líquidos de limpieza y licores madre organohalogenados.</p>
+  <p id="item211-info" class="info" style="display: none;">Otros disolventes, líquidos de limpieza y licores madre orgánicos.</p>
+  <p id="item212-info" class="info" style="display: none;">Residuos de reacción y de destilación halogenados.</p>
+  <p id="item213-info" class="info" style="display: none;">Otros residuos de reacción y de destilación.</p>
+  <p id="item214-info" class="info" style="display: none;">Tortas de filtración y absorbentes usados halogenados.</p>
+  <p id="item215-info" class="info" style="display: none;">Otras tortas de filtración y absorbentes usados.</p>
+  <p id="item216-info" class="info" style="display: none;">Lodos del tratamiento in situ de efluentes que contienen sustancias peligrosas.</p>
+  <p id="item217-info" class="info" style="display: none;">Lodos del tratamiento in situ de efluentes distintos de los especificados en el código 07 04 11.</p>
+  <p id="item218-info" class="info" style="display: none;">Residuos sólidos que contienen sustancias peligrosas.</p>
+  <p id="item219-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item220-info" class="info" style="display: none;">Líquidos de limpieza y licores madre acuosos.</p>
+  <p id="item221-info" class="info" style="display: none;">Disolventes, líquidos de limpieza y licores madre organohalogenados.</p>
+  <p id="item222-info" class="info" style="display: none;">Otros disolventes, líquidos de limpieza y licores madre orgánicos.</p>
+  <p id="item223-info" class="info" style="display: none;">Residuos de reacción y de destilación halogenados.</p>
+  <p id="item224-info" class="info" style="display: none;">Otros residuos de reacción y de destilación.</p>
+  <p id="item225-info" class="info" style="display: none;">Tortas de filtración y absorbentes usados halogenados.</p>
+  <p id="item226-info" class="info" style="display: none;">Otras tortas de filtración y absorbentes usados.</p>
+  <p id="item227-info" class="info" style="display: none;">Lodos del tratamiento in situ de efluentes que contienen sustancias peligrosas.</p>
+  <p id="item228-info" class="info" style="display: none;">Lodos del tratamiento in situ de efluentes distintos de los especificados en el código 07 05 11.</p>
+  <p id="item229-info" class="info" style="display: none;">Residuos sólidos que contienen sustancias peligrosas.</p>
+  <p id="item230-info" class="info" style="display: none;">Residuos sólidos distintos de los especificados en el código 07 05 13.</p>
+  <p id="item231-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item232-info" class="info" style="display: none;">Líquidos de limpieza y licores madre acuosos.</p>
+  <p id="item233-info" class="info" style="display: none;">Disolventes, líquidos de limpieza y licores madre organohalogenados.</p>
+  <p id="item234-info" class="info" style="display: none;">Otros disolventes, líquidos de limpieza y licores madre orgánicos.</p>
+  <p id="item235-info" class="info" style="display: none;">Residuos de reacción y de destilación halogenados.</p>
+  <p id="item236-info" class="info" style="display: none;">Otros residuos de reacción y de destilación.</p>
+  <p id="item237-info" class="info" style="display: none;">Tortas de filtración y absorbentes usados halogenados.</p>
+  <p id="item238-info" class="info" style="display: none;">Otras tortas de filtración y absorbentes usados.</p>
+  <p id="item239-info" class="info" style="display: none;">Lodos del tratamiento in situ de efluentes que contienen sustancias peligrosas.</p>
+  <p id="item240-info" class="info" style="display: none;">Lodos del tratamiento in situ de efluentes distintos de los especificados en el código 07 06 11.</p>
+  <p id="item241-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item242-info" class="info" style="display: none;">Líquidos de limpieza y licores madre acuosos.</p>
+  <p id="item243-info" class="info" style="display: none;">Disolventes, líquidos de limpieza y licores madre organohalogenados.</p>
+  <p id="item244-info" class="info" style="display: none;">Otros disolventes, líquidos de limpieza y licores madre orgánicos.</p>
+  <p id="item245-info" class="info" style="display: none;">Residuos de reacción y de destilación halogenados.</p>
+  <p id="item246-info" class="info" style="display: none;">Otros residuos de reacción y de destilación.</p>
+  <p id="item247-info" class="info" style="display: none;">Tortas de filtración y absorbentes usados halogenados.</p>
+  <p id="item248-info" class="info" style="display: none;">Otras tortas de filtración y absorbentes usados.</p>
+  <p id="item249-info" class="info" style="display: none;">Lodos del tratamiento in situ de efluentes que contienen sustancias peligrosas.</p>
+  <p id="item250-info" class="info" style="display: none;">Lodos del tratamiento in situ de efluentes distintos de los especificados en el código 07 07 11.</p>
+  <p id="item251-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item252-info" class="info" style="display: none;">Residuos de pintura y barniz que contienen disolventes orgánicos u otras sustancias peligrosas.</p>
+  <p id="item253-info" class="info" style="display: none;">Residuos de pintura y barniz distintos de los especificados en el código 08 01 11.</p>
+  <p id="item254-info" class="info" style="display: none;">Lodos de pintura y barniz que contienen disolventes orgánicos u otras sustancias peligrosas.</p>
+  <p id="item255-info" class="info" style="display: none;">Lodos de pintura y barniz distintos de los especificados en el código 08 0113.</p>
+  <p id="item256-info" class="info" style="display: none;">Lodos acuosos que contienen pintura o barniz con disolventes orgánicos u otras sustancias peligrosas.</p>
+  <p id="item257-info" class="info" style="display: none;">Lodos acuosos que contienen pintura o barniz distintos de los especificados en el código 08 02 15.</p>
+  <p id="item258-info" class="info" style="display: none;">Residuos del decapado o eliminación de pintura y barniz que contienen disolventes orgánicos u otras sustancias peligrosas.</p>
+  <p id="item259-info" class="info" style="display: none;">Residuos del decapado o eliminación de pintura y barniz distintos de los especificados en el código 08 01 17.</p>
+  <p id="item260-info" class="info" style="display: none;">Suspensiones acuosas que contienen pintura o barniz con disolventes orgánicos u otras sustancias peligrosas.</p>
+  <p id="item261-info" class="info" style="display: none;">Suspensiones acuosas que contienen pintura o barniz distintos de los especificados en el código 08 01 19.</p>
+  <p id="item262-info" class="info" style="display: none;">Residuos de decapantes o desbarnizadores.</p>
+  <p id="item263-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item264-info" class="info" style="display: none;">Residuos de arenillas de revestimiento.</p>
+  <p id="item265-info" class="info" style="display: none;">Lodos acuosos que contienen materiales cerámicos.</p>
+  <p id="item266-info" class="info" style="display: none;">Suspensiones acuosas que contienen materiales cerámicos.</p>
+  <p id="item267-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item268-info" class="info" style="display: none;">Lodos acuosos que contienen tinta.</p>
+  <p id="item269-info" class="info" style="display: none;">Residuos líquidos acuosos que contienen tinta.</p>
+  <p id="item270-info" class="info" style="display: none;">Residuos de tintas que contienen sustancias peligrosas.</p>
+  <p id="item271-info" class="info" style="display: none;">Residuos de tintas distintos de los especificados en el código 08 03 12.</p>
+  <p id="item272-info" class="info" style="display: none;">Lodos de tinta que contienen sustancias peligrosas.</p>
+  <p id="item273-info" class="info" style="display: none;">Lodos de tinta distintos de los especificados en el código 08 03 14.</p>
+  <p id="item274-info" class="info" style="display: none;">Residuos de soluciones corrosivas.</p>
+  <p id="item275-info" class="info" style="display: none;">Residuos de tóner de impresión que contienen sustancias peligrosas.</p>
+  <p id="item276-info" class="info" style="display: none;">Residuos de tóner de impresión distintos de los especificados en el código 08 03 17.</p>
+  <p id="item277-info" class="info" style="display: none;">Aceites de dispersión.</p>
+  <p id="item278-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item279-info" class="info" style="display: none;">Residuos de adhesivos y sellantes que contienen disolventes orgánicos u otras sustancias peligrosas.</p>
+  <p id="item280-info" class="info" style="display: none;">Residuos de adhesivos y sellantes distintos de los especificados en el código 08 04 09.</p>
+  <p id="item281-info" class="info" style="display: none;">Lodos de adhesivos y sellantes que contienen disolventes orgánicos u otras sustancias peligrosas.</p>
+  <p id="item282-info" class="info" style="display: none;">Lodos de adhesivos y sellantes distintos de los especificados en el código 08 04 11.</p>
+  <p id="item283-info" class="info" style="display: none;">Lodos acuosos que contienen adhesivos o sellantes con disolventes orgánicos u otras sustancias peligrosas.</p>
+  <p id="item284-info" class="info" style="display: none;">Lodos acuosos que contienen adhesivos o sellantes distintos de los especificados en el código 08 04 13.</p>
+  <p id="item285-info" class="info" style="display: none;">Residuos líquidos acuosos que contienen adhesivos o sellantes con disolventes orgánicos u otras sustancias peligrosas.</p>
+  <p id="item286-info" class="info" style="display: none;">Residuos líquidos acuosos que contienen adhesivos o sellantes, distintos de los especificados en el código 08 04 15.</p>
+  <p id="item287-info" class="info" style="display: none;">Aceite de resina.</p>
+  <p id="item288-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item289-info" class="info" style="display: none;">Isocianatos residuales.</p>
+  <p id="item290-info" class="info" style="display: none;">Soluciones de revelado y soluciones activadoras al agua.</p>
+  <p id="item291-info" class="info" style="display: none;">Soluciones de revelado de placas de impresión al agua.</p>
+  <p id="item292-info" class="info" style="display: none;">Soluciones de revelado con disolventes.</p>
+  <p id="item293-info" class="info" style="display: none;">Soluciones de fijado.</p>
+  <p id="item294-info" class="info" style="display: none;">Soluciones de blanqueo y soluciones de blanqueo-fijado.</p>
+  <p id="item295-info" class="info" style="display: none;">Residuos que contienen plata procedentes del tratamiento in situ de residuos fotográficos.</p>
+  <p id="item296-info" class="info" style="display: none;">Películas y papel fotográfico que contienen plata o compuestos de plata.</p>
+  <p id="item297-info" class="info" style="display: none;">Películas y papel fotográfico que no contienen plata ni compuestos de plata.</p>
+  <p id="item298-info" class="info" style="display: none;">Cámaras de un solo uso sin pilas ni acumuladores.</p>
+  <p id="item299-info" class="info" style="display: none;">Cámaras de un solo uso con pilas o acumuladores incluidos en los códigos 16 06 01, 16 07 02 ó 16 06 03.</p>
+  <p id="item300-info" class="info" style="display: none;">Cámaras de un solo uso con pilas o acumuladores distintas de las especificadas en el código 09 01 11.</p>
+  <p id="item301-info" class="info" style="display: none;">Residuos líquidos acuosos, procedentes de la recuperación in situ de plata, distintos de los especificados en el código 09 01 06.</p>
+  <p id="item302-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item303-info" class="info" style="display: none;">Cenizas de hogar, escorias y polvo de caldera [excepto el polvo de caldera especificado en el código 10 01 04].</p>
+  <p id="item304-info" class="info" style="display: none;">Cenizas volantes de carbón.</p>
+  <p id="item305-info" class="info" style="display: none;">Cenizas volantes de turba y de madera [no tratada].</p>
+  <p id="item306-info" class="info" style="display: none;">Cenizas volantes y polvo de caldera de hidrocarburos.</p>
+  <p id="item307-info" class="info" style="display: none;">Residuos cálcicos de reacción, en forma sólida, procedentes de la desulfuración de gases de combustión.</p>
+  <p id="item308-info" class="info" style="display: none;">Residuos cálcicos de reacción, en forma de lodos, procedentes de la desulfuración de gases de combustión.</p>
+  <p id="item309-info" class="info" style="display: none;">Ácido sulfúrico.</p>
+  <p id="item310-info" class="info" style="display: none;">Cenizas volantes de hidrocarburos emulsionados usados como combustibles.</p>
+  <p id="item311-info" class="info" style="display: none;">Cenizas de hogar, escorias y polvo de caldera, procedentes de la coincineración, que contienen sustancias peligrosas.</p>
+  <p id="item312-info" class="info" style="display: none;">Cenizas de hogar, escorias y polvo de caldera, procedentes de la coincineración, distintos de los especificados en el código 10 01 14.</p>
+  <p id="item313-info" class="info" style="display: none;">Cenizas volantes procedentes de la coincineración que contienen sustancias peligrosas.</p>
+  <p id="item314-info" class="info" style="display: none;">Cenizas volantes procedentes de la coincineración distintas de las especificadas en el código 10 01 16.</p>
+  <p id="item315-info" class="info" style="display: none;">Residuos, procedentes de la depuración de gases, que contienen sustancias peligrosas.</p>
+  <p id="item316-info" class="info" style="display: none;">Residuos, procedentes de la depuración de gases, distintos de los especificados en los códigos 10 01 05, 10 01 07 y 10 01 18.</p>
+  <p id="item317-info" class="info" style="display: none;">Lodos del tratamiento in situ de efluentes que contienen sustancias peligrosas.</p>
+  <p id="item318-info" class="info" style="display: none;">Lodos del tratamiento in situ de efluentes distintos de los especificados en el código 10 01 20.</p>
+  <p id="item319-info" class="info" style="display: none;">Lodos acuosos, procedentes de la limpieza de calderas, que contienen sustancias peligrosas.</p>
+  <p id="item320-info" class="info" style="display: none;">Lodos acuosos, procedentes de la limpieza de calderas, distintos de los especificados en el código 10 01 22.</p>
+  <p id="item321-info" class="info" style="display: none;">Arenas de lechos fluidizados.</p>
+  <p id="item322-info" class="info" style="display: none;">Residuos procedentes del almacenamiento y preparación de combustible de centrales eléctricas de carbón.</p>
+  <p id="item323-info" class="info" style="display: none;">Residuos del tratamiento del agua de refrigeración.</p>
+  <p id="item324-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item325-info" class="info" style="display: none;">Residuos del tratamiento de escorias.</p>
+  <p id="item326-info" class="info" style="display: none;">Escorias no tratadas.</p>
+  <p id="item327-info" class="info" style="display: none;">Residuos sólidos, del tratamiento de gases, que contienen sustancias peligrosas.</p>
+  <p id="item328-info" class="info" style="display: none;">Residuos sólidos del tratamiento de gases distintos de los especificados en el código 10 02 07.</p>
+  <p id="item329-info" class="info" style="display: none;">Cascarilla de laminación.</p>
+  <p id="item330-info" class="info" style="display: none;">Residuos del tratamiento del agua de refrigeración que contienen aceites.</p>
+  <p id="item331-info" class="info" style="display: none;">Residuos del tratamiento del agua de refrigeración distintos de los especificados en el código 10 02 11.</p>
+  <p id="item332-info" class="info" style="display: none;">Lodos y tortas de filtración, del tratamiento de gases, que contienen sustancias peligrosas.</p>
+  <p id="item333-info" class="info" style="display: none;">Lodos y tortas de filtración, del tratamiento de gases, distintos de los especificados en el código 10 02 13.</p>
+  <p id="item334-info" class="info" style="display: none;">Otros lodos y tortas de filtración.</p>
+  <p id="item335-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item336-info" class="info" style="display: none;">Fragmentos de ánodos.</p>
+  <p id="item337-info" class="info" style="display: none;">Escorias de la producción primaria.</p>
+  <p id="item338-info" class="info" style="display: none;">Residuos de alúmina.</p>
+  <p id="item339-info" class="info" style="display: none;">Escorias salinas de la producción secundaria.</p>
+  <p id="item340-info" class="info" style="display: none;">Granzas negras de la producción secundaria.</p>
+  <p id="item341-info" class="info" style="display: none;">Espumas inflamables o que emiten, en contacto con el agua, gases inflamables en cantidades peligrosas.</p>
+  <p id="item342-info" class="info" style="display: none;">Espumas distintas de las especificadas en el código 10 03 15.</p>
+  <p id="item343-info" class="info" style="display: none;">Residuos que contienen alquitrán procedentes de la fabricación de ánodos.</p>
+  <p id="item344-info" class="info" style="display: none;">Residuos que contienen carbono procedentes de la fabricación de ánodos distintos a los especificados en el código 10 03 17.</p>
+  <p id="item345-info" class="info" style="display: none;">Partículas, procedentes de los efluentes gaseosos, que contienen sustancias peligrosas.</p>
+  <p id="item346-info" class="info" style="display: none;">Partículas procedentes de los efluentes gaseosos, distintas de las especificadas en el código 10 03 19.</p>
+  <p id="item347-info" class="info" style="display: none;">Otras partículas y polvo [incluido el polvo de molienda] que contienen sustancias peligrosas.</p>
+  <p id="item348-info" class="info" style="display: none;">Otras partículas y polvo [incluido el polvo de molienda] distintos de los especificados en el código 10 03 22.</p>
+  <p id="item349-info" class="info" style="display: none;">Residuos sólidos, del tratamiento de gases, que contienen sustancias peligrosas.</p>
+  <p id="item350-info" class="info" style="display: none;">Residuos sólidos, del tratamiento de gases, distintos de los especificados en el código 10 03 23.</p>
+  <p id="item351-info" class="info" style="display: none;">Lodos y tortas de filtración, del tratamiento de gases, que contienen sustancias peligrosas.</p>
+  <p id="item352-info" class="info" style="display: none;">Lodos y tortas de filtración del tratamiento de gases, distintos de los especificados en el código 10 03 25.</p>
+  <p id="item353-info" class="info" style="display: none;">Residuos del tratamiento del agua de refrigeración que contienen aceites.</p>
+  <p id="item354-info" class="info" style="display: none;">Residuos del tratamiento del agua de refrigeración, distintos de los especificados en el código 10 03 27.</p>
+  <p id="item355-info" class="info" style="display: none;">Residuos del tratamiento de escorias salinas y granzas negras, que contienen sustancias peligrosas.</p>
+  <p id="item356-info" class="info" style="display: none;">Residuos del tratamiento de escorias salinas y granzas negras distintos de los especificados en el código 10 03 29.</p>
+  <p id="item357-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item358-info" class="info" style="display: none;">Escorias de la producción primaria y secundaria.</p>
+  <p id="item359-info" class="info" style="display: none;">Granzas y espumas de la producción primaria y secundaria.</p>
+  <p id="item360-info" class="info" style="display: none;">Arseniato de calcio.</p>
+  <p id="item361-info" class="info" style="display: none;">Partículas procedentes de los efluentes gaseosos.</p>
+  <p id="item362-info" class="info" style="display: none;">Otras partículas y polvos.</p>
+  <p id="item363-info" class="info" style="display: none;">Residuos sólidos del tratamiento de gases.</p>
+  <p id="item364-info" class="info" style="display: none;">Lodos y tortas de filtración del tratamiento de gases.</p>
+  <p id="item365-info" class="info" style="display: none;">Residuos del tratamiento del agua de refrigeración que contienen aceites.</p>
+  <p id="item366-info" class="info" style="display: none;">Residuos del tratamiento del agua de refrigeración distintos de los especificados en el código 10 04 09.</p>
+  <p id="item367-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item368-info" class="info" style="display: none;">Escorias de la producción primaria y secundaria.</p>
+  <p id="item369-info" class="info" style="display: none;">Partículas procedentes de los efluentes gaseosos.</p>
+  <p id="item370-info" class="info" style="display: none;">Otras partículas y polvos.</p>
+  <p id="item371-info" class="info" style="display: none;">Residuos sólidos del tratamiento de gases.</p>
+  <p id="item372-info" class="info" style="display: none;">Lodos y tortas de filtración del tratamiento de gases.</p>
+  <p id="item373-info" class="info" style="display: none;">Residuos del tratamiento del agua de refrigeración que contienen aceites.</p>
+  <p id="item374-info" class="info" style="display: none;">Residuos del tratamiento del agua de refrigeración distintos de los especificados en el código 10 05 08.</p>
+  <p id="item375-info" class="info" style="display: none;">Granzas y espumas inflamables o que emiten, en contacto con el agua, gases inflamables en cantidades peligrosas.</p>
+  <p id="item376-info" class="info" style="display: none;">Granzas y espumas distintas de las especificadas en el código 10 05 10.</p>
+  <p id="item377-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item378-info" class="info" style="display: none;">Escorias de la producción primaria y secundaria.</p>
+  <p id="item379-info" class="info" style="display: none;">Granzas y espumas de la producción primaria y secundaria.</p>
+  <p id="item380-info" class="info" style="display: none;">Partículas procedentes de los efluentes gaseosos.</p>
+  <p id="item381-info" class="info" style="display: none;">Otras partículas y polvos.</p>
+  <p id="item382-info" class="info" style="display: none;">Residuos sólidos del tratamiento de gases.</p>
+  <p id="item383-info" class="info" style="display: none;">Lodos y tortas de filtración del tratamiento de gases.</p>
+  <p id="item384-info" class="info" style="display: none;">Residuos del tratamiento del agua de refrigeración que contienen aceites.</p>
+  <p id="item385-info" class="info" style="display: none;">Residuos del tratamiento del agua de refrigeración distintos de los especificados en el código 10 06 09.</p>
+  <p id="item386-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item387-info" class="info" style="display: none;">Escorias de la producción primaria y secundaria.</p>
+  <p id="item388-info" class="info" style="display: none;">Granzas y espumas de la producción primaria y secundaria.</p>
+  <p id="item389-info" class="info" style="display: none;">Residuos sólidos del tratamiento de gases.</p>
+  <p id="item390-info" class="info" style="display: none;">Otras partículas y polvos.</p>
+  <p id="item391-info" class="info" style="display: none;">Lodos y tortas de filtración del tratamiento de gases.</p>
+  <p id="item392-info" class="info" style="display: none;">Residuos del tratamiento del agua de refrigeración que contienen aceites.</p>
+  <p id="item393-info" class="info" style="display: none;">Residuos del tratamiento del agua de refrigeración distintos de los especificados en el código 10 07 07.</p>
+  <p id="item394-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item395-info" class="info" style="display: none;">Partículas y polvo.</p>
+  <p id="item396-info" class="info" style="display: none;">Escorias salinas de la producción primaria y secundaria.</p>
+  <p id="item397-info" class="info" style="display: none;">Otras escorias.</p>
+  <p id="item398-info" class="info" style="display: none;">Granzas y espumas inflamables o que emiten, en contacto con el agua, gases inflamables en cantidades peligrosas.</p>
+  <p id="item399-info" class="info" style="display: none;">Granzas y espumas distintas de las especificadas en el código 10 08 10.</p>
+  <p id="item400-info" class="info" style="display: none;">Residuos que contienen alquitrán procedentes de la fabricación de ánodos.</p>
+  <p id="item401-info" class="info" style="display: none;">Residuos que contienen carbono procedentes de la fabricación de ánodos distintos de los especificados en el código 10 08 12.</p>
+  <p id="item402-info" class="info" style="display: none;">Fragmentos de ánodos.</p>
+  <p id="item403-info" class="info" style="display: none;">Partículas, procedentes de los efluentes gaseosos, que contienen sustancias peligrosas.</p>
+  <p id="item404-info" class="info" style="display: none;">Partículas procedentes de los efluentes gaseosos distintas de las especificadas en el código 10 08 15.</p>
+  <p id="item405-info" class="info" style="display: none;">Lodos y tortas de filtración del tratamiento de gases, que contienen sustancias peligrosas.</p>
+  <p id="item406-info" class="info" style="display: none;">Lodos y tortas de filtración del tratamiento de gases, distintos de los especificados en el código 10 08 17.</p>
+  <p id="item407-info" class="info" style="display: none;">Residuos del tratamiento del agua de refrigeración que contienen aceites.</p>
+  <p id="item408-info" class="info" style="display: none;">Residuos del tratamiento del agua de refrigeración distintos de los especificados en el código 10 08 19.</p>
+  <p id="item409-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item410-info" class="info" style="display: none;">Escorias de horno.</p>
+  <p id="item411-info" class="info" style="display: none;">Machos y moldes de fundición sin colada que contienen sustancias peligrosas.</p>
+  <p id="item412-info" class="info" style="display: none;">Machos y moldes de fundición sin colada distintos de los especificados en el código 10 09 05.</p>
+  <p id="item413-info" class="info" style="display: none;">Machos y moldes de fundición con colada que contienen sustancias peligrosas.</p>
+  <p id="item414-info" class="info" style="display: none;">Machos y moldes de fundición con colada distintos de los especificados en el código 10 09 07.</p>
+  <p id="item415-info" class="info" style="display: none;">Partículas procedentes de los efluentes gaseosos, que contienen sustancias peligrosas.</p>
+  <p id="item416-info" class="info" style="display: none;">Partículas, procedentes de los efluentes gaseosos, distintas de las especificadas en el código 10 09 09.</p>
+  <p id="item417-info" class="info" style="display: none;">Otras partículas que contienen sustancias peligrosas.</p>
+  <p id="item418-info" class="info" style="display: none;">Otras partículas distintas de las especificadas en el código 10 09 11.</p>
+  <p id="item419-info" class="info" style="display: none;">Ligantes residuales que contienen sustancias peligrosas.</p>
+  <p id="item420-info" class="info" style="display: none;">Ligantes residuales distintos de los especificados en el código 10 09 13.</p>
+  <p id="item421-info" class="info" style="display: none;">Residuos de agentes indicadores de fisuración que contienen sustancias peligrosas.</p>
+  <p id="item422-info" class="info" style="display: none;">Residuos de agentes indicadores de fisuración distintos de los especificados en el código 10 09 15.</p>
+  <p id="item423-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item424-info" class="info" style="display: none;">Escorias de horno.</p>
+  <p id="item425-info" class="info" style="display: none;">Machos y moldes de fundición sin colada que contienen sustancias peligrosas.</p>
+  <p id="item426-info" class="info" style="display: none;">Machos y moldes de fundición sin colada distintos de los especificados en el código 10 10 05.</p>
+  <p id="item427-info" class="info" style="display: none;">Machos y moldes de fundición con colada que contienen sustancias peligrosas.</p>
+  <p id="item428-info" class="info" style="display: none;">Machos y moldes de fundición con colada distintos de los especificados en el código 10 10 07.</p>
+  <p id="item429-info" class="info" style="display: none;">Partículas, procedentes de los efluentes gaseosos que contienen sustancias peligrosas.</p>
+  <p id="item430-info" class="info" style="display: none;">Partículas procedentes de los efluentes gaseosos distintas de las especificadas en el código 10 10 09.</p>
+  <p id="item431-info" class="info" style="display: none;">Otras partículas que contienen sustancias peligrosas.</p>
+  <p id="item432-info" class="info" style="display: none;">Otras partículas distintas de las especificadas en el código 10 10 11.</p>
+  <p id="item433-info" class="info" style="display: none;">Ligantes residuales que contienen sustancias peligrosas.</p>
+  <p id="item434-info" class="info" style="display: none;">Ligantes residuales distintos de los especificados en el código 10 10 13.</p>
+  <p id="item435-info" class="info" style="display: none;">Residuos de agentes indicadores de fisuración que contienen sustancias peligrosas.</p>
+  <p id="item436-info" class="info" style="display: none;">Residuos de agentes indicadores de fisuración distintos de los especificados en el código 10 10 15.</p>
+  <p id="item437-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item438-info" class="info" style="display: none;">Residuos de materiales de fibra de vidrio.</p>
+  <p id="item439-info" class="info" style="display: none;">Partículas y polvo.</p>
+  <p id="item440-info" class="info" style="display: none;">Residuos, de la preparación de mezclas antes del proceso de cocción que contienen sustancias peligrosas.</p>
+  <p id="item441-info" class="info" style="display: none;">Residuos de la preparación de mezclas antes del proceso de cocción distintos de los especificados en el código 10 11 09.</p>
+  <p id="item442-info" class="info" style="display: none;">Residuos de pequeñas partículas de vidrio y de polvo de vidrio que contienen metales pesados [por ejemplo, de tubos catódicos].</p>
+  <p id="item443-info" class="info" style="display: none;">Residuos de vidrio distintos de los especificados en el código 10 11 11.</p>
+  <p id="item444-info" class="info" style="display: none;">Lodos procedentes del pulido y esmerilado del vidrio que contienen sustancias peligrosas.</p>
+  <p id="item445-info" class="info" style="display: none;">Lodos procedentes del pulido y esmerilado del vidrio distintos de los especificados en el código 10 11 13.</p>
+  <p id="item446-info" class="info" style="display: none;">Residuos sólidos, del tratamiento de gases de combustión, que contienen sustancias peligrosas.</p>
+  <p id="item447-info" class="info" style="display: none;">Residuos sólidos, del tratamiento de gases de combustión distintos de los especificados en el código 10 11 15.</p>
+  <p id="item448-info" class="info" style="display: none;">Lodos y tortas de filtración, del tratamiento de gases, que contienen sustancias peligrosas.</p>
+  <p id="item449-info" class="info" style="display: none;">Lodos y tortas de filtración, del tratamiento de gases, distintos de los especificados en el código 10 11 17.</p>
+  <p id="item450-info" class="info" style="display: none;">Residuos sólidos, del tratamiento in situ de efluentes, que contienen sustancias peligrosas.</p>
+  <p id="item451-info" class="info" style="display: none;">Residuos sólidos, del tratamiento in situ de efluentes, distintos de los especificados en el código 10 11 19.</p>
+  <p id="item452-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item453-info" class="info" style="display: none;">Residuos de la preparación de mezclas antes del proceso de cocción.</p>
+  <p id="item454-info" class="info" style="display: none;">Partículas y polvo.</p>
+  <p id="item455-info" class="info" style="display: none;">Lodos y tortas de filtración del tratamiento de gases.</p>
+  <p id="item456-info" class="info" style="display: none;">Moldes desechados.</p>
+  <p id="item457-info" class="info" style="display: none;">Residuos de cerámica, ladrillos, tejas y materiales de construcción [después del proceso de cocción].</p>
+  <p id="item458-info" class="info" style="display: none;">Residuos sólidos, del tratamiento de gases, que contienen sustancias peligrosas.</p>
+  <p id="item459-info" class="info" style="display: none;">Residuos sólidos, del tratamiento de gases, distintos de los especificados en el código 10 13 09.</p>
+  <p id="item460-info" class="info" style="display: none;">Residuos del vidriado que contienen metales pesados.</p>
+  <p id="item461-info" class="info" style="display: none;">Residuos del vidriado distintos de los especificados en el código 10 12 11.</p>
+  <p id="item462-info" class="info" style="display: none;">Lodos del tratamiento in situ de efluentes.</p>
+  <p id="item463-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item464-info" class="info" style="display: none;">Residuos de la preparación de mezclas antes del proceso de cocción.</p>
+  <p id="item465-info" class="info" style="display: none;">Residuos de calcinación e hidratación de la cal.</p>
+  <p id="item466-info" class="info" style="display: none;">Partículas y polvo [excepto los códigos 10 13 12 y 10 13 13].</p>
+  <p id="item467-info" class="info" style="display: none;">Lodos y tortas de filtración del tratamiento de gases.</p>
+  <p id="item468-info" class="info" style="display: none;">Residuos de la fabricación de fibrocemento que contienen amianto.</p>
+  <p id="item469-info" class="info" style="display: none;">Residuos de la fabricación de fibrocemento distintos de los especificados en el código 10 13 09.</p>
+  <p id="item470-info" class="info" style="display: none;">Residuos de materiales compuestos a partir de cemento distintos de los especificados en los códigos 10 13 09 y 10 13 10.</p>
+  <p id="item471-info" class="info" style="display: none;">Residuos sólidos, del tratamiento de gases, que contienen sustancias peligrosas.</p>
+  <p id="item472-info" class="info" style="display: none;">Residuos sólidos, del tratamiento de gases, distintos de los especificados en el código 10 14 12.</p>
+  <p id="item473-info" class="info" style="display: none;">Residuos de hormigón y lodos de hormigón.</p>
+  <p id="item474-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item475-info" class="info" style="display: none;">Residuos de la depuración de gases que contienen mercurio.</p>
+  <p id="item476-info" class="info" style="display: none;">Ácidos de decapado.</p>
+  <p id="item477-info" class="info" style="display: none;">Ácidos no especificados en otra categoría.</p>
+  <p id="item478-info" class="info" style="display: none;">Bases de decapado.</p>
+  <p id="item479-info" class="info" style="display: none;">Lodos de fosfatación.</p>
+  <p id="item480-info" class="info" style="display: none;">Lodos y tortas de filtración que contienen sustancias peligrosas.</p>
+  <p id="item481-info" class="info" style="display: none;">Lodos y tortas de filtración distintos de los especificados en el código 11 01 09.</p>
+  <p id="item482-info" class="info" style="display: none;">Líquidos acuosos de enjuague que contienen sustancias peligrosas.</p>
+  <p id="item483-info" class="info" style="display: none;">Líquidos acuosos de enjuague distintos de los especificados en el código 11 01 11.</p>
+  <p id="item484-info" class="info" style="display: none;">Residuos de desengrasado que contienen sustancias peligrosas.</p>
+  <p id="item485-info" class="info" style="display: none;">Residuos de desengrasado distintos de los especificados en el código 11 01 13.</p>
+  <p id="item486-info" class="info" style="display: none;">Eluatos y lodos, procedentes de sistemas de membranas o de intercambio iónico, que contienen sustancias peligrosas.</p>
+  <p id="item487-info" class="info" style="display: none;">Resinas intercambiadoras de iones saturadas o usadas.</p>
+  <p id="item488-info" class="info" style="display: none;">Otros residuos que contienen sustancias peligrosas.</p>
+  <p id="item489-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item490-info" class="info" style="display: none;">Lodos de la hidrometalurgia del zinc [incluidas jarosita y goethita].</p>
+  <p id="item491-info" class="info" style="display: none;">Residuos de la producción de ánodos para procesos de electrólisis acuosa.</p>
+  <p id="item492-info" class="info" style="display: none;">Residuos de procesos de la hidrometalurgia del cobre que contienen sustancias peligrosas.</p>
+  <p id="item493-info" class="info" style="display: none;">Residuos de procesos de la hidrometalurgia del cobre distintos de los especificados en el código 11 02 05.</p>
+  <p id="item494-info" class="info" style="display: none;">Otros residuos que contienen sustancias peligrosas.</p>
+  <p id="item495-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item496-info" class="info" style="display: none;">Residuos que contienen cianuro.</p>
+  <p id="item497-info" class="info" style="display: none;">Otros residuos.</p>
+  <p id="item498-info" class="info" style="display: none;">Matas de galvanización.</p>
+  <p id="item499-info" class="info" style="display: none;">Cenizas de zinc.</p>
+  <p id="item500-info" class="info" style="display: none;">Residuos sólidos del tratamiento de gases.</p>
+  <p id="item501-info" class="info" style="display: none;">Fundentes usados.</p>
+  <p id="item502-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item503-info" class="info" style="display: none;">Limaduras y virutas de metales férreos.</p>
+  <p id="item504-info" class="info" style="display: none;">Polvo y partículas de metales férreos.</p>
+  <p id="item505-info" class="info" style="display: none;">Limaduras y virutas de metales no férreos.</p>
+  <p id="item506-info" class="info" style="display: none;">Polvo y partículas de metales no férreos.</p>
+  <p id="item507-info" class="info" style="display: none;">Virutas y rebabas de plástico.</p>
+  <p id="item508-info" class="info" style="display: none;">Aceites minerales de mecanizado que contienen halógenos [excepto las emulsiones o disoluciones].</p>
+  <p id="item509-info" class="info" style="display: none;">Aceites minerales de mecanizado sin halógenos [excepto las emulsiones o disoluciones].</p>
+  <p id="item510-info" class="info" style="display: none;">Emulsiones y disoluciones de mecanizado que contienen halógenos.</p>
+  <p id="item511-info" class="info" style="display: none;">Emulsiones y disoluciones de mecanizado sin halógenos.</p>
+  <p id="item512-info" class="info" style="display: none;">Aceites sintéticos de mecanizado.</p>
+  <p id="item513-info" class="info" style="display: none;">Ceras y grasas usadas.</p>
+  <p id="item514-info" class="info" style="display: none;">Residuos de soldadura.</p>
+  <p id="item515-info" class="info" style="display: none;">Lodos de mecanizado que contienen sustancias peligrosas.</p>
+  <p id="item516-info" class="info" style="display: none;">Lodos de mecanizado distintos de los especificados en el código 12 01 14.</p>
+  <p id="item517-info" class="info" style="display: none;">Residuos de granallado o chorreado que contienen sustancias peligrosas.</p>
+  <p id="item518-info" class="info" style="display: none;">Residuos de granallado o chorreado distintos de los especificados en el código 12 01 16.</p>
+  <p id="item519-info" class="info" style="display: none;">Lodos metálicos [lodos de esmerilado, rectificado y lapeado] que contienen aceites.</p>
+  <p id="item520-info" class="info" style="display: none;">Aceites de mecanizado fácilmente biodegradables.</p>
+  <p id="item521-info" class="info" style="display: none;">Muelas y materiales de esmerilado usados que contienen sustancias peligrosas.</p>
+  <p id="item522-info" class="info" style="display: none;">Muelas y materiales de esmerilado usados distintos de los especificados en el código 12 01 20.</p>
+  <p id="item523-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item524-info" class="info" style="display: none;">Líquidos acuosos de limpieza.</p>
+  <p id="item525-info" class="info" style="display: none;">Residuos de desengrase al vapor.</p>
+  <p id="item526-info" class="info" style="display: none;">Aceites hidráulicos que contienen PCB [3].</p>
+  <p id="item527-info" class="info" style="display: none;">Emulsiones cloradas.</p>
+  <p id="item528-info" class="info" style="display: none;">Emulsiones no cloradas.</p>
+  <p id="item529-info" class="info" style="display: none;">Aceites hidráulicos minerales clorados.</p>
+  <p id="item530-info" class="info" style="display: none;">Aceites hidráulicos minerales no clorados.</p>
+  <p id="item531-info" class="info" style="display: none;">Aceites hidráulicos sintéticos.</p>
+  <p id="item532-info" class="info" style="display: none;">Aceites hidráulicos fácilmente biodegradables.</p>
+  <p id="item533-info" class="info" style="display: none;">Otros aceites hidráulicos.</p>
+  <p id="item534-info" class="info" style="display: none;">Aceites minerales clorados de motor, de transmisión mecánica y lubricantes.</p>
+  <p id="item535-info" class="info" style="display: none;">Aceites minerales no clorados de motor, de transmisión mecánica y lubricantes.</p>
+  <p id="item536-info" class="info" style="display: none;">Aceites sintéticos de motor, de transmisión mecánica y lubricantes.</p>
+  <p id="item537-info" class="info" style="display: none;">Aceites fácilmente biodegradables de motor, de transmisión mecánica y lubricantes.</p>
+  <p id="item538-info" class="info" style="display: none;">Otros aceites de motor, de transmisión mecánica y lubricantes.</p>
+  <p id="item539-info" class="info" style="display: none;">Aceites de aislamiento y transmisión de calor que contienen PCB.</p>
+  <p id="item540-info" class="info" style="display: none;">Aceites minerales clorados de aislamiento y transmisión de calor distintos de los especificados en el código 13 03 01.</p>
+  <p id="item541-info" class="info" style="display: none;">Aceites minerales no clorados de aislamiento y transmisión de calor.</p>
+  <p id="item542-info" class="info" style="display: none;">Aceites sintéticos de aislamiento y transmisión de calor.</p>
+  <p id="item543-info" class="info" style="display: none;">Aceites fácilmente biodegradables de aislamiento y transmisión de calor.</p>
+  <p id="item544-info" class="info" style="display: none;">Otros aceites de aislamiento y transmisión de calor.</p>
+  <p id="item545-info" class="info" style="display: none;">Aceites de sentinas procedentes de la navegación en aguas continentales.</p>
+  <p id="item546-info" class="info" style="display: none;">Aceites de sentinas recogidos en muelles.</p>
+  <p id="item547-info" class="info" style="display: none;">Aceites de sentinas procedentes de otros tipos de navegación.</p>
+  <p id="item548-info" class="info" style="display: none;">Sólidos procedentes de desarenadores y de separadores de agua/sustancias aceitosas.</p>
+  <p id="item549-info" class="info" style="display: none;">Lodos de separadores de agua/sustancias aceitosas.</p>
+  <p id="item550-info" class="info" style="display: none;">Lodos de interceptores.</p>
+  <p id="item551-info" class="info" style="display: none;">Aceites procedentes de separadores de agua/sustancias aceitosas.</p>
+  <p id="item552-info" class="info" style="display: none;">Agua aceitosa procedente de separadores de agua/sustancias aceitosas.</p>
+  <p id="item553-info" class="info" style="display: none;">Mezcla de residuos procedentes de desarenadores y de separadores de agua/sustancias aceitosas.</p>
+  <p id="item554-info" class="info" style="display: none;">Fuel oil y gasóleo.</p>
+  <p id="item555-info" class="info" style="display: none;">Gasolina.</p>
+  <p id="item556-info" class="info" style="display: none;">Otros combustibles [incluidas mezclas].</p>
+  <p id="item557-info" class="info" style="display: none;">Lodos o emulsiones de desalación.</p>
+  <p id="item558-info" class="info" style="display: none;">Otras emulsiones.</p>
+  <p id="item559-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item560-info" class="info" style="display: none;">Clorofluorocarbonos, HCFC, HFC.</p>
+  <p id="item561-info" class="info" style="display: none;">Otros disolventes y mezclas de disolventes halogenados.</p>
+  <p id="item562-info" class="info" style="display: none;">Otros disolventes y mezclas de disolventes.</p>
+  <p id="item563-info" class="info" style="display: none;">Lodos o residuos sólidos que contienen disolventes halogenados.</p>
+  <p id="item564-info" class="info" style="display: none;">Lodos o residuos sólidos que contienen otros disolventes.</p>
+  <p id="item565-info" class="info" style="display: none;">Envases de papel y cartón.</p>
+  <p id="item566-info" class="info" style="display: none;">Envases de plástico.</p>
+  <p id="item567-info" class="info" style="display: none;">Envases de madera.</p>
+  <p id="item568-info" class="info" style="display: none;">Envases metálicos.</p>
+  <p id="item569-info" class="info" style="display: none;">Envases compuestos.</p>
+  <p id="item570-info" class="info" style="display: none;">Envases mezclados.</p>
+  <p id="item571-info" class="info" style="display: none;">Envases de vidrio.</p>
+  <p id="item572-info" class="info" style="display: none;">Envases textiles.</p>
+  <p id="item573-info" class="info" style="display: none;">Envases que contienen restos de sustancias peligrosas o están contaminados por ellas.</p>
+  <p id="item574-info" class="info" style="display: none;">Envases metálicos, incluidos los recipientes a presión vacíos, que contienen una matriz porosa sólida peligrosa [por ejemplo, amianto].</p>
+  <p id="item575-info" class="info" style="display: none;">Absorbentes, materiales de filtración [incluidos los filtros de aceite no especificados en otra categoría], trapos de limpieza y ropas protectoras contaminados por sustancias peligrosas.</p>
+  <p id="item576-info" class="info" style="display: none;">Absorbentes, materiales de filtración, trapos de limpieza y ropas protectoras distintos de los especificados en el código 15 02 02.</p>
+  <p id="item577-info" class="info" style="display: none;">Neumáticos fuera de uso.</p>
+  <p id="item578-info" class="info" style="display: none;">Vehículos al final de su vida útil.</p>
+  <p id="item579-info" class="info" style="display: none;">Vehículos al final de su vida útil que no contengan líquidos ni otros componentes peligrosos.</p>
+  <p id="item580-info" class="info" style="display: none;">Filtros de aceite.</p>
+  <p id="item581-info" class="info" style="display: none;">Componentes que contienen mercurio.</p>
+  <p id="item582-info" class="info" style="display: none;">Componentes que contienen PCB.</p>
+  <p id="item583-info" class="info" style="display: none;">Componentes explosivos [por ejemplo, air bags].</p>
+  <p id="item584-info" class="info" style="display: none;">Zapatas de freno que contienen amianto.</p>
+  <p id="item585-info" class="info" style="display: none;">Zapatas de freno distintas de las especificadas en el código 16 01 11.</p>
+  <p id="item586-info" class="info" style="display: none;">Líquidos de frenos.</p>
+  <p id="item587-info" class="info" style="display: none;">Anticongelantes que contienen sustancias peligrosas.</p>
+  <p id="item588-info" class="info" style="display: none;">Anticongelantes distintos de los especificados en el código 16 01 14.</p>
+  <p id="item589-info" class="info" style="display: none;">Depósitos para gases licuados.</p>
+  <p id="item590-info" class="info" style="display: none;">Metales férreos.</p>
+  <p id="item591-info" class="info" style="display: none;">Metales no férreos.</p>
+  <p id="item592-info" class="info" style="display: none;">Plástico.</p>
+  <p id="item593-info" class="info" style="display: none;">Vidrio.</p>
+  <p id="item594-info" class="info" style="display: none;">Componentes peligrosos distintos de los especificados en los códigos 16 01 07 a 16 01 11, 17 01 13 y 16 01 14. Componentes no especificados en otra categoría.</p>
+  <p id="item595-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item596-info" class="info" style="display: none;">Transformadores y condensadores que contienen PCB.</p>
+  <p id="item597-info" class="info" style="display: none;">Equipos desechados que contienen PCB, o están contaminados por ellos, distintos de los especificados en el código 16 02 09.</p>
+  <p id="item598-info" class="info" style="display: none;">Equipos desechados que contienen clorofluorocarbonos, HCFC, HFC.</p>
+  <p id="item598-1-info" class="info" style="display: none;">Grandes electrodomésticos con intercambio de temperatura con CGCs, HCFCs,HCs,NH3. Profesional.</p>
+  <p id="item598-2-info" class="info" style="display: none;">Grandes electrodomésticos . Aire acondicionado. Profesional.</p>
+  <p id="item599-info" class="info" style="display: none;">Equipos desechados que contienen amianto libre.</p>
+  <p id="item600-info" class="info" style="display: none;">Equipos desechados que contienen componentes peligrosos [4], distintos de los especificados en los códigos 16 02 09 a 16 02 12.</p>
+  <p id="item600-1-info" class="info" style="display: none;">Grandes electrodomésticos con aceite en circuitos o condensadores. Profesional.</p>
+  <p id="item600-2-info" class="info" style="display: none;">Monitores y pantallas CRT. Profesional.</p>
+  <p id="item600-3-info" class="info" style="display: none;">Equipos de informática y telecomunicaciones. Monitores y pantalles: no CRT, no LED.</p>
+  <p id="item600-4-info" class="info" style="display: none;">Grandes aparatos. Con una dimensión exterior superior a 50cm. Con componentes peligrosos. Profesional.</p>
+  <p id="item600-5-info" class="info" style="display: none;">Pequeños aparatos. Sin ninguna dimensión exterior superior a 50cm. Con componentes peligrosos y pilas incorporadas. Profesional.</p>
+  <p id="item601-info" class="info" style="display: none;">Equipos desechados distintos de los especificados en los códigos 16 02 09 a 16 02 13.</p>
+  <p id="item602-info" class="info" style="display: none;">Componentes peligrosos retirados de equipos desechados.</p>
+  <p id="item603-info" class="info" style="display: none;">Componentes retirados de equipos desechados, distintos de los especificados en el código 17 02 15.</p>
+  <p id="item604-info" class="info" style="display: none;">Residuos inorgánicos que contienen sustancias peligrosas.</p>
+  <p id="item605-info" class="info" style="display: none;">Residuos inorgánicos distintos de los especificados en el código 16 03 03.</p>
+  <p id="item606-info" class="info" style="display: none;">Residuos orgánicos que contienen sustancias peligrosas.</p>
+  <p id="item607-info" class="info" style="display: none;">Residuos orgánicos distintos de los especificados en el código 16 03 05.</p>
+  <p id="item608-info" class="info" style="display: none;">Residuos de municiones.</p>
+  <p id="item609-info" class="info" style="display: none;">Residuos de fuegos artificiales.</p>
+  <p id="item610-info" class="info" style="display: none;">Otros residuos explosivos.</p>
+  <p id="item611-info" class="info" style="display: none;">Gases en recipientes a presión [incluidos los halones] que contienen sustancias peligrosas.</p>
+  <p id="item612-info" class="info" style="display: none;">Gases en recipientes a presión distintos de los especificados en el código 16 05 04.</p>
+  <p id="item613-info" class="info" style="display: none;">Productos químicos de laboratorio que consisten en, o contienen, sustancias peligrosas, incluidas las mezclas de productos químicos de laboratorio.</p>
+  <p id="item614-info" class="info" style="display: none;">Productos químicos inorgánicos desechados que consisten en, o contienen, sustancias peligrosas.</p>
+  <p id="item615-info" class="info" style="display: none;">Productos químicos orgánicos desechados que consisten en, o contienen, sustancias peligrosas.</p>
+  <p id="item616-info" class="info" style="display: none;">Productos químicos desechados distintos de los especificados en los códigos 16 05 06, 16 6 07 ó 16 05 08.</p>
+  <p id="item617-info" class="info" style="display: none;">Baterías de plomo.</p>
+  <p id="item618-info" class="info" style="display: none;">Acumuladores de Ni-Cd.</p>
+  <p id="item619-info" class="info" style="display: none;">Pilas que contienen mercurio.</p>
+  <p id="item620-info" class="info" style="display: none;">Pilas alcalinas [excepto las del código 16 06 03].</p>
+  <p id="item621-info" class="info" style="display: none;">Otras pilas y acumuladores.</p>
+  <p id="item622-info" class="info" style="display: none;">Electrolito de pilas y acumuladores recogido selectivamente.</p>
+  <p id="item623-info" class="info" style="display: none;">Residuos que contienen hidrocarburos.</p>
+  <p id="item624-info" class="info" style="display: none;">Residuos que contienen otras sustancias peligrosas.</p>
+  <p id="item625-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item626-info" class="info" style="display: none;">Catalizadores usados que contienen oro, plata, renio, rodio, paladio, iridio o platino [excepto los del código 16 08 07].</p>
+  <p id="item627-info" class="info" style="display: none;">Catalizadores usados que contienen metales de transición [5] peligrosos o compuestos de metales de transición peligrosos.</p>
+  <p id="item628-info" class="info" style="display: none;">Catalizadores usados que contienen metales de transición o compuestos de metales de transición no especificados en otra categoría.</p>
+  <p id="item629-info" class="info" style="display: none;">Catalizadores usados procedentes del craqueo catalítico en lecho fluido [excepto los del código 16 08 07].</p>
+  <p id="item630-info" class="info" style="display: none;">Catalizadores usados que contienen ácido fosfórico.</p>
+  <p id="item631-info" class="info" style="display: none;">Líquidos usados utilizados como catalizadores.</p>
+  <p id="item632-info" class="info" style="display: none;">Catalizadores usados contaminados con sustancias peligrosas.</p>
+  <p id="item633-info" class="info" style="display: none;">Permanganatos, por ejemplo, permanganato potásico.</p>
+  <p id="item634-info" class="info" style="display: none;">Cromatos, por ejemplo, cromato potásico, dicromato sódico o potásico.</p>
+  <p id="item635-info" class="info" style="display: none;">Peróxidos, por ejemplo, peróxido de hidrógeno.</p>
+  <p id="item636-info" class="info" style="display: none;">Sustancias oxidantes no especificadas en otra categoría.</p>
+  <p id="item637-info" class="info" style="display: none;">Residuos líquidos acuosos que contienen sustancias peligrosas.</p>
+  <p id="item638-info" class="info" style="display: none;">Residuos líquidos acuosos distintos de los especificados en el código 16 10 01.</p>
+  <p id="item639-info" class="info" style="display: none;">Concentrados acuosos que contienen sustancias peligrosas.</p>
+  <p id="item640-info" class="info" style="display: none;">Concentrados acuosos distintos de los especificados en el código 16 10 03.</p>
+  <p id="item641-info" class="info" style="display: none;">Revestimientos y refractarios a partir de carbono, procedentes de procesos metalúrgicos, que contienen sustancias peligrosas.</p>
+  <p id="item642-info" class="info" style="display: none;">Revestimientos y refractarios a partir de carbono, procedentes de procesos metalúrgicos, distintos de los especificados en el código 16 11 01.</p>
+  <p id="item643-info" class="info" style="display: none;">Otros revestimientos y refractarios, procedentes de procesos metalúrgicos, que contienen sustancias peligrosas.</p>
+  <p id="item644-info" class="info" style="display: none;">Otros revestimientos y refractarios procedentes de procesos metalúrgicos, distintos de los especificados en el código 16 11 03.</p>
+  <p id="item645-info" class="info" style="display: none;">Revestimientos y refractarios, procedentes de procesos no metalúrgicos, que contienen sustancias peligrosas.</p>
+  <p id="item646-info" class="info" style="display: none;">Revestimientos y refractarios procedentes de procesos no metalúrgicos, distintos de los especificados en el código 16 11 05.</p>
+  <p id="item647-info" class="info" style="display: none;">Hormigón.</p>
+  <p id="item648-info" class="info" style="display: none;">Ladrillos.</p>
+  <p id="item649-info" class="info" style="display: none;">Tejas y materiales cerámicos.</p>
+  <p id="item650-info" class="info" style="display: none;">Mezclas, o fracciones separadas, de hormigón, ladrillos, tejas y materiales cerámicos, que contienen sustancias peligrosas.</p>
+  <p id="item651-info" class="info" style="display: none;">Mezclas de hormigón, ladrillos, tejas y materiales cerámicos distintas de las especificadas en el código 17 01 06.</p>
+  <p id="item652-info" class="info" style="display: none;">Madera.</p>
+  <p id="item653-info" class="info" style="display: none;">Vidrio.</p>
+  <p id="item654-info" class="info" style="display: none;">Plástico.</p>
+  <p id="item655-info" class="info" style="display: none;">Vidrio, plástico y madera que contienen sustancias peligrosas o están contaminados por ellas.</p>
+  <p id="item656-info" class="info" style="display: none;">Mezclas bituminosas que contienen alquitrán de hulla.</p>
+  <p id="item657-info" class="info" style="display: none;">Mezclas bituminosas distintas de las especificadas en el código 17 03 01.</p>
+  <p id="item658-info" class="info" style="display: none;">Alquitrán de hulla y productos alquitranados.</p>
+  <p id="item659-info" class="info" style="display: none;">Cobre, bronce, latón.</p>
+  <p id="item660-info" class="info" style="display: none;">Aluminio.</p>
+  <p id="item661-info" class="info" style="display: none;">Plomo.</p>
+  <p id="item662-info" class="info" style="display: none;">Zinc.</p>
+  <p id="item663-info" class="info" style="display: none;">Hierro y acero.</p>
+  <p id="item664-info" class="info" style="display: none;">Estaño.</p>
+  <p id="item665-info" class="info" style="display: none;">Metales mezclados.</p>
+  <p id="item666-info" class="info" style="display: none;">Residuos metálicos contaminados con sustancias peligrosas.</p>
+  <p id="item667-info" class="info" style="display: none;">Cables que contienen hidrocarburos, alquitrán de hulla y otras sustancias peligrosas.</p>
+  <p id="item668-info" class="info" style="display: none;">Cables distintos de los especificados en el código 17 04 10.</p>
+  <p id="item669-info" class="info" style="display: none;">Tierra y piedras que contienen sustancias peligrosas.</p>
+  <p id="item670-info" class="info" style="display: none;">Tierra y piedras distintas de las especificadas en el código 17 05 03.</p>
+  <p id="item671-info" class="info" style="display: none;">Lodos de drenaje que contienen sustancias peligrosas.</p>
+  <p id="item672-info" class="info" style="display: none;">Lodos de drenaje distintos de los especificados en el código 17 05 05.</p>
+  <p id="item673-info" class="info" style="display: none;">Balasto de vías férreas que contienen sustancias peligrosas.</p>
+  <p id="item674-info" class="info" style="display: none;">Balasto de vías férreas distinto del especificado en el código 17 05 07.</p>
+  <p id="item675-info" class="info" style="display: none;">Materiales de aislamiento que contienen amianto.</p>
+  <p id="item676-info" class="info" style="display: none;">Otros materiales de aislamiento que consisten en, o contienen, sustancias peligrosas.</p>
+  <p id="item677-info" class="info" style="display: none;">Materiales de aislamiento distintos de los especificados en los códigos 17 06 01 y 17 06 03.</p>
+  <p id="item678-info" class="info" style="display: none;">Materiales de construcción que contienen amianto.</p>
+  <p id="item679-info" class="info" style="display: none;">Materiales de construcción a partir de yeso contaminados con sustancias peligrosas.</p>
+  <p id="item680-info" class="info" style="display: none;">Materiales de construcción a partir de yeso distintos de los especificados en el código 17 08 01.</p>
+  <p id="item681-info" class="info" style="display: none;">Residuos de construcción y demolición que contienen mercurio.</p>
+  <p id="item682-info" class="info" style="display: none;">Residuos de construcción y demolición que contienen PCB [por ejemplo, sellantes que contienen PCB, revestimientos de suelo a partir de resinas que contienen PCB, acristalamientos dobles que contienen PCB, condensadores que contienen PCB].</p>
+  <p id="item683-info" class="info" style="display: none;">Otros residuos de construcción y demolición [incluidos los residuos mezclados] que contienen sustancias peligrosas.</p>
+  <p id="item684-info" class="info" style="display: none;">Residuos mezclados de construcción y demolición distintos de los especificados en los códigos 17 09 01, 17 09 02 y 17 09 03.</p>
+  <p id="item685-info" class="info" style="display: none;">Objetos cortantes y punzantes [excepto los del código 18 01 03].</p>
+  <p id="item686-info" class="info" style="display: none;">Restos anatómicos y órganos, incluidos bolsas y bancos de sangre [excepto los del código 19 01 03].</p>
+  <p id="item687-info" class="info" style="display: none;">Residuos cuya recogida y eliminación es objeto de requisitos especiales para prevenir infecciones.</p>
+  <p id="item688-info" class="info" style="display: none;">Residuos cuya recogida y eliminación no es objeto de requisitos especiales para prevenir infecciones [por ejemplo, vendajes, vaciados de yeso, ropa blanca, ropa desechable, pañales].</p>
+  <p id="item689-info" class="info" style="display: none;">Productos químicos que consisten en, o contienen, sustancias peligrosas.</p>
+  <p id="item690-info" class="info" style="display: none;">Productos químicos distintos de los especificados en el código 18 01 06.</p>
+  <p id="item691-info" class="info" style="display: none;">Medicamentos citotóxicos y citostáticos.</p>
+  <p id="item692-info" class="info" style="display: none;">Medicamentos distintos de los especificados en el código 18 01 08.</p>
+  <p id="item693-info" class="info" style="display: none;">Residuos de amalgamas procedentes de cuidados dentales.</p>
+  <p id="item694-info" class="info" style="display: none;">Objetos cortantes y punzantes [excepto los del código 18 02 02].</p>
+  <p id="item695-info" class="info" style="display: none;">Residuos cuya recogida y eliminación es objeto de requisitos especiales para prevenir infecciones.</p>
+  <p id="item696-info" class="info" style="display: none;">Residuos cuya recogida y eliminación no es objeto de requisitos especiales para prevenir infecciones.</p>
+  <p id="item697-info" class="info" style="display: none;">Productos químicos que consisten en, o contienen, sustancias peligrosas.</p>
+  <p id="item698-info" class="info" style="display: none;">Productos químicos distintos de los especificados en el código 18 02 05.</p>
+  <p id="item699-info" class="info" style="display: none;">Medicamentos citotóxicos y citostáticos.</p>
+  <p id="item700-info" class="info" style="display: none;">Medicamentos distintos de los especificados en el código 18 02 07.</p>
+  <p id="item701-info" class="info" style="display: none;">Materiales férreos separados de la ceniza de fondo de horno.</p>
+  <p id="item702-info" class="info" style="display: none;">Torta de filtración del tratamiento de gases.</p>
+  <p id="item703-info" class="info" style="display: none;">Residuos líquidos acuosos del tratamiento de gases y otros residuos líquidos acuosos.</p>
+  <p id="item704-info" class="info" style="display: none;">Residuos sólidos del tratamiento de gases.</p>
+  <p id="item705-info" class="info" style="display: none;">Carbón activo usado procedente del tratamiento de gases.</p>
+  <p id="item706-info" class="info" style="display: none;">Cenizas de fondo de horno y escorias que contienen sustancias peligrosas.</p>
+  <p id="item707-info" class="info" style="display: none;">Cenizas de fondo de horno y escorias distintas de las especificadas en el código 19 01 11.</p>
+  <p id="item708-info" class="info" style="display: none;">Cenizas volantes que contienen sustancias peligrosas.</p>
+  <p id="item709-info" class="info" style="display: none;">Cenizas volantes distintas de las especificadas en el código 19 01 13.</p>
+  <p id="item710-info" class="info" style="display: none;">Polvo de caldera que contiene sustancias peligrosas.</p>
+  <p id="item711-info" class="info" style="display: none;">Polvo de caldera distinto del especificado en el código 19 01 15.</p>
+  <p id="item712-info" class="info" style="display: none;">Residuos de pirólisis que contienen sustancias peligrosas.</p>
+  <p id="item713-info" class="info" style="display: none;">Residuos de pirólisis distintos de los especificados en el código 19 01 17.</p>
+  <p id="item714-info" class="info" style="display: none;">Arenas de lechos fluidizados.</p>
+  <p id="item715-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item716-info" class="info" style="display: none;">Residuos mezclados previamente, compuestos exclusivamente por residuos no peligrosos.</p>
+  <p id="item717-info" class="info" style="display: none;">Residuos mezclados previamente, compuestos por al menos un residuo peligroso.</p>
+  <p id="item718-info" class="info" style="display: none;">Lodos de tratamientos físico-químicos que contienen sustancias peligrosas.</p>
+  <p id="item719-info" class="info" style="display: none;">Lodos de tratamientos físico-químicos distintos de los especificados en el código 19 02 05.</p>
+  <p id="item720-info" class="info" style="display: none;">Aceites y concentrados procedentes del proceso de separación.</p>
+  <p id="item721-info" class="info" style="display: none;">Residuos combustibles líquidos que contienen sustancias peligrosas.</p>
+  <p id="item722-info" class="info" style="display: none;">Residuos combustibles sólidos que contienen sustancias peligrosas.</p>
+  <p id="item723-info" class="info" style="display: none;">Residuos combustibles distintos de los especificados en los códigos 19 02 08 y 19 02 09.</p>
+  <p id="item724-info" class="info" style="display: none;">Otros residuos que contienen sustancias peligrosas.</p>
+  <p id="item725-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item726-info" class="info" style="display: none;">Residuos peligrosos parcialmente estabilizados [8].</p>
+  <p id="item727-info" class="info" style="display: none;">Residuos estabilizados distintos de los especificados en el código 19 03 04.</p>
+  <p id="item728-info" class="info" style="display: none;">Residuos peligrosos solidificados.</p>
+  <p id="item729-info" class="info" style="display: none;">Residuos solidificados distintos de los especificados en el código 19 03 06.</p>
+  <p id="item730-info" class="info" style="display: none;">Residuos vitrificados.</p>
+  <p id="item731-info" class="info" style="display: none;">Cenizas volantes y otros residuos del tratamiento de gases.</p>
+  <p id="item732-info" class="info" style="display: none;">Fase sólida no vitrificada.</p>
+  <p id="item733-info" class="info" style="display: none;">Residuos líquidos acuosos del templado de residuos vitrificados.</p>
+  <p id="item734-info" class="info" style="display: none;">Fracción no compostada de residuos municipales y asimilados.</p>
+  <p id="item735-info" class="info" style="display: none;">Fracción no compostada de residuos de procedencia animal o vegetal.</p>
+  <p id="item736-info" class="info" style="display: none;">Compost fuera de especificación.</p>
+  <p id="item737-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item738-info" class="info" style="display: none;">Licores del tratamiento anaeróbico de residuos municipales.</p>
+  <p id="item739-info" class="info" style="display: none;">Lodos de digestión del tratamiento anaeróbico de residuos municipales.</p>
+  <p id="item740-info" class="info" style="display: none;">Licores del tratamiento anaeróbico de residuos animales y vegetales.</p>
+  <p id="item741-info" class="info" style="display: none;">Lodos de digestión del tratamiento anaeróbico de residuos animales y vegetales.</p>
+  <p id="item742-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item743-info" class="info" style="display: none;">Lixiviados de vertedero que contienen sustancias peligrosas.</p>
+  <p id="item744-info" class="info" style="display: none;">Lixiviados de vertedero distintos de los especificados en el código 19 07 02.</p>
+  <p id="item745-info" class="info" style="display: none;">Residuos de cribado.</p>
+  <p id="item746-info" class="info" style="display: none;">Residuos de desarenado.</p>
+  <p id="item747-info" class="info" style="display: none;">Lodos del tratamiento de aguas residuales urbanas.</p>
+  <p id="item748-info" class="info" style="display: none;">Resinas intercambiadoras de iones saturadas o usadas.</p>
+  <p id="item749-info" class="info" style="display: none;">Soluciones y lodos de la regeneración de intercambiadores de iones.</p>
+  <p id="item750-info" class="info" style="display: none;">Residuos procedentes de sistemas de membranas que contienen metales pesados.</p>
+  <p id="item751-info" class="info" style="display: none;">Mezclas de grasas y aceites procedentes de la separación de agua/sustancias aceitosas, que sólo contienen aceites y grasas comestibles.</p>
+  <p id="item752-info" class="info" style="display: none;">Mezclas de grasas y aceites procedentes de la separación de agua/sustancias aceitosas distintas de las especificadas en el código 19 08 09.</p>
+  <p id="item753-info" class="info" style="display: none;">Lodos procedentes del tratamiento biológico de aguas residuales industriales, que contienen sustancias peligrosas.</p>
+  <p id="item754-info" class="info" style="display: none;">Lodos procedentes del tratamiento biológico de aguas residuales industriales, distintos de los especificados en el código 19 08 11.</p>
+  <p id="item755-info" class="info" style="display: none;">Lodos procedentes de otros tratamientos de aguas residuales industriales, que contienen sustancias peligrosas.</p>
+  <p id="item756-info" class="info" style="display: none;">Lodos procedentes de otros tratamientos de aguas residuales industriales distintos de los especificados en el código 19 08 13.</p>
+  <p id="item757-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item758-info" class="info" style="display: none;">Residuos sólidos de la filtración primaria y cribado.</p>
+  <p id="item759-info" class="info" style="display: none;">Lodos de la clarificación del agua.</p>
+  <p id="item760-info" class="info" style="display: none;">Lodos de descarbonatación.</p>
+  <p id="item761-info" class="info" style="display: none;">Carbón activo usado.</p>
+  <p id="item762-info" class="info" style="display: none;">Resinas intercambiadoras de iones saturadas o usadas.</p>
+  <p id="item763-info" class="info" style="display: none;">Soluciones y lodos de la regeneración de intercambiadores de iones.</p>
+  <p id="item764-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item765-info" class="info" style="display: none;">Residuos de hierro y acero.</p>
+  <p id="item766-info" class="info" style="display: none;">Residuos no férreos.</p>
+  <p id="item767-info" class="info" style="display: none;">Fracciones ligeras de fragmentación [fluff-light] y polvo que contienen sustancias peligrosas.</p>
+  <p id="item768-info" class="info" style="display: none;">Fracciones ligeras de fragmentación [fluff-light] y polvo distintos de los especificados en el código 19 10 03.</p>
+  <p id="item769-info" class="info" style="display: none;">Otras fracciones que contienen sustancias peligrosas.</p>
+  <p id="item770-info" class="info" style="display: none;">Otras fracciones distintas de las especificadas en el código 19 10 05.</p>
+  <p id="item771-info" class="info" style="display: none;">Arcillas de filtración usadas.</p>
+  <p id="item772-info" class="info" style="display: none;">Alquitranes ácidos.</p>
+  <p id="item773-info" class="info" style="display: none;">Residuos de líquidos acuosos.</p>
+  <p id="item774-info" class="info" style="display: none;">Residuos de la limpieza de combustibles con bases.</p>
+  <p id="item775-info" class="info" style="display: none;">Lodos del tratamiento in situ de efluentes que contienen sustancias peligrosas.</p>
+  <p id="item776-info" class="info" style="display: none;">Lodos del tratamiento in situ de efluentes distintos de los especificados en el código 19 11 05.</p>
+  <p id="item777-info" class="info" style="display: none;">Residuos de la depuración de efluentes gaseosos.</p>
+  <p id="item778-info" class="info" style="display: none;">Residuos no especificados en otra categoría.</p>
+  <p id="item779-info" class="info" style="display: none;">Papel y cartón.</p>
+  <p id="item780-info" class="info" style="display: none;">Metales férreos.</p>
+  <p id="item781-info" class="info" style="display: none;">Metales no férreos.</p>
+  <p id="item782-info" class="info" style="display: none;">Plástico y caucho.</p>
+  <p id="item783-info" class="info" style="display: none;">Vidrio.</p>
+  <p id="item784-info" class="info" style="display: none;">Madera que contiene sustancias peligrosas.</p>
+  <p id="item785-info" class="info" style="display: none;">Madera distinta de la especificada en el código 19 12 06.</p>
+  <p id="item786-info" class="info" style="display: none;">Tejidos.</p>
+  <p id="item787-info" class="info" style="display: none;">Minerales [por ejemplo, arena, piedras].</p>
+  <p id="item788-info" class="info" style="display: none;">Residuos combustibles [combustible derivado de residuos].</p>
+  <p id="item789-info" class="info" style="display: none;">Otros residuos [incluidas mezclas de materiales], procedentes del tratamiento mecánico de residuos, que contienen sustancias peligrosas.</p>
+  <p id="item790-info" class="info" style="display: none;">Otros residuos [incluidas mezclas de materiales] procedentes del tratamiento mecánico de residuos distintos de los especificados en el código 19 12 11.</p>
+  <p id="item791-info" class="info" style="display: none;">Residuos sólidos, de la recuperación de suelos, que contienen sustancias peligrosas.</p>
+  <p id="item792-info" class="info" style="display: none;">Residuos sólidos, de la recuperación de suelos, distintos de los especificados en el código 20 13 01.</p>
+  <p id="item793-info" class="info" style="display: none;">Lodos de la recuperación de suelos, que contienen sustancias peligrosas.</p>
+  <p id="item794-info" class="info" style="display: none;">Lodos de la recuperación de suelos, distintos de los especificados en el código 19 13 03.</p>
+  <p id="item795-info" class="info" style="display: none;">Lodos de la recuperación de aguas subterráneas, que contienen sustancias peligrosas.</p>
+  <p id="item796-info" class="info" style="display: none;">Lodos de la recuperación de aguas subterráneas, distintos de los especificados en el código 19 13 05.</p>
+  <p id="item797-info" class="info" style="display: none;">Residuos de líquidos acuosos y concentrados acuosos, procedentes de la recuperación de aguas subterráneas, que contienen sustancias peligrosas.</p>
+  <p id="item798-info" class="info" style="display: none;">Residuos de líquidos acuosos y concentrados acuosos, procedentes de la recuperación de aguas subterráneas, distintos de los especificados en el código 19 13 07.</p>
+  <p id="item799-info" class="info" style="display: none;">Papel y cartón.</p>
+  <p id="item800-info" class="info" style="display: none;">Vidrio.</p>
+  <p id="item801-info" class="info" style="display: none;">Residuos biodegradables de cocinas y restaurantes.</p>
+  <p id="item802-info" class="info" style="display: none;">Ropa.</p>
+  <p id="item803-info" class="info" style="display: none;">Tejidos.</p>
+  <p id="item804-info" class="info" style="display: none;">Disolventes.</p>
+  <p id="item805-info" class="info" style="display: none;">Ácidos.</p>
+  <p id="item806-info" class="info" style="display: none;">Álcalis.</p>
+  <p id="item807-info" class="info" style="display: none;">Productos fotoquímicos.</p>
+  <p id="item808-info" class="info" style="display: none;">Pesticidas.</p>
+  <p id="item809-info" class="info" style="display: none;">Tubos fluorescentes y otros residuos que contienen mercurio.</p>
+  <p id="item810-info" class="info" style="display: none;">Grandes electrodomésticos con intercambio de temperatura con CGCs, HCFCs,HCs,NH3. Doméstico</p>
+  <p id="item811-info" class="info" style="display: none;">Grandes electrodomésticos. Aire acondicionado. Doméstico.</p>
+  <p id="item812-info" class="info" style="display: none;">Aceites y grasas comestibles.</p>
+  <p id="item813-info" class="info" style="display: none;">Aceites y grasas distintos de los especificados en el código 20 01 25.</p>
+  <p id="item814-info" class="info" style="display: none;">Pinturas, tintas, adhesivos y resinas que contienen sustancias peligrosas.</p>
+  <p id="item815-info" class="info" style="display: none;">Pinturas, tintas, adhesivos y resinas distintos de los especificados en el código 20 01 27.</p>
+  <p id="item816-info" class="info" style="display: none;">Detergentes que contienen sustancias peligrosas.</p>
+  <p id="item817-info" class="info" style="display: none;">Detergentes distintos de los especificados en el código 20 01 29.</p>
+  <p id="item818-info" class="info" style="display: none;">Medicamentos citotóxicos y citostáticos.</p>
+  <p id="item819-info" class="info" style="display: none;">Medicamentos distintos de los especificados en el código 20 01 31.</p>
+  <p id="item820-info" class="info" style="display: none;">Baterías y acumuladores especificados en los códigos 16 06 01, 16 06 02 ó 16 06 03 y baterías y acumuladores sin clasificar que contienen esas baterías.</p>
+  <p id="item821-info" class="info" style="display: none;">Baterías y acumuladores distintos de los especificados en el código 20 01 33.</p>
+  <p id="item821-1-info" class="info" style="display: none;">Grandes electrodomésticos con aceite en circuitos o condensadores. Doméstico.</p>
+  <p id="item821-2-info" class="info" style="display: none;">Monitores y pantallas CRT. Doméstico.</p>
+  <p id="item821-3-info" class="info" style="display: none;">Monitores y pantallas no CRT no LED. Doméstico.</p>
+  <p id="item821-4-info" class="info" style="display: none;">Grandes aparatos incluidos los equipos de informática y telecomunicaciones. Con dimensión exterior superior a 50cm. Con componentes peligrosos. Doméstico.</p>
+  <p id="item822-info" class="info" style="display: none;">Pequeños aparatos. Sin ninguna dimensión exterior superior a 50cm. Con componentes peligrosos y pilas incorporades. Doméstico</p>
+  <p id="item823-info" class="info" style="display: none;">Aparatos de informática y telecomunicaciones. Aparatos pequeños con componentes peligrosos. Doméstico.</p>
+  <p id="item824-info" class="info" style="display: none;">Equipos eléctricos y electrónicos desechados distintos de los especificados en los códigos 21 01 21, 20 01 23 y 20 01 35.</p>
+  <p id="item825-info" class="info" style="display: none;">Madera que contiene sustancias peligrosas.</p>
+  <p id="item826-info" class="info" style="display: none;">Madera distinta de la especificada en el código 20 01 37.</p>
+  <p id="item827-info" class="info" style="display: none;">Plásticos.</p>
+  <p id="item828-info" class="info" style="display: none;">Metales.</p>
+  <p id="item829-info" class="info" style="display: none;">Residuos del deshollinado de chimeneas.</p>
+  <p id="item830-info" class="info" style="display: none;">Otras fracciones no especificadas en otra categoría.</p>
+  <p id="item831-info" class="info" style="display: none;">Residuos biodegradables.</p>
+  <p id="item832-info" class="info" style="display: none;">Tierra y piedras.</p>
+  <p id="item833-info" class="info" style="display: none;">Otros residuos no biodegradables.</p>
+  <p id="item834-info" class="info" style="display: none;">Mezclas de residuos municipales.</p>
+  <p id="item835-info" class="info" style="display: none;">Residuos de mercados.</p>
+  <p id="item836-info" class="info" style="display: none;">Residuos de la limpieza viaria.</p>
+  <p id="item837-info" class="info" style="display: none;">Lodos de fosas sépticas.</p>
+  <p id="item838-info" class="info" style="display: none;">Residuos de la limpieza de alcantarillas.</p>
+  <p id="item839-info" class="info" style="display: none;">Residuos voluminosos.</p>
+  <p id="item840-info" class="info" style="display: none;">Residuos municipales no especificados en otra categoría.</p>
+</div>
+
+<br>
+<br>
+
+<!-- Button trigger modal -->
+<button id="generar-checkbox"type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#myModal">Seleccionar LER</button>
+
+<!-- Modal -->
+<div id="myModal" class="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Código LER:</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="scrollable-content">
+        <div id="checkbox-container"></div>
+      </div>
+      <div class="modal-footer">
+        <button id="copiar-seleccionados" type="button" class="btn btn-outline-success">Copiar Selección</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<br>
+<br>
+<br>
+
+<button id="boton-copiar" type="button" class="btn btn-outline-secondary">Listado LER 'Peligrosos'</button>
+
+<br>
+
+<button id="boton-copiar2" type="button" class="btn btn-outline-secondary">Listado LER 'No Peligrosos'</button>
+
+<br>
+<br>
+
+<img src="../IMAGES/saica.png" class="saica-logo">
+
+<br>
+<br>
+
+<a href="../inicio.html"><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0z"/>
+  <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708z"/>
+</svg></a>
+
+</div>
+
+<div id="listaAsteriscos"></div>
+
+<script src="../JS/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+</body>
+</html>
