@@ -15,7 +15,7 @@ body a {
     flex-direction: column;
     width: 360px;
     height: 430px;
-    border: 2px solid #198754;
+    /*border: 2px solid #198754;*/
     border-radius: 10px;
 }
 
@@ -39,7 +39,7 @@ body a {
     flex-direction: column;
     width: 360px;
     height: 360px;
-    border: 2px solid #198754;
+    /*border: 2px solid #198754;*/
     border-radius: 10px;
 }
 
