@@ -7,13 +7,26 @@
     <title>Protected Page</title>
     <style>
         /* Añadir estilos básicos */
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            font-family: Arial, sans-serif;
-        }
+        html, body {
+    position: relative;
+    margin:0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+body a {
+    color: inherit; /* Hereda el color del texto de su contenedor */
+    text-decoration: none; /* Elimina la subrayado predeterminado */
+}
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
         #passwordPrompt {
             display: flex;
             flex-direction: column;
