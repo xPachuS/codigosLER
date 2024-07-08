@@ -154,16 +154,20 @@ document.addEventListener("DOMContentLoaded", function() {
     // Funcionalidad de Marcar/Desmarcar Todos
     var marcarTodosBtn = document.getElementById("marcar-todos");
     marcarTodosBtn.addEventListener("click", function() {
-        var checkboxes = document.querySelectorAll("#checkbox-container input[type='checkbox']");
+        var checkboxes = document.querySelectorAll("#checkbox-container div");
         var allChecked = true;
-        checkboxes.forEach(function(checkbox) {
-            if (!checkbox.checked) {
+        checkboxes.forEach(function(checkboxDiv) {
+            var checkbox = checkboxDiv.querySelector("input[type='checkbox']");
+            if (!checkbox.checked && checkboxDiv.style.display !== "none") {
                 allChecked = false;
             }
         });
 
-        checkboxes.forEach(function(checkbox) {
-            checkbox.checked = !allChecked;
+        checkboxes.forEach(function(checkboxDiv) {
+            var checkbox = checkboxDiv.querySelector("input[type='checkbox']");
+            if (checkboxDiv.style.display !== "none") {
+                checkbox.checked = !allChecked;
+            }
         });
     });
 
