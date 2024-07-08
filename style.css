@@ -107,7 +107,7 @@ body a {
 select {
   appearance: none; /* Safari */
   -webkit-appearance: none; /* Otros navegadores WebKit */
-  width: 150px; /* Fijar ancho específico */
+  width: 160px; /* Fijar ancho específico */
   font-size: 1.15rem;
   padding: 0.675em 1em 0.675em 1em;
   background-color: #fff;
