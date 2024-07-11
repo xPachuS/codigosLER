@@ -1,34 +1,33 @@
-document.addEventListener('DOMContentLoaded', function () {
-    // Para abrir el modal
-    document.querySelectorAll('.openModal').forEach(button => {
-        button.addEventListener('click', function () {
-            const modalId = this.getAttribute('data-modal');
-            const modal = document.getElementById(modalId);
-            modal.style.display = 'block';
-        });
-    });
+// Obtener los elementos del DOM
+var modalBtns = document.querySelectorAll('.openModal');
+var closeBtns = document.querySelectorAll('.close');
 
-    // Para cerrar el modal
-    document.querySelectorAll('.close').forEach(span => {
-        span.addEventListener('click', function () {
-            const modal = this.closest('.modal');
-            modal.style.display = 'none';
-        });
-    });
+// Asignar eventos a los botones para abrir modals
+modalBtns.forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var modalId = this.dataset.modal;
+    var modal = document.getElementById(modalId);
+    if (modal) {
+      modal.style.display = 'block';
+    }
+  });
+});
 
-    // Para recargar el contenido del iframe
-    document.querySelectorAll('.reloadButton').forEach(button => {
-        button.addEventListener('click', function () {
-            const iframeId = this.getAttribute('data-target');
-            const iframe = document.getElementById(iframeId);
-            iframe.src = iframe.src;
-        });
-    });
+// Asignar eventos a los botones de cierre para cerrar modals
+closeBtns.forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var modal = this.closest('.modal');
+    if (modal) {
+      modal.style.display = 'none';
+    }
+  });
+});
 
-    // Para cerrar el modal al hacer clic fuera de él
-    window.addEventListener('click', function (event) {
-        if (event.target.classList.contains('modal')) {
-            event.target.style.display = 'none';
-        }
-    });
+// Cerrar modal haciendo clic fuera del contenido
+window.addEventListener('click', function(event) {
+  modals.forEach(function(modal) {
+    if (event.target == modal) {
+      modal.style.display = 'none';
+    }
+  });
 });
