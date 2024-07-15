@@ -4,10 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Transporte</title>
-    <!-- Agregar el SDK de Firebase -->
-    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-firestore.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.5/xlsx.full.min.js"></script>
     <style>
         body {
             display: flex;
@@ -93,25 +89,30 @@
         </table>
     </div>
 
+    <script src="https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.3/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.3/firebase-firestore.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.5/xlsx.full.min.js"></script>
+
     <script>
         // Configuración de Firebase
         const firebaseConfig = {
-          apiKey: "tu-api-key",
-          authDomain: "tu-auth-domain",
-          projectId: "tu-project-id",
-          storageBucket: "tu-storage-bucket",
-          messagingSenderId: "tu-messaging-sender-id",
-          appId: "tu-app-id",
-          measurementId: "tu-measurement-id"
+          apiKey: "AIzaSyAcPIP3HFgKn5E_bRjYacloUBtNYm-eyhk",
+          authDomain: "tabladi.firebaseapp.com",
+          projectId: "tabladi",
+          storageBucket: "tabladi.appspot.com",
+          messagingSenderId: "568544140345",
+          appId: "1:568544140345:web:e2d840e0a6e2d59b9081e8",
+          measurementId: "G-QHD08PVH7L"
         };
 
         // Inicializar Firebase
-        firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore();
+        const app = firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore(app);
 
         // Función para agregar una fila a la tabla y guardar en Firestore
         function agregarFila() {
-            const proveedor = document.getElementById('proveedor').value.trim().substring(0, 100); // Limitar a 100 caracteres
+            const proveedor = document.getElementById('proveedor').value;
             const destino = document.getElementById('destino').value;
             const numParte = document.getElementById('numParte').value;
             const transportista = document.getElementById('transportista').value;
@@ -138,17 +139,18 @@
 
                 // Guardar en Firestore
                 db.collection("transportes").add(registro)
-                    .then(function(docRef) {
-                        console.log("Documento agregado con ID: ", docRef.id);
-                        // Limpiar el formulario
-                        document.getElementById('transporteForm').reset();
-                        // Actualizar la tabla después de agregar
-                        cargarRegistros();
-                    })
-                    .catch(function(error) {
-                        console.error("Error al agregar el documento: ", error);
-                        alert("Error al guardar el registro. Consulta la consola para más detalles.");
-                    });
+                .then(function(docRef) {
+                    console.log("Documento agregado con ID: ", docRef.id);
+                    // Limpiar el formulario
+                    document.getElementById('transporteForm').reset();
+                    // Actualizar la tabla después de agregar
+                    cargarRegistros();
+                })
+                .catch(function(error) {
+                    console.error("Error al agregar el documento: ", error);
+                    alert("Error al guardar el registro. Consulta la consola para más detalles.");
+                });
+
             } else {
                 alert('Por favor, complete todos los campos obligatorios.');
             }
@@ -156,46 +158,50 @@
 
         // Función para cargar los registros desde Firestore y mostrarlos en la tabla
         function cargarRegistros() {
-            db.collection("transportes").get()
-                .then(function(querySnapshot) {
-                    const tableBody = document.getElementById("tablaCuerpo");
-                    tableBody.innerHTML = "";
+            db.collection("transportes").get().then((querySnapshot) => {
+                const tableBody = document.getElementById("tablaCuerpo");
+                tableBody.innerHTML = "";
 
-                    querySnapshot.forEach(function(doc) {
-                        const registro = doc.data();
-                        const row = tableBody.insertRow();
+                querySnapshot.forEach((doc) => {
+                    const registro = doc.data();
+                    console.log("Cargando registro: ", registro);
+                    const row = tableBody.insertRow();
 
-                        row.insertCell().textContent = registro.proveedor;
-                        row.insertCell().textContent = registro.destino;
-                        row.insertCell().textContent = registro.numParte;
-                        row.insertCell().textContent = registro.transportista;
-                        row.insertCell().textContent = registro.residuo;
-                        row.insertCell().textContent = registro.fechaTransporte;
-                        row.insertCell().textContent = registro.realizado;
-                        row.insertCell().textContent = registro.di;
-                        row.insertCell().textContent = registro.comentarios;
+                    row.insertCell().textContent = registro.proveedor;
+                    row.insertCell().textContent = registro.destino;
+                    row.insertCell().textContent = registro.numParte;
+                    row.insertCell().textContent = registro.transportista;
+                    row.insertCell().textContent = registro.residuo;
+                    row.insertCell().textContent = registro.fechaTransporte;
+                    row.insertCell().textContent = registro.realizado;
+                    row.insertCell().textContent = registro.di;
+                    row.insertCell().textContent = registro.comentarios;
 
-                        // Botones de acciones (Editar y Eliminar)
-                        const cellAcciones = row.insertCell();
-                        const editarButton = document.createElement("button");
-                        editarButton.textContent = "Editar";
-                        editarButton.addEventListener("click", function() {
-                            editarFila(doc.id, registro);
-                        });
-                        cellAcciones.appendChild(editarButton);
-
-                        const eliminarButton = document.createElement("button");
-                        eliminarButton.textContent = "Eliminar";
-                        eliminarButton.addEventListener("click", function() {
-                            eliminarFila(doc.id);
-                        });
-                        cellAcciones.appendChild(eliminarButton);
+                    // Botones de acciones (Editar y Eliminar)
+                    const cellAcciones = row.insertCell();
+                    const editarButton = document.createElement("button");
+                    editarButton.textContent = "Editar";
+                    editarButton.addEventListener("click", function() {
+                        editarFila(doc.id, registro);
                     });
-                })
-                .catch(function(error) {
-                    console.error("Error al obtener documentos: ", error);
-                    alert("Error al cargar los registros. Consulta la consola para más detalles.");
+                    cellAcciones.appendChild(editarButton);
+
+                    const eliminarButton = document.createElement("button");
+                    eliminarButton.textContent = "Eliminar";
+                    eliminarButton.addEventListener("click", function() {
+                        eliminarFila(doc.id);
+                    });
+                    cellAcciones.appendChild(eliminarButton);
                 });
+            }).catch((error) => {
+                console.error("Error al cargar los registros: ", error);
+            });
+        }
+
+        // Función para editar una fila de la tabla
+        function editarFila(docId, registro) {
+            // Implementar la lógica de edición si es necesario
+            console.log("Editar fila con ID: ", docId);
         }
 
         // Función para eliminar una fila de la tabla
@@ -203,7 +209,6 @@
             db.collection("transportes").doc(docId).delete()
                 .then(function() {
                     console.log("Documento eliminado con ID: ", docId);
-                    // Actualizar la tabla después de eliminar
                     cargarRegistros();
                 })
                 .catch(function(error) {
@@ -223,19 +228,21 @@
 
         // Función para filtrar los datos de la tabla
         function filtrarTabla() {
-            const filtro = document.getElementById('buscar').value.toUpperCase();
-            const table = document.getElementById('tablaDatos');
-            const tr = table.getElementsByTagName('tr');
+            const filtro = document.getElementById('buscar').value.toLowerCase();
+            const filas = document.getElementById('tablaCuerpo').getElementsByTagName('tr');
 
-            for (let i = 1; i < tr.length; i++) {
-                tr[i].style.display = 'none';
-                const td = tr[i].getElementsByTagName('td');
-                for (let j = 0; j < td.length; j++) {
-                    if (td[j] && td[j].innerHTML.toUpperCase().indexOf(filtro) > -1) {
-                        tr[i].style.display = '';
+            for (let i = 0; i < filas.length; i++) {
+                const celdas = filas[i].getElementsByTagName('td');
+                let coincide = false;
+
+                for (let j = 0; j < celdas.length; j++) {
+                    if (celdas[j].innerHTML.toLowerCase().indexOf(filtro) > -1) {
+                        coincide = true;
                         break;
                     }
                 }
+
+                filas[i].style.display = coincide ? '' : 'none';
             }
         }
 
