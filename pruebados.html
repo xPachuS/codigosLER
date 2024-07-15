@@ -4,9 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Transporte</title>
-    <!-- Agregar el SDK de Firebase -->
-    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-firestore.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.5/xlsx.full.min.js"></script>
     <style>
         body {
@@ -94,7 +91,12 @@
     </div>
 
     <script>
-        // Configuración de Firebase
+        // Import the functions you need from the SDKs you need
+          import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js";
+          import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-analytics.js";
+          // TODO: Add SDKs for Firebase products that you want to use
+
+          // For Firebase JS SDK v7.20.0 and later, measurementId is optional
         const firebaseConfig = {
           apiKey: "AIzaSyAcPIP3HFgKn5E_bRjYacloUBtNYm-eyhk",
           authDomain: "tabladi.firebaseapp.com",
@@ -105,9 +107,12 @@
           measurementId: "G-QHD08PVH7L"
         };
 
-        // Inicializar Firebase
-        firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore();
+          // Initialize Firebase
+          const app = initializeApp(firebaseConfig);
+          const analytics = getAnalytics(app);
+
+        // Verificar conexión con Firebase
+        console.log("Firebase inicializado correctamente");
 
         // Función para agregar una fila a la tabla y guardar en Firestore
         function agregarFila() {
@@ -138,15 +143,18 @@
 
                 // Guardar en Firestore
                 db.collection("transportes").add(registro)
-                    .then(function(docRef) {
-                        console.log("Documento agregado con ID: ", docRef.id);
-                        // Limpiar el formulario
-                        document.getElementById('transporteForm').reset();
-                    })
-                    .catch(function(error) {
-                        console.error("Error al agregar el documento: ", error);
-                        alert("Error al guardar el registro. Consulta la consola para más detalles.");
-                    });
+                .then(function(docRef) {
+                    console.log("Documento agregado con ID: ", docRef.id);
+                    // Limpiar el formulario
+                    document.getElementById('transporteForm').reset();
+                    // Actualizar la tabla después de agregar
+                    cargarRegistros();
+                })
+                .catch(function(error) {
+                    console.error("Error al agregar el documento: ", error);
+                    alert("Error al guardar el registro. Consulta la consola para más detalles.");
+                });
+
             } else {
                 alert('Por favor, complete todos los campos obligatorios.');
             }
@@ -154,12 +162,13 @@
 
         // Función para cargar los registros desde Firestore y mostrarlos en la tabla
         function cargarRegistros() {
-            db.collection("transportes").onSnapshot(function(querySnapshot) {
+            db.collection("transportes").get().then((querySnapshot) => {
                 const tableBody = document.getElementById("tablaCuerpo");
                 tableBody.innerHTML = "";
 
-                querySnapshot.forEach(function(doc) {
+                querySnapshot.forEach((doc) => {
                     const registro = doc.data();
+                    console.log("Cargando registro: ", registro);
                     const row = tableBody.insertRow();
 
                     row.insertCell().textContent = registro.proveedor;
@@ -188,6 +197,8 @@
                     });
                     cellAcciones.appendChild(eliminarButton);
                 });
+            }).catch((error) => {
+                console.error("Error al cargar los registros: ", error);
             });
         }
 
@@ -202,6 +213,7 @@
             db.collection("transportes").doc(docId).delete()
                 .then(function() {
                     console.log("Documento eliminado con ID: ", docId);
+                    cargarRegistros();
                 })
                 .catch(function(error) {
                     console.error("Error al eliminar el documento: ", error);
@@ -242,7 +254,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             cargarRegistros();
         });
+
     </script>
 </body>
 </html>
-
