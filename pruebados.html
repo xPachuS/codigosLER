@@ -18,7 +18,7 @@
         }
         #container {
             width: 100%;
-            max-width: 90%;
+            max-width: 100%;
             text-align: center;
         }
         form, table {
@@ -32,97 +32,87 @@
             padding: 10px;
         }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
 </head>
 <body>
-    <div id="container">
-        <form id="transporteForm">
-            <label for="proveedor">PROVEEDOR:</label>
-            <input type="text" id="proveedor" name="proveedor" required><br><br>
 
-            <label for="destino">DESTINO:</label>
-            <input type="text" id="destino" name="destino" required><br><br>
+<div id="container">
+    <form id="transporteForm">
+        <label for="proveedor">PROVEEDOR:</label>
+        <input type="text" id="proveedor" name="proveedor" required><br><br>
 
-            <label for="numParte">NÚM. PARTE:</label>
-            <input type="text" id="numParte" name="numParte" required pattern="\d+" title="Solo se permiten números"><br><br>
+        <label for="destino">DESTINO:</label>
+        <input type="text" id="destino" name="destino" required><br><br>
 
-            <label for="transportista">TRANSPORTISTA:</label>
-            <input type="text" id="transportista" name="transportista" required><br><br>
+        <label for="numParte">NÚM. PARTE:</label>
+        <input type="text" id="numParte" name="numParte" required pattern="\d+" title="Solo se permiten números"><br><br>
 
-            <label for="residuo">RESIDUO:</label>
-            <input type="text" id="residuo" name="residuo" required><br><br>
+        <label for="transportista">TRANSPORTISTA:</label>
+        <input type="text" id="transportista" name="transportista" required><br><br>
 
-            <label for="fechaTransporte">FECHA TRANSPORTE:</label>
-            <input type="date" id="fechaTransporte" name="fechaTransporte" required><br><br>
+        <label for="residuo">RESIDUO:</label>
+        <input type="text" id="residuo" name="residuo" required><br><br>
 
-            <label for="realizado">REALIZADO:</label>
-            <input type="text" id="realizado" name="realizado" required><br><br>
+        <label for="fechaTransporte">FECHA TRANSPORTE:</label>
+        <input type="date" id="fechaTransporte" name="fechaTransporte" required><br><br>
 
-            <label for="di">DI:</label>
-            <input type="text" id="di" name="di" required><br><br>
+        <label for="realizado">REALIZADO:</label>
+        <input type="text" id="realizado" name="realizado" required><br><br>
 
-            <label for="comentarios">COMENTARIOS:</label>
-            <input type="text" id="comentarios" name="comentarios"><br><br>
+        <label for="di">DI:</label>
+        <input type="text" id="di" name="di" required><br><br>
 
-            <button type="button" onclick="agregarFila()">Enviar</button>
-            <button type="button" onclick="exportarExcel()">Exportar a Excel</button>
-        </form>
+        <label for="comentarios">COMENTARIOS:</label>
+        <input type="text" id="comentarios" name="comentarios"><br><br>
 
-        <input type="text" id="buscar" placeholder="Buscar..." onkeyup="filtrarTabla()"><br><br>
+        <button type="button" onclick="agregarFila()">Enviar</button>
+        <button type="button" onclick="exportarExcel()">Exportar a Excel</button>
+    </form>
 
-        <table id="tablaDatos">
-            <thead>
-                <tr>
-                    <th>PROVEEDOR</th>
-                    <th>DESTINO</th>
-                    <th>NÚM. PARTE</th>
-                    <th>TRANSPORTISTA</th>
-                    <th>RESIDUO</th>
-                    <th>FECHA TRANSPORTE</th>
-                    <th>REALIZADO</th>
-                    <th>DI</th>
-                    <th>COMENTARIOS</th>
-                    <th>ACCIONES</th>
-                </tr>
-            </thead>
-            <tbody id="tablaCuerpo">
-            </tbody>
-        </table>
-    </div>
+    <input type="text" id="buscar" placeholder="Buscar..." onkeyup="filtrarTabla()"><br><br>
 
-    <script src="https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.12.3/firebase-analytics.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.12.3/firebase-firestore.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.5/xlsx.full.min.js"></script>
+    <table id="tablaDatos">
+        <thead>
+            <tr>
+                <th>PROVEEDOR</th>
+                <th>DESTINO</th>
+                <th>NÚM. PARTE</th>
+                <th>TRANSPORTISTA</th>
+                <th>RESIDUO</th>
+                <th>FECHA TRANSPORTE</th>
+                <th>REALIZADO</th>
+                <th>DI</th>
+                <th>COMENTARIOS</th>
+                <th>ACCIONES</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <br>
+<br>
+
+<a href="index.html"><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0z"/>
+  <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708z"/>
+</svg></a>
+    
+</div>
 
     <script>
-        // Configuración de Firebase
-        const firebaseConfig = {
-          apiKey: "AIzaSyAcPIP3HFgKn5E_bRjYacloUBtNYm-eyhk",
-          authDomain: "tabladi.firebaseapp.com",
-          projectId: "tabladi",
-          storageBucket: "tabladi.appspot.com",
-          messagingSenderId: "568544140345",
-          appId: "1:568544140345:web:e2d840e0a6e2d59b9081e8",
-          measurementId: "G-QHD08PVH7L"
-        };
-
-        // Inicializar Firebase
-        const app = firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore(app);
-
-        // Función para agregar una fila a la tabla y guardar en Firestore
+        // Función para agregar una fila a la tabla
         function agregarFila() {
-            const proveedor = document.getElementById('proveedor').value;
-            const destino = document.getElementById('destino').value;
+            const proveedor = document.getElementById('proveedor').value.toUpperCase();
+            const destino = document.getElementById('destino').value.toUpperCase();
             const numParte = document.getElementById('numParte').value;
-            const transportista = document.getElementById('transportista').value;
-            const residuo = document.getElementById('residuo').value;
+            const transportista = document.getElementById('transportista').value.toUpperCase();
+            const residuo = document.getElementById('residuo').value.toUpperCase();
             const fechaTransporte = document.getElementById('fechaTransporte').value;
-            const realizado = document.getElementById('realizado').value;
-            const di = document.getElementById('di').value;
-            const comentarios = document.getElementById('comentarios').value;
+            const realizado = document.getElementById('realizado').value.toUpperCase();
+            const di = document.getElementById('di').value.toUpperCase();
+            const comentarios = document.getElementById('comentarios').value.toUpperCase();
 
-            // Verificar campos obligatorios
             if (proveedor && destino && numParte && transportista && residuo && fechaTransporte && realizado && di) {
                 // Crear objeto con los datos del registro
                 const registro = {
@@ -137,84 +127,127 @@
                     comentarios: comentarios
                 };
 
-                // Guardar en Firestore
-                db.collection("transportes").add(registro)
-                .then(function(docRef) {
-                    console.log("Documento agregado con ID: ", docRef.id);
-                    // Limpiar el formulario
-                    document.getElementById('transporteForm').reset();
-                    // Actualizar la tabla después de agregar
-                    cargarRegistros();
-                })
-                .catch(function(error) {
-                    console.error("Error al agregar el documento: ", error);
-                    alert("Error al guardar el registro. Consulta la consola para más detalles.");
-                });
+                // Obtener los registros almacenados o inicializar un array vacío
+                let registros = JSON.parse(localStorage.getItem('registros')) || [];
 
+                // Agregar el nuevo registro al array
+                registros.push(registro);
+
+                // Guardar los registros actualizados en LocalStorage
+                localStorage.setItem('registros', JSON.stringify(registros));
+
+                // Actualizar la tabla mostrando todos los registros
+                actualizarTabla();
+
+                // Limpiar el formulario
+                document.getElementById('transporteForm').reset();
             } else {
                 alert('Por favor, complete todos los campos obligatorios.');
             }
         }
 
-        // Función para cargar los registros desde Firestore y mostrarlos en la tabla
+        // Función para cargar los registros guardados en LocalStorage y mostrarlos en la tabla
         function cargarRegistros() {
-            db.collection("transportes").get().then((querySnapshot) => {
-                const tableBody = document.getElementById("tablaCuerpo");
-                tableBody.innerHTML = "";
+            let registros = JSON.parse(localStorage.getItem('registros')) || [];
 
-                querySnapshot.forEach((doc) => {
-                    const registro = doc.data();
-                    console.log("Cargando registro: ", registro);
-                    const row = tableBody.insertRow();
-
-                    row.insertCell().textContent = registro.proveedor;
-                    row.insertCell().textContent = registro.destino;
-                    row.insertCell().textContent = registro.numParte;
-                    row.insertCell().textContent = registro.transportista;
-                    row.insertCell().textContent = registro.residuo;
-                    row.insertCell().textContent = registro.fechaTransporte;
-                    row.insertCell().textContent = registro.realizado;
-                    row.insertCell().textContent = registro.di;
-                    row.insertCell().textContent = registro.comentarios;
-
-                    // Botones de acciones (Editar y Eliminar)
-                    const cellAcciones = row.insertCell();
-                    const editarButton = document.createElement("button");
-                    editarButton.textContent = "Editar";
-                    editarButton.addEventListener("click", function() {
-                        editarFila(doc.id, registro);
-                    });
-                    cellAcciones.appendChild(editarButton);
-
-                    const eliminarButton = document.createElement("button");
-                    eliminarButton.textContent = "Eliminar";
-                    eliminarButton.addEventListener("click", function() {
-                        eliminarFila(doc.id);
-                    });
-                    cellAcciones.appendChild(eliminarButton);
-                });
-            }).catch((error) => {
-                console.error("Error al cargar los registros: ", error);
+            // Recorrer los registros y agregarlos a la tabla
+            registros.forEach(function(registro) {
+                agregarFilaTabla(registro);
             });
         }
 
+        // Función para agregar una fila a la tabla con los datos proporcionados
+        function agregarFilaTabla(registro) {
+            const table = document.getElementById('tablaDatos').getElementsByTagName('tbody')[0];
+            const newRow = table.insertRow();
+
+            const cell1 = newRow.insertCell(0);
+            const cell2 = newRow.insertCell(1);
+            const cell3 = newRow.insertCell(2);
+            const cell4 = newRow.insertCell(3);
+            const cell5 = newRow.insertCell(4);
+            const cell6 = newRow.insertCell(5);
+            const cell7 = newRow.insertCell(6);
+            const cell8 = newRow.insertCell(7);
+            const cell9 = newRow.insertCell(8);
+            const cell10 = newRow.insertCell(9);
+
+            cell1.textContent = registro.proveedor;
+            cell2.textContent = registro.destino;
+            cell3.textContent = registro.numParte;
+            cell4.textContent = registro.transportista;
+            cell5.textContent = registro.residuo;
+            cell6.textContent = registro.fechaTransporte;
+            cell7.textContent = registro.realizado;
+            cell8.textContent = registro.di;
+            cell9.textContent = registro.comentarios;
+
+            const editButton = document.createElement('button');
+            editButton.textContent = 'Editar';
+            editButton.onclick = function() {
+                editarFila(this, registro);
+            };
+            cell10.appendChild(editButton);
+
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Eliminar';
+            deleteButton.onclick = function() {
+                eliminarFila(this, registro);
+            };
+            cell10.appendChild(deleteButton);
+        }
+
         // Función para editar una fila de la tabla
-        function editarFila(docId, registro) {
-            // Implementar la lógica de edición si es necesario
-            console.log("Editar fila con ID: ", docId);
+        function editarFila(button, registro) {
+            const row = button.parentNode.parentNode;
+            const rowIndex = row.rowIndex;
+
+            // Actualizar el formulario con los datos del registro seleccionado
+            document.getElementById('proveedor').value = registro.proveedor;
+            document.getElementById('destino').value = registro.destino;
+            document.getElementById('numParte').value = registro.numParte;
+            document.getElementById('transportista').value = registro.transportista;
+            document.getElementById('residuo').value = registro.residuo;
+            document.getElementById('fechaTransporte').value = registro.fechaTransporte;
+            document.getElementById('realizado').value = registro.realizado;
+            document.getElementById('di').value = registro.di;
+            document.getElementById('comentarios').value = registro.comentarios;
+
+            // Eliminar la fila actual de la tabla
+            document.getElementById('tablaDatos').deleteRow(rowIndex);
+
+            // Actualizar LocalStorage eliminando el registro editado
+            let registros = JSON.parse(localStorage.getItem('registros')) || [];
+            registros = registros.filter(function(r) {
+                return JSON.stringify(r) !== JSON.stringify(registro);
+            });
+            localStorage.setItem('registros', JSON.stringify(registros));
         }
 
         // Función para eliminar una fila de la tabla
-        function eliminarFila(docId) {
-            db.collection("transportes").doc(docId).delete()
-                .then(function() {
-                    console.log("Documento eliminado con ID: ", docId);
-                    cargarRegistros();
-                })
-                .catch(function(error) {
-                    console.error("Error al eliminar el documento: ", error);
-                    alert("Error al eliminar el registro. Consulta la consola para más detalles.");
-                });
+        function eliminarFila(button, registro) {
+            const row = button.parentNode.parentNode;
+            const rowIndex = row.rowIndex;
+
+            // Eliminar la fila de la tabla
+            document.getElementById('tablaDatos').deleteRow(rowIndex);
+
+            // Actualizar LocalStorage eliminando el registro
+            let registros = JSON.parse(localStorage.getItem('registros')) || [];
+            registros = registros.filter(function(r) {
+                return JSON.stringify(r) !== JSON.stringify(registro);
+            });
+            localStorage.setItem('registros', JSON.stringify(registros));
+        }
+
+        // Función para actualizar la tabla mostrando todos los registros almacenados en LocalStorage
+        function actualizarTabla() {
+            // Limpiar la tabla actual
+            const table = document.getElementById('tablaDatos').getElementsByTagName('tbody')[0];
+            table.innerHTML = '';
+
+            // Cargar los registros guardados en LocalStorage y agregarlos a la tabla
+            cargarRegistros();
         }
 
         // Función para exportar los datos de la tabla a un archivo Excel
@@ -228,21 +261,19 @@
 
         // Función para filtrar los datos de la tabla
         function filtrarTabla() {
-            const filtro = document.getElementById('buscar').value.toLowerCase();
-            const filas = document.getElementById('tablaCuerpo').getElementsByTagName('tr');
+            const filtro = document.getElementById('buscar').value.toUpperCase();
+            const table = document.getElementById('tablaDatos');
+            const tr = table.getElementsByTagName('tr');
 
-            for (let i = 0; i < filas.length; i++) {
-                const celdas = filas[i].getElementsByTagName('td');
-                let coincide = false;
-
-                for (let j = 0; j < celdas.length; j++) {
-                    if (celdas[j].innerHTML.toLowerCase().indexOf(filtro) > -1) {
-                        coincide = true;
+            for (let i = 1; i < tr.length; i++) {
+                tr[i].style.display = 'none';
+                const td = tr[i].getElementsByTagName('td');
+                for (let j = 0; j < td.length; j++) {
+                    if (td[j] && td[j].innerHTML.toUpperCase().indexOf(filtro) > -1) {
+                        tr[i].style.display = '';
                         break;
                     }
                 }
-
-                filas[i].style.display = coincide ? '' : 'none';
             }
         }
 
@@ -252,5 +283,9 @@
         });
 
     </script>
+    <script type='text/javascript'>
+    document.oncontextmenu = function(){return false}
+    </script>
+
 </body>
 </html>
