@@ -31,3 +31,23 @@ window.addEventListener('click', function(event) {
     }
   });
 });
+
+// Buscar por fieldCards
+function filterCards() {
+    var input, filter, cards, cardContainer, title, i, txtValue;
+    input = document.getElementById('searchInput');
+    filter = input.value.toUpperCase();
+    cardContainer = document.getElementsByClassName('container')[0];
+    cards = cardContainer.getElementsByClassName('card');
+    for (i = 0; i < cards.length; i++) {
+        title = cards[i].querySelector(".card-title");
+        if (title) {
+            txtValue = title.textContent || title.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                cards[i].style.display = "";
+            } else {
+                cards[i].style.display = "none";
+            }
+        }       
+    }
+}
