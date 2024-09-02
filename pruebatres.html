@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestor de PDFs</title>
+    <link rel="stylesheet" href="stylespruebatres.css">
+</head>
+<body>
+    <h1>Gestor de PDFs</h1>
+    <form id="uploadForm">
+        <label for="provider">Proveedor:</label>
+        <input type="text" id="provider" required>
+        
+        <label for="destination">Destino:</label>
+        <input type="text" id="destination" required>
+        
+        <label for="codeLER">Código LER:</label>
+        <input type="text" id="codeLER" required>
+        
+        <label for="nt">NT:</label>
+        <input type="text" id="nt" required>
+
+        <label for="validityDate">Fecha de validez:</label>
+        <input type="date" id="validityDate" required>
+        
+        <label for="endDate">Fecha de final de validez:</label>
+        <input type="date" id="endDate" readonly>
+
+        <label for="pdfFile">Selecciona un PDF:</label>
+        <input type="file" id="pdfFile" accept="application/pdf" required>
+        
+        <button type="submit">Subir PDF</button>
+    </form>
+    
+    <h2>Buscar PDFs</h2>
+    <input type="text" id="searchInput" placeholder="Buscar por proveedor, destino o código LER">
+    <br>
+    <button id="searchButton">Buscar</button>
+
+    <h2>PDFs Almacenados</h2>
+    <ul id="pdfList"></ul>
+
+    <script src="scriptpruebatres.js"></script>
+</body>
+</html>
