@@ -12,7 +12,7 @@ async function checkPassword() {
 
     // Comparar los hashes
     if (enteredHash === correctHash) {
-        window.location.href = "pruebatres.html"; // Cambia esto por la página protegida
+        window.location.href = "ler.html"; // Cambia esto por la página protegida
     } else {
         document.getElementById('error').textContent = 'Contraseña incorrecta, por favor intente de nuevo.';
     }
