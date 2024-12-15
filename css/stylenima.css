@@ -1,0 +1,138 @@
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+body a {
+    color: inherit; /* Hereda el color del texto de su contenedor */
+    text-decoration: none; /* Elimina la subrayado predeterminado */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 50px;
+}
+
+img {
+    width: 26px;
+    height: 26px;
+    margin-right: 10px;
+}
+
+/* Filas */
+.row {
+    display: flex;
+    flex-wrap: wrap; /* Asegura que las tarjetas se ajusten a múltiples filas */
+    justify-content: center; /* Centra las tarjetas dentro de las filas */
+}
+
+/* Columna con tarjetas */
+.col-md-4 {
+    display: flex;
+    justify-content: center; /* Centra las tarjetas en cada columna */
+    flex: 1 1 calc(33.333% - 20px); /* 3 tarjetas por fila */
+    max-width: 300px; /* Limita el ancho máximo de cada tarjeta */
+}
+
+/* Tarjetas */
+.card-flip {
+    width: 18rem; /* Establece el ancho fijo de la tarjeta */
+    height: 11rem; /* Establece la altura fija de la tarjeta */
+    perspective: 1000px;
+    margin-bottom: 20px;
+}
+
+.card-flip-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+}
+
+.card-flip:hover .card-flip-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    background-size: cover; /* La imagen cubre todo el contenedor */
+    background-position: center; /* Centrar la imagen */
+    background-repeat: no-repeat; /* Evitar repeticiones */
+}
+
+.card-back {
+    background: #fff;
+    color: #000;
+    transform: rotateY(180deg);
+}
+
+.card-back .btn {
+    background-color: #fff;
+    color: #6c757d;
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-weight: bold;
+}
+
+.modal-dialog {
+    width: 90%; /* Ancho del modal */
+    max-width: 80%; /* Aseguramos que no exceda */
+    height: 92%; /* Altura del modal */
+    margin: auto;
+    margin-top: 2%;
+}
+
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    padding: 0;
+    width: 100%;
+    height: 98%;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.modal-body {
+    padding: 0;
+    height: 00%;
+}
+
+.modal-body iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Define la fuente personalizada */
+@font-face {
+    font-family: 'Nature';
+    src: url('../font/nature.otf') format('truetype');
+}
+
+/* Clase para aplicar la fuente */
+.card-title {
+    font-family: 'Nature', sans-serif;
+    font-size: 23px;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px 0;
+    color: #000;
+}

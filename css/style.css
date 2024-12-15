@@ -1,0 +1,147 @@
+#info {
+    display: none;
+    margin-top: 10px;
+}
+
+html, body {
+    position: relative;
+    margin:0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+body a {
+    color: inherit; /* Hereda el color del texto de su contenedor */
+    text-decoration: none; /* Elimina la subrayado predeterminado */
+}
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.saica-logo {
+    width: 5%;
+}
+
+/* Estilos para el modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+/* Estilo para el modal  */
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%;
+    max-width: 800px;
+    max-height: 520px;
+    overflow-y: auto;
+}
+
+/* Estilos adicionales para el contenido */
+.modal-content h2 {
+    margin-top: 0; /* Eliminar margen superior para el título */
+}
+
+/* Estilo para el contenedor del contenido desplazable */
+.scrollable-content {
+    max-height: 400px; /* Altura máxima para activar el scroll */
+    overflow-y: auto; /* Activar el scroll vertical si el contenido excede la altura máxima */
+    padding: 10px 0; /* Ajustar el relleno para mantener espacio entre el título y los ítems */
+}
+
+/* Estilo para el contenedor del botón "Copiar Selección" */
+#copy-button-container {
+    margin-top: 20px; /* Separación desde los elementos desplazables */
+}
+
+/* Estilo para el botón "Copiar Selección" dentro del modal */
+.fixed-button {
+    position: sticky; /* Hacer que el botón sea fijo */
+    bottom: 20px; /* Espacio desde la parte inferior */
+    left: 50%; /* Centrar horizontalmente */
+    transform: translateX(-50%); /* Centrar horizontalmente */
+    z-index: 1; /* Asegurar que esté sobre el contenido */
+}
+
+/* Estilo para la pestaña de cierre del modal */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#checkbox-container {
+    margin: 10px;
+}
+
+.custom-select {
+  min-width: 350px;
+  position: relative;
+}
+
+select {
+  appearance: none; /* Safari */
+  -webkit-appearance: none; /* Otros navegadores WebKit */
+  width: 150px; /* Fijar ancho específico */
+  font-size: 1.15rem;
+  padding: 0.675em 1em 0.675em 1em;
+  background-color: #fff;
+  border: 1px solid #caced1;
+  border-radius: 0.25rem;
+  color: #000;
+  cursor: pointer;
+  resize: none; /* Asegurarse de que no se pueda redimensionar */
+}
+
+.custom-select::before,
+.custom-select::after {
+  --size: 0.3rem;
+  content: "";
+  position: absolute;
+  right: 1rem;
+  pointer-events: none;
+}
+
+.custom-select::before {
+  border-left: var(--size) solid transparent;
+  border-right: var(--size) solid transparent;
+  border-bottom: var(--size) solid black;
+  top: 40%;
+}
+
+.custom-select::after {
+  border-left: var(--size) solid transparent;
+  border-right: var(--size) solid transparent;
+  border-top: var(--size) solid black;
+  top: 55%;
+}
+
+
+#checkbox-container {
+    margin: 10px;
+}

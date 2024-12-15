@@ -1,0 +1,24 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+body a {
+    color: inherit; /* Hereda el color del texto de su contenedor */
+    text-decoration: none; /* Elimina la subrayado predeterminado */
+}
+
+.row {
+    display: flex;
+    gap: 14px;
+}
