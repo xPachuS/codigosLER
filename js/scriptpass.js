@@ -1,4 +1,4 @@
-const correctHash = "0f010a850a18b0c222a742be9399177e40b026f1a21b7e79fcfb46bac8a6fc71"; // Hash de "Madrid2024"
+const correctHash = "0f010a850a18b0c222a742be9399177e40b026f1a21b7e79fcfb46bac8a6fc71";
 
 async function checkPassword() {
     const enteredPassword = document.getElementById('password').value;
