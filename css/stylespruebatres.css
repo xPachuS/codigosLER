@@ -1,73 +1,183 @@
+/* General */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 20px;
-    background-color: #f4f4f4;
-}
-
-h1, h2 {
+    background-color: #f9f9f9;
     color: #333;
 }
 
+body a {
+    color: inherit;
+    text-decoration: none;
+
+}
+
+h1, h2 {
+    text-align: center;
+    color: #555;
+}
+
+/* Contenedor general del ícono */
+.center-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px; /* Opcional: espacio superior */
+}
+
+/* Formulario */
 form {
-    margin-bottom: 20px;
+    margin: 20px auto;
     padding: 20px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    width: 40%;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 450px;
 }
 
 label {
     display: block;
     margin: 10px 0 5px;
+    font-weight: bold;
 }
 
-input[type="text"], input[type="date"], input[type="file"] {
-    width: 98%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+input[type="text"], input[type="date"], input[type="file"], select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 14px;
 }
 
 button {
-    padding: 10px 15px;
-    background-color: #5cb85c;
-    color: #fff;
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
+    font-size: 16px;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #4cae4c;
+    background-color: #45a049;
 }
 
-#searchInput {
+/* Lista de PDFs */
+#pdfList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+    padding: 0;
+}
+
+.pdf-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.pdf-info {
+    margin-bottom: 15px;
+}
+
+.pdf-info h3 {
+    margin: 0 0 10px;
+    font-size: 18px;
+    color: #4CAF50;
+}
+
+.pdf-info p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.pdf-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.view-btn, .delete-btn {
+    padding: 8px 12px;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 14px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.view-btn {
+    background-color: #007BFF;
+    color: #fff;
+}
+
+.view-btn:hover {
+    background-color: #0056b3;
+}
+
+.delete-btn {
+    background-color: #FF4B4B;
+    color: #fff;
+    border: none;
+}
+
+.delete-btn:hover {
+    background-color: #cc0000;
+}
+
+/* Resaltar texto */
+.red-text {
+    color: red;
+    font-weight: bold;
+}
+
+
+/* Contenedor de botones */
+.pdf-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+
+/* Botones de acción */
+.action-btn {
+    display: inline-block;
+    padding: 12px 2px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
     width: 30%;
 }
 
-#pdfList {
-    list-style-type: none;
-    padding: 0;
-    width: 20%;
+/* Botón "Ver PDF" */
+.view-btn {
+    background-color: #007BFF;
+    color: white;
+    border: none;
 }
 
-#pdfList li {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
+.view-btn:hover {
+    background-color: #0056b3;
 }
 
-#pdfList a {
-    color: #5cb85c;
-    text-decoration: none;
+/* Botón "Eliminar" */
+.delete-btn {
+    background-color: #FF4B4B;
+    color: white;
+    border: none;
 }
 
-#pdfList a:hover {
-    text-decoration: underline;
+.delete-btn:hover {
+    background-color: #cc0000;
 }
-
-
