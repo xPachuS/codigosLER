@@ -51,6 +51,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     destinationContainer.replaceWith(destinationSelect);
 
+    // Validar campo NT
+        const ntInput = document.getElementById('nt');
+        ntInput.value = 'NT';
+        ntInput.addEventListener('input', function () {
+            if (!this.value.startsWith('NT')) {
+                this.value = 'NT';
+            }
+            const ntValue = this.value.slice(2); // Ignorar "NT"
+            const ntRegex = /^\d{0,23}$/; // Permitir hasta 23 números después de "NT"
+            this.value = `NT${ntValue.slice(0, 23)}`; // Limitar a 23 números
+        });
+
     // Función para formatear la fecha en formato dd/mm/yyyy
     function formatEuropeanDate(dateString) {
         const date = new Date(dateString);
@@ -176,6 +188,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const searchQuery = document.getElementById('searchInput').value;
         displayPdfs(searchQuery);
     });
+
+    displayPdfs();
+});
 
     displayPdfs();
 });
