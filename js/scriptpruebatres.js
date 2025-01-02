@@ -192,5 +192,6 @@ document.addEventListener('DOMContentLoaded', () => {
     displayPdfs();
 });
 
+
     displayPdfs();
 });
