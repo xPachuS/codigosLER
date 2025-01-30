@@ -34,13 +34,6 @@ const cardsData = [
         link: "https://sede.miteco.gob.es/portal/site/seMITECO/navValidacionCSV?accionClass=validacionCSVAction",
         buttonText: "COMPROBAR CSV",
         target: "_blank"
-    },
-    {
-        title: "Pruebas",
-        description: "Página de pruebas de próximas incorporaciones (Acceso por contraseña).",
-        link: "./html/pruebas.html",
-        buttonText: "PRUEBAS",
-        target: "_self"
     }
 ];
 
