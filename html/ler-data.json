@@ -1,0 +1,16 @@
+[
+  {
+    "codigo": "200101",
+    "descripcion": "Papel y cartón",
+    "peligroso": false,
+    "categoria": "20",
+    "palabras_clave": ["papel", "cartón"]
+  },
+  {
+    "codigo": "20012131*",
+    "descripcion": "Tubos fluorescentes y otros residuos que contienen mercurio",
+    "peligroso": true,
+    "categoria": "20",
+    "palabras_clave": ["fluorescente", "mercurio"]
+  }
+]
