@@ -17,7 +17,7 @@ const cardsData = [
     {
         title: "Búsqueda LER",
         description: "Visite este enlace para consultar toda la información sobre los códigos LER.",
-        link: "./html/busquedaler.html",
+        link: "./html/buscadorler.html",
         buttonText: "Busqueda LER",
         target: "_self"
     },
