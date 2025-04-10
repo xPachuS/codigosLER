@@ -7,7 +7,7 @@ fetch('ler-data.json')  // Asegúrate de que la ruta sea correcta
     document.getElementById('busqueda').addEventListener('input', buscar);
     document.getElementById('filtrarPeligrosos').addEventListener('change', buscar);
     document.getElementById('filtrarNoPeligrosos').addEventListener('change', buscar);
-
+    
     // Agregar eventos a los botones de copiar
     document.getElementById('copiarPeligrosos').addEventListener('click', copiarPeligrosos);
     document.getElementById('copiarNoPeligrosos').addEventListener('click', copiarNoPeligrosos);
@@ -34,6 +34,13 @@ function buscar() {
   });
 
   mostrar(resultados);
+  
+  // Si hay resultados, mostrar el primer resultado como el más probable
+  if (resultados.length > 0) {
+    document.getElementById('codigoSugerido').textContent = resultados[0].codigo;
+  } else {
+    document.getElementById('codigoSugerido').textContent = 'Ninguno aún...';
+  }
 }
 
 function mostrar(resultados) {
