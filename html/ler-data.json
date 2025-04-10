@@ -6276,7 +6276,7 @@
         "descripcion": "Residuos domésticos mezclados",
         "peligroso": false,
         "categoria": "20",
-        "palabras_clave": ["residuos domésticos mezclados"]
+        "palabras_clave": ["basura", "residuos domésticos mezclados"]
     },
     {
         "codigo": "200302",
@@ -6311,7 +6311,7 @@
         "descripcion": "Residuos voluminosos",
         "peligroso": true,
         "categoria": "20",
-        "palabras_clave": ["residuos voluminosos"]
+        "palabras_clave": ["basura", "residuos voluminosos"]
     },
     {
         "codigo": "200399",
