@@ -95,3 +95,18 @@ function copiarAlPortapapeles(texto) {
 
   alert('¡Lista copiada al portapapeles!');
 }
+
+// Botón "Subir arriba"
+const btnSubirArriba = document.getElementById("btnSubirArriba");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 300) {
+    btnSubirArriba.classList.remove("opacity-0", "pointer-events-none");
+  } else {
+    btnSubirArriba.classList.add("opacity-0", "pointer-events-none");
+  }
+});
+
+btnSubirArriba.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
