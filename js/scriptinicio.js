@@ -15,6 +15,13 @@ const cardsData = [
         target: "_self"
     },
     {
+        title: "Búsqueda LER",
+        description: "Visite este enlace para consultar toda la información sobre los códigos LER.",
+        link: "./html/busquedaler.html",
+        buttonText: "Busqueda LER",
+        target: "_self"
+    },
+    {
         title: "Realizar NT",
         description: "Acceda aquí para realizar una notificación previa de traslado (NT).",
         link: "https://sede.miteco.gob.es/portal/site/seMITECO/login",
