@@ -6307,9 +6307,9 @@
         "palabras_clave": ["residuos de limpieza de alcantarillas"]
     },
     {
-        "codigo": "200307*",
+        "codigo": "200307",
         "descripcion": "Residuos voluminosos",
-        "peligroso": true,
+        "peligroso": false,
         "categoria": "20",
         "palabras_clave": ["basura", "residuos voluminosos"]
     },
