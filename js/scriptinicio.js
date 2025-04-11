@@ -7,18 +7,18 @@ const cardsData = [
         buttonText: "CONSULTA NIMA",
         target: "_self"
     },
-    /*{
-        title: "Consultar LER",
-        description: "Visite este enlace para consultar toda la información sobre los códigos LER.",
-        link: "./html/ler.html",
-        buttonText: "CONSULTA LER",
-        target: "_self"
-    },*/
     {
         title: "Búsqueda LER",
         description: "Visite este enlace para consultar toda la información sobre los códigos LER.",
         link: "./html/buscadorler.html",
         buttonText: "BÚSQUEDA LER",
+        target: "_self"
+    },
+    {
+        title: "Guía LER",
+        description: "Visite este enlace para consultar toda la información sobre los códigos LER.",
+        link: "./html/ler.html",
+        buttonText: "GUÍA LER",
         target: "_self"
     },
     {
