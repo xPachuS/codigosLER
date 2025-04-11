@@ -16,7 +16,7 @@ const cardsData = [
     },
     {
         title: "Guía Residuos",
-        description: "Visite este enlace para consultar toda la información sobre los códigos LER.",
+        description: "Visite este enlace para consultar toda la información sobre los residuos que tienen código LER.",
         link: "./html/guiaresiduos.html",
         buttonText: "GUÍA RESIDUOS",
         target: "_self"
