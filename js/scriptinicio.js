@@ -15,10 +15,10 @@ const cardsData = [
         target: "_self"
     },
     {
-        title: "Guía LER",
+        title: "Guía Residuos",
         description: "Visite este enlace para consultar toda la información sobre los códigos LER.",
-        link: "./html/ler.html",
-        buttonText: "GUÍA LER",
+        link: "./html/guiaresiduos.html",
+        buttonText: "GUÍA RESIDUOS",
         target: "_self"
     },
     {
