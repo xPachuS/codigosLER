@@ -5859,14 +5859,14 @@
         "palabras_clave": ["minerales", "arena", "piedras"]
     },
     {
-        "codigo": "191210*",
+        "codigo": "191210",
         "descripcion": "Residuos combustibles (fracciones ligeras de trituración)",
         "peligroso": true,
         "categoria": "19",
         "palabras_clave": ["residuos combustibles", "fracciones ligeras de trituración"]
     },
     {
-        "codigo": "191211",
+        "codigo": "191211*",
         "descripcion": "Otros residuos (incluidas las mezclas de materiales) procedentes del tratamiento mecánico de residuos no especificados en otra categoría",
         "peligroso": false,
         "categoria": "19",
