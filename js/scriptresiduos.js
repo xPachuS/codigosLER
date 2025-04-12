@@ -9,7 +9,7 @@ fetch('ler-data.json')
     const categoryList = document.getElementById("category-list");
     categorias.forEach(categoria => {
       const li = document.createElement("li");
-      li.classList.add('cursor-pointer', 'text-indigo-600', 'hover:text-indigo-800', 'transition', 'duration-200', 'font-medium', 'text-center', 'rounded-lg', 'hover:bg-indigo-50', 'py-6', 'flex', 'items-center', 'justify-center', 'group', 'shadow-lg', 'hover:shadow-xl', 'h-48');
+      li.classList.add('cursor-pointer', 'text-indigo-600', 'hover:text-indigo-800', 'transition', 'duration-200', 'font-medium', 'text-center', 'rounded-lg', 'hover:bg-indigo-50', 'py-6', 'flex', 'items-center', 'justify-center', 'group', 'shadow-lg', 'hover:shadow-xl', 'h-40');
       
       const icon = getCategoryIcon(categoria);
       
