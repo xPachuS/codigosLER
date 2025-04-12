@@ -8,52 +8,49 @@
 </head>
 <body class="bg-gray-50 font-sans text-gray-900">
 
-  <br>
-  <br>
-
   <div class="max-w-6xl mx-auto p-6">
-    <h1 class="text-4xl font-extrabold text-center text-gray-500 mb-12"><a href="https://xpachus.github.io/codigosLER/html/consultanima.html">Consulta NIMA<a></h1>
-    <br>
+    <h1 class="text-4xl font-extrabold text-center text-gray-500 mb-12">Consulta NIMA</h1>
     <ul id="region-list" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-6"></ul>
   </div>
 
   <!-- Modal -->
   <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50" onclick="closeModal(event)">
-    <div class="bg-white rounded-lg w-[80%] h-[90%] p-4 shadow-lg relative" onclick="event.stopPropagation()">
+    <div class="bg-white rounded-lg w-[80%] h-[90%] p-4 shadow-lg relative flex flex-col" onclick="event.stopPropagation()">
       <button onclick="closeModal()" class="absolute top-2 right-3 text-gray-500 hover:text-gray-800 text-xl">&times;</button>
       <h2 id="modal-title" class="text-xl font-semibold mb-4"></h2>
-      <iframe id="modal-frame" src="" class="w-[100%] h-[88%] rounded-md border border-gray-200 mb-4" loading="lazy"></iframe>
-      <div class="text-right">
-        <a id="external-link" href="#" target="_blank" class="text-indigo-600 hover:underline text-sm">Abrir en nueva pestaña</a>
+
+      <div class="flex-1 overflow-hidden">
+        <iframe id="modal-frame" src="" class="w-full h-full rounded-md border border-gray-200" loading="lazy"></iframe>
+      </div>
+
+      <div class="mt-4 flex justify-end">
+        <a id="external-link" href="#" target="_blank"
+           class="bg-indigo-600 text-white px-4 py-2 text-sm rounded hover:bg-indigo-700 transition">
+          Abrir en nueva pestaña
+        </a>
       </div>
     </div>
   </div>
 
-  <br>
-
+  <!-- Botón volver -->
   <div class="w-full flex justify-center mt-10">
-  <a href="../index.html" class="text-black hover:text-gray-700 transition">
-    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
-      class="bi bi-box-arrow-left" viewBox="0 0 16 16">
-      <path fill-rule="evenodd"
-        d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0z" />
-      <path fill-rule="evenodd"
-        d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708z" />
-    </svg>
-  </a>
-</div>
+    <a href="../index.html" class="text-black hover:text-gray-700 transition">
+      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+        class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+        <path fill-rule="evenodd"
+          d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0z" />
+        <path fill-rule="evenodd"
+          d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708z" />
+      </svg>
+    </a>
+  </div>
 
-<br>
-<br>
-
-<button id="btnSubirArriba" title="Volver arriba"
-  class="fixed bottom-6 right-6 bg-black text-white w-12 h-12 rounded-md shadow-lg hover:bg-gray-900 transition-opacity opacity-0 pointer-events-none z-50 flex items-center justify-center text-2xl">
-  ↑
-</button>
+  <!-- Botón subir -->
+  <button id="btnSubirArriba" title="Volver arriba"
+    class="fixed bottom-6 right-6 bg-black text-white w-12 h-12 rounded-md shadow-lg hover:bg-gray-900 transition-opacity opacity-0 pointer-events-none z-50 flex items-center justify-center text-2xl">
+    ↑
+  </button>
 
   <script src="../js/scriptconsultanima.js"></script>
-  <script type='text/javascript'>
-	  document.oncontextmenu = function(){return false}
-  </script>
 </body>
 </html>
