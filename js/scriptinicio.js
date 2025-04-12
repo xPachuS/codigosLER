@@ -3,7 +3,7 @@ const cardsData = [
     {
         title: "Consultar NIMA",
         description: "Aquí encontrarás las webs de las Comunidades Autónomas para consultar NIMAS.",
-        link: "./html/nima.html",
+        link: "./html/consultanima.html",
         buttonText: "CONSULTA NIMA",
         target: "_self"
     },
