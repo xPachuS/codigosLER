@@ -45,7 +45,7 @@ function showResiduosPorCategoria(categoria, residuos) {
 
   residuosFiltrados.forEach(residuo => {
     const li = document.createElement("li");
-    li.classList.add('bg-white', 'p-6', 'rounded-lg', 'shadow-lg', 'hover:shadow-xl', 'transition', 'duration-200', 'cursor-pointer', 'hover:scale-105', 'h-64'); // h-64 es la clase para altura fija (256px)
+    li.classList.add('bg-white', 'p-6', 'rounded-lg', 'shadow-lg', 'hover:shadow-xl', 'transition', 'duration-200', 'cursor-pointer', 'hover:scale-105', 'h-48'); // h-48 es la clase para altura fija (256px)
 
     li.innerHTML = `
       <div class="space-y-2 h-full flex flex-col justify-between">
