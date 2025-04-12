@@ -3966,7 +3966,7 @@
         "descripcion": "Envases que contienen restos de sustancias peligrosas o están contaminados por ellos",
         "peligroso": true,
         "categoria": "15",
-        "palabras_clave": ["envases", "restos", "sustancias peligrosas", "contaminados"]
+        "palabras_clave": ["envases", "restos", "sustancias peligrosas", "contaminados", "envases plásticos peligrosos", "envases metálicos peligrosos"]
     },
     {
         "codigo": "150111*",
