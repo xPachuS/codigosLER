@@ -41,11 +41,14 @@ function openModal(nombre, url) {
 
   document.getElementById("modal-title").textContent = nombre;
   frame.src = url;
-  externalLink.href = url;
+  externalLink.href = url; // Asegúrate de que siempre se pueda abrir en una nueva pestaña.
   modal.classList.remove("hidden");
 
   // Mostrar spinner al abrir
   spinner.classList.remove("hidden");
+
+  // Hacer visible el enlace "Abrir en nueva pestaña" inmediatamente
+  externalLink.classList.remove("hidden");
 
   // Ocultar spinner cuando el iframe carga
   frame.onload = () => {
