@@ -34,19 +34,33 @@ comunidades.forEach(region => {
 });
 
 function openModal(nombre, url) {
+  const modal = document.getElementById("modal");
+  const frame = document.getElementById("modal-frame");
+  const externalLink = document.getElementById("external-link");
+  const spinner = document.getElementById("spinner");
+
   document.getElementById("modal-title").textContent = nombre;
-  document.getElementById("modal-frame").src = url;
-  document.getElementById("external-link").href = url;
-  document.getElementById("modal").classList.remove("hidden");
+  frame.src = url;
+  externalLink.href = url;
+  modal.classList.remove("hidden");
+
+  // Mostrar spinner al abrir
+  spinner.classList.remove("hidden");
+
+  // Ocultar spinner cuando el iframe carga
+  frame.onload = () => {
+    spinner.classList.add("hidden");
+  };
 }
 
 function closeModal() {
   document.getElementById("modal").classList.add("hidden");
-  document.getElementById("modal-frame").src = ""; // Limpia para evitar carga constante
+  document.getElementById("modal-frame").src = "";
+  document.getElementById("spinner").classList.add("hidden");
 }
 
-// Cerrar el modal al hacer clic fuera del contenido
-document.getElementById("modal").addEventListener("click", function(event) {
+// Cerrar modal al hacer clic fuera
+document.getElementById("modal").addEventListener("click", function (event) {
   if (event.target === document.getElementById("modal")) {
     closeModal();
   }
