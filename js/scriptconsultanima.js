@@ -41,16 +41,16 @@ function openModal(nombre, url) {
 
   document.getElementById("modal-title").textContent = nombre;
   frame.src = url;
-  externalLink.href = url; // Asegúrate de que siempre se pueda abrir en una nueva pestaña.
+  externalLink.href = url; // El enlace de abrir en nueva pestaña siempre funciona
   modal.classList.remove("hidden");
 
   // Mostrar spinner al abrir
   spinner.classList.remove("hidden");
 
-  // Hacer visible el enlace "Abrir en nueva pestaña" inmediatamente
+  // Asegurarnos de que el enlace "Abrir en nueva pestaña" se pueda usar en todo momento
   externalLink.classList.remove("hidden");
 
-  // Ocultar spinner cuando el iframe carga
+  // No esperar a que el iframe cargue para usar el enlace
   frame.onload = () => {
     spinner.classList.add("hidden");
   };
@@ -83,3 +83,4 @@ window.addEventListener("scroll", () => {
 btnSubirArriba.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
+
