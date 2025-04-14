@@ -3,15 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Consultar NIMA</title>
+  <title>Consulta NIMA</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-50 font-sans text-gray-900">
 
-  <br><br>
-
   <div class="max-w-6xl mx-auto p-6">
-    <h1 class="text-4xl font-extrabold text-center text-gray-500 mb-12">Consultar NIMA</h1>
+    <h1 class="text-4xl font-extrabold text-center text-gray-500 mb-12">Consulta NIMA</h1>
     <ul id="region-list" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-6"></ul>
   </div>
 
@@ -21,19 +19,13 @@
       <button onclick="closeModal()" class="absolute top-2 right-3 text-gray-500 hover:text-gray-800 text-xl">&times;</button>
       <h2 id="modal-title" class="text-xl font-semibold mb-4"></h2>
 
-      <!-- Spinner -->
-      <div id="spinner" class="absolute inset-0 z-10 flex items-center justify-center bg-white bg-opacity-70">
-        <div class="animate-spin rounded-full h-12 w-12 border-t-4 border-indigo-600 border-solid"></div>
-      </div>
-
-      <!-- Contenedor del iframe -->
-      <div class="flex-1 overflow-hidden relative">
+      <div class="flex-1 overflow-hidden">
         <iframe id="modal-frame" src="" class="w-full h-full rounded-md border border-gray-200" loading="lazy"></iframe>
       </div>
 
       <div class="mt-4 flex justify-end">
         <a id="external-link" href="#" target="_blank"
-          class="bg-gray-500 text-white px-4 py-2 text-sm rounded hover:bg-gray-700 transition">
+           class="bg-indigo-600 text-white px-4 py-2 text-sm rounded hover:bg-indigo-700 transition">
           Abrir en nueva pestaña
         </a>
       </div>
@@ -53,14 +45,13 @@
     </a>
   </div>
 
-  <br><br>
-
   <!-- Botón subir -->
   <button id="btnSubirArriba" title="Volver arriba"
     class="fixed bottom-6 right-6 bg-black text-white w-12 h-12 rounded-md shadow-lg hover:bg-gray-900 transition-opacity opacity-0 pointer-events-none z-50 flex items-center justify-center text-2xl">
     ↑
   </button>
 
-  <script src="../js/scriptconsultanima.js"></script>
+  <script src="scriptconsultanima.js"></script>
 </body>
 </html>
+
