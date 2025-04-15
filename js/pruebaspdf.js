@@ -1,52 +1,6 @@
-// Configuración de Firebase
-const firebaseConfig = {
-  apiKey: "AIzaSyDSvurzqOBDPqxNXv9--10rA5I49nN_bxE",
-  authDomain: "dbpdf-e63f7.firebaseapp.com",
-  projectId: "dbpdf-e63f7",
-  storageBucket: "dbpdf-e63f7.appspot.com",
-  messagingSenderId: "174689987018",
-  appId: "1:174689987018:web:6ba9c09a578d2439070733",
-  measurementId: "G-7DF5EQ7YCD"
-};
+const registros = JSON.parse(localStorage.getItem('registros') || '[]');
+actualizarTabla(); // carga los registros guardados
 
-// Inicializa Firebase
-firebase.initializeApp(firebaseConfig);
-const db = firebase.database();
-const registrosRef = db.ref('registros');
-
-// Cargar registros de Firebase y actualizar la tabla
-registrosRef.on('value', (snapshot) => {
-  const registros = snapshot.val() || {};
-  actualizarTabla(registros);
-});
-
-// Cargar la tabla con los registros
-function actualizarTabla(registros) {
-  const tbody = document.querySelector('#tabla-resultados tbody');
-  tbody.innerHTML = '';  // Limpiar tabla antes de añadir los registros
-  for (const key in registros) {
-    const registro = registros[key];
-    const tr = document.createElement('tr');
-    tr.innerHTML = `
-      <td>${registro.origen}</td>
-      <td>${registro.destino}</td>
-      <td>${registro.ler}</td>
-      <td>${registro.inicio}</td>
-      <td>${registro.fin}</td>
-      <td>${registro.dias}</td>
-      <td>${registro.nt}</td>
-      <td><button onclick="eliminarRegistro('${key}')">Eliminar</button></td>
-    `;
-    tbody.appendChild(tr);
-  }
-}
-
-// Eliminar un registro de Firebase
-function eliminarRegistro(id) {
-  registrosRef.child(id).remove();
-}
-
-// Procesar el archivo PDF y extraer información
 document.getElementById('file-input').addEventListener('change', async (e) => {
   const file = e.target.files[0];
   if (!file) return;
@@ -134,11 +88,57 @@ document.getElementById('file-input').addEventListener('change', async (e) => {
         dias: diasTexto,
         nt: ntMatches[0] || 'No encontrado'
       };
-
-      // Guardar en Firebase
-      registrosRef.push(fila);
+      registros.push(fila);
+      registros.sort((a, b) => a.origen.localeCompare(b.origen));
+      localStorage.setItem('registros', JSON.stringify(registros));
+      actualizarTabla();
     };
   };
 
   fileReader.readAsArrayBuffer(file);
 });
+
+// Actualiza tabla desde registros
+function actualizarTabla() {
+  const tbody = document.querySelector('#tabla-resultados tbody');
+  tbody.innerHTML = '';
+  registros.forEach((r, index) => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${r.origen}</td>
+      <td>${r.destino}</td>
+      <td>${r.ler}</td>
+      <td>${r.inicio}</td>
+      <td>${r.fin}</td>
+      <td>${r.dias}</td>
+      <td>${r.nt}</td>
+      <td><button onclick="eliminarRegistro(${index})">Eliminar</button></td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+// Eliminar un registro con confirmación
+function eliminarRegistro(index) {
+  const confirmar = confirm("¿Estás seguro de que quieres eliminar este registro?");
+  if (!confirmar) return;
+
+  registros.splice(index, 1);
+  localStorage.setItem('registros', JSON.stringify(registros));
+  actualizarTabla();
+}
+
+// Exportar tabla a Excel
+document.getElementById('exportar-excel').addEventListener('click', () => {
+  const table = document.getElementById('tabla-resultados');
+  const wb = XLSX.utils.table_to_book(table, { sheet: "Registros" });
+  XLSX.writeFile(wb, "registros.xlsx");
+});
+
+// Exportar tabla a PDF
+document.getElementById('exportar-pdf').addEventListener('click', () => {
+  const doc = new jspdf.jsPDF();
+  doc.autoTable({ html: '#tabla-resultados' });
+  doc.save('registros.pdf');
+});
+
