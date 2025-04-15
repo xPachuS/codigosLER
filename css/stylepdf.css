@@ -1,0 +1,32 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+.resultado {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #f3f3f3;
+  border: 1px solid #ccc;
+}
+
+.fecha-roja {
+  color: red;
+  font-weight: bold;
+}
+
+table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 8px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+thead {
+  background-color: #ddd;
+}
