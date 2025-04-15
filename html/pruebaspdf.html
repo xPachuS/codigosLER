@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Analizador de PDF</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-database.js"></script>
+  <link rel="stylesheet" href="../css/stylepdf.css">
+</head>
+<body>
+
+  <h2>Analizador de PDF</h2>
+  <input type="file" id="file-input" accept=".pdf">
+  <button id="guardar-btn" style="display:none;">Guardar</button>
+
+  <div class="resultado" id="resultado"></div>
+
+  <h3>Registros guardados</h3>
+  <table id="tabla-resultados">
+    <thead>
+      <tr>
+        <th>Origen</th>
+        <th>Destino</th>
+        <th>Código LER</th>
+        <th>Inicio de validez</th>
+        <th>Fin de validez</th>
+        <th>Días restantes</th>
+        <th>Número de NT</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script src="../js/pruebaspdf.js"></script>
+</body>
+</html>
