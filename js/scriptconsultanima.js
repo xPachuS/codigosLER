@@ -1,7 +1,7 @@
 const comunidades = [
   { nombre: "Andalucía", bandera: "../img/n_andalucia.png", url: "https://www.juntadeandalucia.es/medioambiente/sira-buscador-publico/" },
   { nombre: "Aragón", bandera: "../img/n_aragon.png", url: "https://aplicaciones2.aragon.es/pdr/pdr_pub/residuos/informacionAmbiental/busquedaNimas" },
-  { nombre: "Asturias", bandera: "../img/n_asturias.png", url: "https://medioambiente.asturias.es/general/-/categories/766362" },
+  { nombre: "Asturias", bandera: "../img/n_asturias.png", url: "http://www.medioambiente.asturias.org/IASERVICIORESIDUOS/Buscar/BuscarInstalacion" },
   { nombre: "Cantabria", bandera: "../img/n_cantabria.png", url: "https://siacan.cantabria.es/siacan/publico/PrepareBuscadorEmpresasGestoresView.do" },
   { nombre: "Castilla-La Mancha", bandera: "../img/n_clm.png", url: "https://ireno.castillalamancha.es/forms/geref000.htm" },
   { nombre: "Castilla y León", bandera: "../img/n_cyl.png", url: "https://servicios.jcyl.es/gaser/verFrmBuscadorGestores.action" },
