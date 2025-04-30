@@ -11,44 +11,65 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 min-h-screen flex flex-col items-center justify-start p-6 font-sans">
+<body class="bg-gray-50 min-h-screen flex flex-col items-center justify-start p-6 font-sans text-gray-800">
+  <div class="w-full max-w-7xl w-[90%] space-y-8">
 
-  <h2 class="text-3xl font-semibold text-gray-800 text-center mb-8">Analizador de PDF</h2>
+    <h2 class="text-4xl font-bold text-center text-blue-700">📄 Analizador de PDF</h2>
 
-  <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6 w-full">
-    <input type="file" id="file-input" accept=".pdf" class="block w-full sm:w-auto text-sm text-gray-600 file:mr-4 file:py-2 file:px-4 file:border file:border-gray-300 file:rounded file:text-sm file:font-semibold file:bg-gray-100 hover:file:bg-gray-200">
-    <button id="guardar-btn" class="hidden bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded">Guardar</button>
-  </div>
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+      <input type="file" id="file-input" accept=".pdf"
+        class="w-full sm:w-auto text-sm text-gray-700 file:mr-4 file:py-2 file:px-4 file:border file:border-gray-300 file:rounded-md file:bg-blue-50 file:text-blue-700 file:font-medium hover:file:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-300">
+      <button id="guardar-btn"
+        class="hidden bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-md shadow">Guardar</button>
+    </div>
 
-  <div id="resultado" class="bg-gray-50 border border-gray-200 p-4 rounded text-sm text-gray-700 whitespace-pre-wrap mb-6 w-full"></div>
+    <div id="resultado"
+      class="bg-white border border-gray-200 p-6 rounded-lg text-sm text-gray-800 whitespace-pre-wrap shadow-sm min-h-[120px]"></div>
 
-  <h3 class="text-2xl font-medium text-gray-700 border-b pb-2 mb-6">Registros guardados</h3>
+    <h3 class="text-2xl font-semibold border-b border-gray-300 pb-2">📦 Registros guardados</h3>
 
-  <div class="overflow-x-auto w-full mb-6">
-    <table id="tabla-resultados" class="w-full text-base text-center text-gray-700 border border-gray-200 table-auto" style="table-layout: fixed;">
-      <thead class="bg-gray-200 text-gray-800">
-        <tr>
-          <th class="px-6 py-3 w-[15%]">Origen</th>
-          <th class="px-6 py-3 w-[15%]">Destino</th>
-          <th class="px-6 py-3">Código LER</th>
-          <th class="px-6 py-3">Inicio de validez</th>
-          <th class="px-6 py-3">Fin de validez</th>
-          <th class="px-6 py-3">Días restantes</th>
-          <th class="px-6 py-3">Número de NT</th>
-          <th class="px-6 py-3">Acción</th>
-        </tr>
-      </thead>
-      <tbody class="divide-y divide-gray-100 bg-white"></tbody>
-    </table>
-  </div>
+    <div class="w-full">
+      <input type="text" id="buscador" placeholder="🔍 Buscar en la tabla..."
+        class="w-full sm:w-1/4 px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:border-blue-300">
+    </div>
 
-  <div class="flex flex-col sm:flex-row sm:justify-end gap-4 w-full">
-    <button id="exportar-excel" class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded">Exportar Excel</button>
-    <button id="exportar-pdf" class="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded">Exportar PDF</button>
+    <div class="overflow-x-auto bg-white rounded-lg shadow border border-gray-200">
+      <table id="tabla-resultados"
+        class="w-full text-sm text-center text-gray-700 table-auto border-collapse">
+        <thead class="bg-blue-100 text-blue-800 uppercase text-xs tracking-wide">
+          <tr>
+            <th class="px-4 py-3">Origen</th>
+            <th class="px-4 py-3">Destino</th>
+            <th class="px-4 py-3">Código LER</th>
+            <th class="px-4 py-3">Inicio de validez</th>
+            <th class="px-4 py-3">Fin de validez</th>
+            <th class="px-4 py-3">Días restantes</th>
+            <th class="px-4 py-3">Número de NT</th>
+            <th class="px-4 py-3">Acción</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-100">
+          <!-- Datos dinámicos aquí -->
+        </tbody>
+      </table>
+    </div>
+
+    <div class="flex flex-col sm:flex-row justify-end gap-4">
+      <button id="exportar-excel"
+        class="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-md shadow">
+        📊 Exportar Excel
+      </button>
+      <button id="exportar-pdf"
+        class="flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-md shadow">
+        🖨️ Exportar PDF
+      </button>
+    </div>
+
   </div>
 
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-  <script src="../js/pruebaspdf.js"></script>
+  <script src="pruebaspdf.js"></script>
+  
 </body>
 </html>
