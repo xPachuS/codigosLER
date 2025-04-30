@@ -1,4 +1,7 @@
-// Configuración de Firebase (reemplaza con tus credenciales)
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+import { getFirestore } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+
+// Configuración de Firebase
 const firebaseConfig = {
     apiKey: "AIzaSyBKKE_pUzGcnsdwdORPDe4AK_6XSo0DgNg",
     authDomain: "xpachusdb.firebaseapp.com",
@@ -10,8 +13,9 @@ const firebaseConfig = {
     measurementId: "G-VLBQFHKH66"
 };
 
-firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
+// Inicializar Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
 // ID de la colección
 const coleccionId = 'hP4a2ZPxJgbU9KS0shlF';
