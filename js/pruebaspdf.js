@@ -14,6 +14,7 @@ const db = firebase.firestore();
 const coleccionId = 'hP4a2ZPxJgbU9KS0shlF';
 
 let registros = [];
+const storedPasswordHash = '82b9e5ba55d8d0068035b62a15574b387266ce6ca180007c6c49592f9558634f';
 
 window.addEventListener('DOMContentLoaded', cargarRegistros);
 
@@ -22,6 +23,49 @@ async function cargarRegistros() {
     registros = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
     registros.sort((a, b) => a.origen.localeCompare(b.origen));
     actualizarTabla();
+}
+
+// Función para obtener el hash de la contraseña
+async function getPasswordHash(password) {
+    const encoder = new TextEncoder();
+    const data = encoder.encode(password);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    const hashHex = hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
+    return hashHex;
+}
+
+// Función para eliminar el registro tras la validación de la contraseña
+async function eliminarRegistro(index) {
+    const password = prompt("Introduce la contraseña para eliminar el registro:");
+
+    if (!password) {
+        alert("La contraseña no puede estar vacía.");
+        return;
+    }
+
+    const enteredPasswordHash = await getPasswordHash(password);
+
+    if (enteredPasswordHash !== storedPasswordHash) {
+        alert("Contraseña incorrecta");
+        return;
+    }
+
+    const confirmar = confirm("¿Estás seguro de que quieres eliminar este registro?");
+    if (!confirmar) return;
+
+    const fila = registros[index];
+    const docId = fila.id;
+
+    if (docId) {
+        db.collection(coleccionId).doc(docId).delete()
+            .then(() => {
+                registros.splice(index, 1);
+                actualizarTabla();
+                alert("Registro eliminado con éxito.");
+            })
+            .catch((error) => console.error("Error al eliminar de Firestore:", error));
+    }
 }
 
 document.getElementById('file-input').addEventListener('change', async (e) => {
@@ -151,79 +195,3 @@ function actualizarTabla() {
         tbody.appendChild(tr);
     });
 }
-
-function eliminarRegistro(index) {
-    const confirmar = confirm("¿Estás seguro de que quieres eliminar este registro?");
-    if (!confirmar) return;
-
-    const fila = registros[index];
-    const docId = fila.id;
-
-    if (docId) {
-        db.collection(coleccionId).doc(docId).delete()
-            .then(() => {
-                registros.splice(index, 1);
-                actualizarTabla();
-            })
-            .catch((error) => console.error("Error al eliminar de Firestore:", error));
-    }
-}
-
-document.getElementById('exportar-excel').addEventListener('click', () => {
-    const wb = XLSX.utils.book_new();
-    
-    // Crear un nuevo array de registros sin la columna 'Acción', y con las propiedades en el orden correcto
-    const registrosSinAccion = registros.map(r => ({
-        'Origen': r.origen,
-        'Destino': r.destino,
-        'Código LER': r.ler,
-        'Inicio Validez': r.inicio,
-        'Fin Validez': r.fin,
-        'Días Restantes': r.dias,
-        'Número NT': r.nt
-    }));
-
-    // Convertir los registros sin la columna 'Acción' a una hoja de Excel
-    const ws = XLSX.utils.json_to_sheet(registrosSinAccion);
-
-    // Agregar la hoja al libro de trabajo
-    XLSX.utils.book_append_sheet(wb, ws, 'Registros');
-
-    // Exportar el archivo Excel
-    XLSX.writeFile(wb, 'registros.xlsx');
-});
-
-document.getElementById('exportar-pdf').addEventListener('click', () => {
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF('landscape'); // 'landscape' para orientación horizontal
-
-    // Definir las columnas de la tabla
-    const tableColumn = ["Origen", "Destino", "LER", "Inicio", "Fin", "Días", "NT"];
-    const tableRows = [];
-
-    // Recopilar los datos de los registros
-    registros.forEach(r => {
-        const row = [r.origen, r.destino, r.ler, r.inicio, r.fin, r.dias, r.nt];
-        tableRows.push(row);
-    });
-
-    // Agregar la tabla al PDF en orientación horizontal
-    doc.autoTable({
-        head: [tableColumn],
-        body: tableRows,
-        startY: 10, // La tabla comenzará un poco más abajo
-        theme: 'grid',
-        columnStyles: {
-            0: { halign: 'center' },
-            1: { halign: 'center' },
-            2: { halign: 'center' },
-            3: { halign: 'center' },
-            4: { halign: 'center' },
-            5: { halign: 'center' },
-            6: { halign: 'center' }
-        }
-    });
-
-    // Exportar el PDF
-    doc.save('registros.pdf');
-});
