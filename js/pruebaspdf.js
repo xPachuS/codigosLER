@@ -99,8 +99,17 @@ document.getElementById('file-input').addEventListener('change', async (e) => {
             <b>LER:</b> ${segundoCodigoLER}
         `;
 
-        document.getElementById('guardar-btn').style.display = 'inline-block';
-        document.getElementById('guardar-btn').onclick = async () => {
+        const guardarBtn = document.getElementById('guardar-btn');
+        guardarBtn.style.display = 'inline-block';
+
+        // Habilitar o deshabilitar el botón "guardar"
+        if (razonSocialOrigen === 'No encontrada' || razonSocialDestino === 'No encontrada' || segundoCodigoLER === 'No encontrado' || ntMatches[0] === 'No encontrado') {
+            guardarBtn.disabled = true;  // Deshabilitar si hay 'No encontrado'
+        } else {
+            guardarBtn.disabled = false; // Habilitar si todos son válidos
+        }
+
+        guardarBtn.onclick = async () => {
             const fila = {
                 origen: razonSocialOrigen,
                 destino: razonSocialDestino,
@@ -117,8 +126,8 @@ document.getElementById('file-input').addEventListener('change', async (e) => {
             registros.sort((a, b) => a.origen.localeCompare(b.origen));
             actualizarTabla();
 
-            document.getElementById('guardar-btn').style.display = 'none';
-            document.getElementById('resultado').textContent = '';
+            guardarBtn.style.display = 'none';
+            resultado.textContent = '';
         };
     };
 
@@ -162,23 +171,8 @@ function eliminarRegistro(index) {
 }
 
 document.getElementById('exportar-excel').addEventListener('click', () => {
-    const table = document.getElementById('tabla-resultados');
-    const wb = XLSX.utils.table_to_book(table, { sheet: "Registros" });
-    XLSX.writeFile(wb, "registros.xlsx");
-});
-
-document.getElementById('exportar-pdf').addEventListener('click', () => {
-    const doc = new jspdf.jsPDF({ orientation: "landscape" });
-    const headers = [["Origen", "Destino", "Código LER", "Inicio de validez", "Fin de validez", "Días restantes", "Número de NT"]];
-    const body = registros.map(r => [r.origen, r.destino, r.ler, r.inicio, r.fin, r.dias, r.nt]);
-
-    doc.autoTable({
-        head: headers,
-        body: body,
-        styles: { fontSize: 10 },
-        theme: 'grid',
-        headStyles: { fillColor: [100, 100, 100] }
-    });
-
-    doc.save('registros.pdf');
+    const wb = XLSX.utils.book_new();
+    const ws = XLSX.utils.json_to_sheet(registros);
+    XLSX.utils.book_append_sheet(wb, ws, 'Registros');
+    XLSX.writeFile(wb, 'registros.xlsx');
 });
