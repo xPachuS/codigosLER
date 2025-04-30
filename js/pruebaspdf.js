@@ -1,5 +1,5 @@
 const registros = JSON.parse(localStorage.getItem('registros') || '[]');
-actualizarTabla(); // carga los registros guardados
+actualizarTabla();
 
 document.getElementById('file-input').addEventListener('change', async (e) => {
   const file = e.target.files[0];
@@ -71,7 +71,7 @@ document.getElementById('file-input').addEventListener('change', async (e) => {
     resultado.innerHTML = `
       <b>Número NT:</b> ${ntMatches[0] || 'No encontrado'}<br><br>
       <b>Inicio Validez:</b> ${inicioValidez}<br>
-      <b>Fin Validez:</b> <span class="${mostrarFechaRoja ? 'fecha-roja' : ''}">${finValidez} (${diasTexto})</span><br><br>
+      <b>Fin Validez:</b> <span class="${mostrarFechaRoja ? 'text-red-600 font-semibold' : ''}">${finValidez} (${diasTexto})</span><br><br>
       <b>Origen:</b> ${razonSocialOrigen}<br>
       <b>Destino:</b> ${razonSocialDestino}<br><br>
       <b>LER:</b> ${segundoCodigoLER}
@@ -79,66 +79,87 @@ document.getElementById('file-input').addEventListener('change', async (e) => {
 
     document.getElementById('guardar-btn').style.display = 'inline-block';
     document.getElementById('guardar-btn').onclick = () => {
-      const fila = {
-        origen: razonSocialOrigen,
-        destino: razonSocialDestino,
-        ler: segundoCodigoLER,
-        inicio: inicioValidez,
-        fin: finValidez,
-        dias: diasTexto,
-        nt: ntMatches[0] || 'No encontrado'
-      };
-      registros.push(fila);
-      registros.sort((a, b) => a.origen.localeCompare(b.origen));
-      localStorage.setItem('registros', JSON.stringify(registros));
-      actualizarTabla();
-    };
+  const fila = {
+    origen: razonSocialOrigen,
+    destino: razonSocialDestino,
+    ler: segundoCodigoLER,
+    inicio: inicioValidez,
+    fin: finValidez,
+    dias: diasTexto,
+    nt: ntMatches[0] || 'No encontrado'
+  };
+
+  registros.push(fila);
+  registros.sort((a, b) => a.origen.localeCompare(b.origen));
+  localStorage.setItem('registros', JSON.stringify(registros));
+  actualizarTabla();
+
+  // Ocultar botón y limpiar resultado
+  document.getElementById('guardar-btn').style.display = 'none';
+  document.getElementById('resultado').textContent = '';
+};
+
   };
 
   fileReader.readAsArrayBuffer(file);
 });
 
-// Actualiza tabla desde registros
 function actualizarTabla() {
   const tbody = document.querySelector('#tabla-resultados tbody');
   tbody.innerHTML = '';
   registros.forEach((r, index) => {
     const tr = document.createElement('tr');
     tr.innerHTML = `
-      <td>${r.origen}</td>
-      <td>${r.destino}</td>
-      <td>${r.ler}</td>
-      <td>${r.inicio}</td>
-      <td>${r.fin}</td>
-      <td>${r.dias}</td>
-      <td>${r.nt}</td>
-      <td><button onclick="eliminarRegistro(${index})">Eliminar</button></td>
+      <td class="px-4 py-2">${r.origen}</td>
+      <td class="px-4 py-2">${r.destino}</td>
+      <td class="px-4 py-2">${r.ler}</td>
+      <td class="px-4 py-2">${r.inicio}</td>
+      <td class="px-4 py-2">${r.fin}</td>
+      <td class="px-4 py-2">${r.dias}</td>
+      <td class="px-4 py-2">${r.nt}</td>
+      <td class="px-4 py-2"><button onclick="eliminarRegistro(${index})" class="text-red-600 hover:underline">Eliminar</button></td>
     `;
     tbody.appendChild(tr);
   });
 }
 
-// Eliminar un registro con confirmación
 function eliminarRegistro(index) {
   const confirmar = confirm("¿Estás seguro de que quieres eliminar este registro?");
   if (!confirmar) return;
-
   registros.splice(index, 1);
   localStorage.setItem('registros', JSON.stringify(registros));
   actualizarTabla();
 }
 
-// Exportar tabla a Excel
+// Exportar Excel (incluye todas las columnas HTML, incluyendo 'Acción')
 document.getElementById('exportar-excel').addEventListener('click', () => {
   const table = document.getElementById('tabla-resultados');
   const wb = XLSX.utils.table_to_book(table, { sheet: "Registros" });
   XLSX.writeFile(wb, "registros.xlsx");
 });
 
-// Exportar tabla a PDF
+// Exportar PDF (sin columna "Acción", en horizontal)
 document.getElementById('exportar-pdf').addEventListener('click', () => {
-  const doc = new jspdf.jsPDF();
-  doc.autoTable({ html: '#tabla-resultados' });
+  const doc = new jspdf.jsPDF({ orientation: "landscape" });
+
+  const headers = [["Origen", "Destino", "Código LER", "Inicio de validez", "Fin de validez", "Días restantes", "Número de NT"]];
+  const body = registros.map(r => [
+    r.origen,
+    r.destino,
+    r.ler,
+    r.inicio,
+    r.fin,
+    r.dias,
+    r.nt
+  ]);
+
+  doc.autoTable({
+    head: headers,
+    body: body,
+    styles: { fontSize: 10 },
+    theme: 'grid',
+    headStyles: { fillColor: [100, 100, 100] }
+  });
+
   doc.save('registros.pdf');
 });
-
