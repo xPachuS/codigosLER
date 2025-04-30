@@ -6,31 +6,46 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-database.js"></script>
-  <link rel="stylesheet" href="../css/stylepdf.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-gray-100 min-h-screen flex flex-col items-center justify-start p-6 font-sans">
 
-  <h2>Analizador de PDF</h2>
-  <input type="file" id="file-input" accept=".pdf">
-  <button id="guardar-btn" style="display:none;">Guardar</button>
+  <h2 class="text-3xl font-semibold text-gray-800 text-center mb-8">Analizador de PDF</h2>
 
-  <div class="resultado" id="resultado"></div>
+  <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6 w-full">
+    <input type="file" id="file-input" accept=".pdf" class="block w-full sm:w-auto text-sm text-gray-600 file:mr-4 file:py-2 file:px-4 file:border file:border-gray-300 file:rounded file:text-sm file:font-semibold file:bg-gray-100 hover:file:bg-gray-200">
+    <button id="guardar-btn" class="hidden bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded">Guardar</button>
+  </div>
 
-  <h3>Registros guardados</h3>
-  <table id="tabla-resultados">
-    <thead>
-      <tr>
-        <th>Origen</th>
-        <th>Destino</th>
-        <th>Código LER</th>
-        <th>Inicio de validez</th>
-        <th>Fin de validez</th>
-        <th>Días restantes</th>
-        <th>Número de NT</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
+  <div id="resultado" class="bg-gray-50 border border-gray-200 p-4 rounded text-sm text-gray-700 whitespace-pre-wrap mb-6 w-full"></div>
+
+  <h3 class="text-2xl font-medium text-gray-700 border-b pb-2 mb-6">Registros guardados</h3>
+
+  <div class="overflow-x-auto w-full mb-6">
+    <table id="tabla-resultados" class="w-full text-base text-center text-gray-700 border border-gray-200 table-auto" style="table-layout: fixed;">
+      <thead class="bg-gray-200 text-gray-800">
+        <tr>
+          <th class="px-6 py-3 w-[15%]">Origen</th>
+          <th class="px-6 py-3 w-[15%]">Destino</th>
+          <th class="px-6 py-3">Código LER</th>
+          <th class="px-6 py-3">Inicio de validez</th>
+          <th class="px-6 py-3">Fin de validez</th>
+          <th class="px-6 py-3">Días restantes</th>
+          <th class="px-6 py-3">Número de NT</th>
+          <th class="px-6 py-3">Acción</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100 bg-white"></tbody>
+    </table>
+  </div>
+
+  <div class="flex flex-col sm:flex-row sm:justify-end gap-4 w-full">
+    <button id="exportar-excel" class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded">Exportar Excel</button>
+    <button id="exportar-pdf" class="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded">Exportar PDF</button>
+  </div>
 
   <script src="../js/pruebaspdf.js"></script>
 </body>
