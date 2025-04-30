@@ -241,13 +241,13 @@ document.getElementById('exportar-pdf').addEventListener('click', () => {
         startY: 10, // La tabla comenzará un poco más abajo
         theme: 'grid',
         columnStyles: {
-            0: { halign: 'center' }, // Centrado de texto en la columna 0
-            1: { halign: 'center' }, // Centrado de texto en la columna 1
-            2: { halign: 'center' }, // Centrado de texto en la columna 2
-            3: { halign: 'center' }, // Centrado de texto en la columna 3
-            4: { halign: 'center' }, // Centrado de texto en la columna 4
-            5: { halign: 'center' }, // Centrado de texto en la columna 5
-            6: { halign: 'center' }  // Centrado de texto en la columna 6
+            0: { halign: 'center' },
+            1: { halign: 'center' },
+            2: { halign: 'center' },
+            3: { halign: 'center' },
+            4: { halign: 'center' },
+            5: { halign: 'center' },
+            6: { halign: 'center' }
         }
     });
 
