@@ -153,25 +153,36 @@ document.getElementById('file-input').addEventListener('change', async (e) => {
         }
 
         guardarBtn.onclick = async () => {
-            const fila = {
-                origen: razonSocialOrigen,
-                destino: razonSocialDestino,
-                ler: segundoCodigoLER,
-                inicio: inicioValidez,
-                fin: finValidez,
-                dias: diasTexto,
-                nt: ntMatches[0] || 'No encontrado'
-            };
+          const nuevoNT = ntMatches[0] || 'No encontrado';
 
-            const docRef = await db.collection(coleccionId).add(fila);
-            fila.id = docRef.id;
-            registros.push(fila);
-            registros.sort((a, b) => a.origen.localeCompare(b.origen));
-            actualizarTabla();
+          // Verificar si ya existe un registro con el mismo número de NT
+          const ntDuplicado = registros.some(r => r.nt === nuevoNT);
 
-            guardarBtn.style.display = 'none';
-            resultado.textContent = '';
-        };
+          if (ntDuplicado) {
+              alert(`Ya existe un registro con el número NT: ${nuevoNT}`);
+              return;
+          }
+
+          const fila = {
+              origen: razonSocialOrigen,
+              destino: razonSocialDestino,
+              ler: segundoCodigoLER,
+              inicio: inicioValidez,
+              fin: finValidez,
+              dias: diasTexto,
+              nt: nuevoNT
+          };
+
+          const docRef = await db.collection(coleccionId).add(fila);
+          fila.id = docRef.id;
+          registros.push(fila);
+          registros.sort((a, b) => a.origen.localeCompare(b.origen));
+          actualizarTabla();
+
+          guardarBtn.style.display = 'none';
+          resultado.textContent = '';
+      };
+
     };
 
     fileReader.readAsArrayBuffer(file);
@@ -254,3 +265,13 @@ document.getElementById('exportar-pdf').addEventListener('click', () => {
     // Exportar el PDF
     doc.save('registros.pdf');
 });
+
+document.getElementById('buscador').addEventListener('input', function () {
+    const filtro = this.value.toLowerCase();
+    const filas = document.querySelectorAll('#tabla-resultados tbody tr');
+
+    filas.forEach(fila => {
+      const textoFila = fila.innerText.toLowerCase();
+      fila.style.display = textoFila.includes(filtro) ? '' : 'none';
+    });
+  });
