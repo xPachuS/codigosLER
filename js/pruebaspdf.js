@@ -102,11 +102,10 @@ document.getElementById('file-input').addEventListener('change', async (e) => {
         const guardarBtn = document.getElementById('guardar-btn');
         guardarBtn.style.display = 'inline-block';
 
-        // Habilitar o deshabilitar el botón "guardar"
         if (razonSocialOrigen === 'No encontrada' || razonSocialDestino === 'No encontrada' || segundoCodigoLER === 'No encontrado' || ntMatches[0] === 'No encontrado') {
-            guardarBtn.disabled = true;  // Deshabilitar si hay 'No encontrado'
+            guardarBtn.disabled = true;
         } else {
-            guardarBtn.disabled = false; // Habilitar si todos son válidos
+            guardarBtn.disabled = false;
         }
 
         guardarBtn.onclick = async () => {
@@ -172,7 +171,59 @@ function eliminarRegistro(index) {
 
 document.getElementById('exportar-excel').addEventListener('click', () => {
     const wb = XLSX.utils.book_new();
-    const ws = XLSX.utils.json_to_sheet(registros);
+    
+    // Crear un nuevo array de registros sin la columna 'Acción', y con las propiedades en el orden correcto
+    const registrosSinAccion = registros.map(r => ({
+        'Origen': r.origen,
+        'Destino': r.destino,
+        'Código LER': r.ler,
+        'Inicio Validez': r.inicio,
+        'Fin Validez': r.fin,
+        'Días Restantes': r.dias,
+        'Número NT': r.nt
+    }));
+
+    // Convertir los registros sin la columna 'Acción' a una hoja de Excel
+    const ws = XLSX.utils.json_to_sheet(registrosSinAccion);
+
+    // Agregar la hoja al libro de trabajo
     XLSX.utils.book_append_sheet(wb, ws, 'Registros');
+
+    // Exportar el archivo Excel
     XLSX.writeFile(wb, 'registros.xlsx');
+});
+
+document.getElementById('exportar-pdf').addEventListener('click', () => {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF('landscape'); // 'landscape' para orientación horizontal
+
+    // Definir las columnas de la tabla
+    const tableColumn = ["Origen", "Destino", "LER", "Inicio", "Fin", "Días", "NT"];
+    const tableRows = [];
+
+    // Recopilar los datos de los registros
+    registros.forEach(r => {
+        const row = [r.origen, r.destino, r.ler, r.inicio, r.fin, r.dias, r.nt];
+        tableRows.push(row);
+    });
+
+    // Agregar la tabla al PDF en orientación horizontal
+    doc.autoTable({
+        head: [tableColumn],
+        body: tableRows,
+        startY: 10, // La tabla comenzará un poco más abajo
+        theme: 'grid',
+        columnStyles: {
+            0: { halign: 'center' },
+            1: { halign: 'center' },
+            2: { halign: 'center' },
+            3: { halign: 'center' },
+            4: { halign: 'center' },
+            5: { halign: 'center' },
+            6: { halign: 'center' }
+        }
+    });
+
+    // Exportar el PDF
+    doc.save('registros.pdf');
 });
