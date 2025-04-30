@@ -23,6 +23,18 @@ async function cargarRegistros() {
     registros = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
     registros.sort((a, b) => a.origen.localeCompare(b.origen));
     actualizarTabla();
+    // Llamar a la actualización de los días cada 24 horas
+    setInterval(actualizarDiasRestantes, 24 * 60 * 60 * 1000); // 24 horas en milisegundos
+}
+
+function actualizarDiasRestantes() {
+    const fechaActual = new Date();
+    registros.forEach(r => {
+        const fechaFinValidez = new Date(r.fin.split('-').reverse().join('-')); // Asegúrate de que el formato de la fecha sea correcto
+        const diasRestantes = Math.ceil((fechaFinValidez - fechaActual) / (1000 * 60 * 60 * 24));
+        r.dias = diasRestantes >= 0 ? `${diasRestantes} días` : 'Fecha pasada';
+    });
+    actualizarTabla(); // Actualizar la tabla visualmente
 }
 
 // Función para obtener el hash de la contraseña
