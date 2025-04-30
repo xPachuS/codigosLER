@@ -11,13 +11,18 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
-
-// ID de la colección
 const coleccionId = 'hP4a2ZPxJgbU9KS0shlF';
 
-// Variable para almacenar los registros
-let registros = JSON.parse(localStorage.getItem('registros') || '[]');
-actualizarTabla();
+let registros = [];
+
+window.addEventListener('DOMContentLoaded', cargarRegistros);
+
+async function cargarRegistros() {
+    const snapshot = await db.collection(coleccionId).get();
+    registros = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    registros.sort((a, b) => a.origen.localeCompare(b.origen));
+    actualizarTabla();
+}
 
 document.getElementById('file-input').addEventListener('change', async (e) => {
     const file = e.target.files[0];
@@ -25,7 +30,6 @@ document.getElementById('file-input').addEventListener('change', async (e) => {
 
     const resultado = document.getElementById('resultado');
     resultado.textContent = 'Analizando...';
-
     const fileReader = new FileReader();
 
     fileReader.onload = async function () {
@@ -40,11 +44,9 @@ document.getElementById('file-input').addEventListener('change', async (e) => {
             textoTotal += textoPagina + '\n';
         }
 
-        // Limpieza del texto obtenido del PDF
         textoTotal = textoTotal.replace(/\b[A-ZÑÁÉÍÓÚÜ0-9\s\.\-]+?,?\s?(?:S\.?A\.?U?\.?|S\.?L\.?U?\.?)\b[\s\S]{0,100}?\bNombre\s*NIMA\s*[AB]\d{8}\b/gi, '');
         textoTotal = textoTotal.replace(/\bNombre\s*NIMA\s*[AB]\d{8}\b/gi, '');
 
-        // Extracción de datos con expresiones regulares
         let ntMatches = textoTotal.match(/NT\d+/gi) || [];
         ntMatches = ntMatches.slice(1);
 
@@ -109,16 +111,12 @@ document.getElementById('file-input').addEventListener('change', async (e) => {
                 nt: ntMatches[0] || 'No encontrado'
             };
 
-            // Guardar en Firebase en la colección con ID 'hP4a2ZPxJgbU9KS0shlF'
-            await db.collection(coleccionId).add(fila);
-
-            // Guardar en localStorage
+            const docRef = await db.collection(coleccionId).add(fila);
+            fila.id = docRef.id;
             registros.push(fila);
             registros.sort((a, b) => a.origen.localeCompare(b.origen));
-            localStorage.setItem('registros', JSON.stringify(registros));
             actualizarTabla();
 
-            // Ocultar botón y limpiar resultado
             document.getElementById('guardar-btn').style.display = 'none';
             document.getElementById('resultado').textContent = '';
         };
@@ -150,36 +148,29 @@ function eliminarRegistro(index) {
     const confirmar = confirm("¿Estás seguro de que quieres eliminar este registro?");
     if (!confirmar) return;
 
-    // Eliminar de Firebase usando el ID de la colección 'hP4a2ZPxJgbU9KS0shlF'
-    db.collection(coleccionId).doc(registros[index].id).delete();
+    const fila = registros[index];
+    const docId = fila.id;
 
-    // Eliminar de localStorage
-    registros.splice(index, 1);
-    localStorage.setItem('registros', JSON.stringify(registros));
-    actualizarTabla();
+    if (docId) {
+        db.collection(coleccionId).doc(docId).delete()
+            .then(() => {
+                registros.splice(index, 1);
+                actualizarTabla();
+            })
+            .catch((error) => console.error("Error al eliminar de Firestore:", error));
+    }
 }
 
-// Exportar Excel
 document.getElementById('exportar-excel').addEventListener('click', () => {
     const table = document.getElementById('tabla-resultados');
     const wb = XLSX.utils.table_to_book(table, { sheet: "Registros" });
     XLSX.writeFile(wb, "registros.xlsx");
 });
 
-// Exportar PDF
 document.getElementById('exportar-pdf').addEventListener('click', () => {
     const doc = new jspdf.jsPDF({ orientation: "landscape" });
-
     const headers = [["Origen", "Destino", "Código LER", "Inicio de validez", "Fin de validez", "Días restantes", "Número de NT"]];
-    const body = registros.map(r => [
-        r.origen,
-        r.destino,
-        r.ler,
-        r.inicio,
-        r.fin,
-        r.dias,
-        r.nt
-    ]);
+    const body = registros.map(r => [r.origen, r.destino, r.ler, r.inicio, r.fin, r.dias, r.nt]);
 
     doc.autoTable({
         head: headers,
