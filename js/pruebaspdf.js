@@ -1,3 +1,4 @@
+//Conexión FireBase
 const firebaseConfig = {
     apiKey: "AIzaSyBKKE_pUzGcnsdwdORPDe4AK_6XSo0DgNg",
     authDomain: "xpachusdb.firebaseapp.com",
@@ -13,10 +14,16 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 const coleccionId = 'hP4a2ZPxJgbU9KS0shlF';
 
+
+
+
+
+//Cargar Registros
 let registros = [];
 const storedPasswordHash = '82b9e5ba55d8d0068035b62a15574b387266ce6ca180007c6c49592f9558634f';
 
 window.addEventListener('DOMContentLoaded', cargarRegistros);
+
 
 async function cargarRegistros() {
     const snapshot = await db.collection(coleccionId).get();
@@ -32,10 +39,14 @@ function actualizarDiasRestantes() {
     registros.forEach(r => {
         const fechaFinValidez = new Date(r.fin.split('-').reverse().join('-')); // Asegúrate de que el formato de la fecha sea correcto
         const diasRestantes = Math.ceil((fechaFinValidez - fechaActual) / (1000 * 60 * 60 * 24));
-        r.dias = diasRestantes >= 0 ? `${diasRestantes} días` : 'Fecha pasada';
+        r.dias = diasRestantes >= 0 ? `${diasRestantes} días` : 'Caducada';
     });
     actualizarTabla(); // Actualizar la tabla visualmente
 }
+
+
+
+
 
 // Función para obtener el hash de la contraseña
 async function getPasswordHash(password) {
@@ -47,27 +58,74 @@ async function getPasswordHash(password) {
     return hashHex;
 }
 
+
+
+
+
 // Función para eliminar el registro tras la validación de la contraseña
 async function eliminarRegistro(index) {
-    const password = prompt("Introduce la contraseña para eliminar el registro:");
+    const modal = document.getElementById('modal-password');
+    const input = document.getElementById('input-password');
+    const btnConfirmar = document.getElementById('confirmar-password');
+    const btnCancelar = document.getElementById('cancelar-password');
+    const errorText = document.getElementById('error-password');
 
-    if (!password) {
-        alert("La contraseña no puede estar vacía.");
-        return;
-    }
+    input.value = '';
+    errorText.classList.add('hidden');
+    modal.classList.remove('hidden');
 
-    const enteredPasswordHash = await getPasswordHash(password);
+    const confirmar = () => {
+        const password = input.value;
+        if (!password) {
+            errorText.textContent = 'La contraseña no puede estar vacía.';
+            errorText.classList.remove('hidden');
+            return;
+        }
 
-    if (enteredPasswordHash !== storedPasswordHash) {
-        alert("Contraseña incorrecta");
-        return;
-    }
+        getPasswordHash(password).then(enteredPasswordHash => {
+            if (enteredPasswordHash !== storedPasswordHash) {
+                errorText.textContent = 'Contraseña incorrecta.';
+                errorText.classList.remove('hidden');
+                return;
+            }
 
-    const confirmar = confirm("¿Estás seguro de que quieres eliminar este registro?");
-    if (!confirmar) return;
+            const confirmacion = confirm("¿Estás seguro de que quieres eliminar este registro?");
+            if (!confirmacion) {
+                modal.classList.add('hidden');
+                return;
+            }
 
-    const fila = registros[index];
-    const docId = fila.id;
+            const fila = registros[index];
+            const docId = fila.id;
+
+            // Eliminar el PDF
+            if (fila.pdfURL) {
+                const storageRef = firebase.storage().refFromURL(fila.pdfURL);
+                storageRef.delete().catch(error => {
+                    console.error("Error al eliminar el PDF:", error);
+                    alert("Hubo un error al eliminar el archivo PDF.");
+                });
+            }
+
+            // Eliminar de Firestore
+            db.collection(coleccionId).doc(docId).delete().then(() => {
+                registros.splice(index, 1);
+                actualizarTabla();
+                alert("Registro eliminado con éxito.");
+                modal.classList.add('hidden');
+            }).catch(error => {
+                console.error("Error al eliminar de Firestore:", error);
+                alert("Hubo un error al eliminar el registro.");
+            });
+        });
+    };
+
+    const cancelar = () => {
+        modal.classList.add('hidden');
+    };
+
+    btnConfirmar.onclick = confirmar;
+    btnCancelar.onclick = cancelar;
 
     if (docId) {
         db.collection(coleccionId).doc(docId).delete()
@@ -76,10 +134,18 @@ async function eliminarRegistro(index) {
                 actualizarTabla();
                 alert("Registro eliminado con éxito.");
             })
-            .catch((error) => console.error("Error al eliminar de Firestore:", error));
+            .catch((error) => {
+                console.error("Error al eliminar de Firestore:", error);
+                alert("Hubo un error al eliminar el registro.");
+            });
     }
 }
 
+
+
+
+
+//Carga del archivo PDF
 document.getElementById('file-input').addEventListener('change', async (e) => {
     const file = e.target.files[0];
     if (!file) return;
@@ -133,7 +199,7 @@ document.getElementById('file-input').addEventListener('change', async (e) => {
         const fechaActual = new Date();
         const mostrarFechaRoja = fechaActual >= fechaLimite;
         const diasRestantes = Math.ceil((fechaFinValidez - fechaActual) / (1000 * 60 * 60 * 24));
-        const diasTexto = diasRestantes >= 0 ? `${diasRestantes} días` : 'Fecha pasada';
+        const diasTexto = diasRestantes >= 0 ? `${diasRestantes} días` : 'Caducada';
 
         const razonSocialRegex = /\b([A-ZÑÁÉÍÓÚÜ0-9\s\.\-]+?,\s?(?:S\.?A\.?U?\.?|S\.?L\.?U?\.?))\b/gi;
         const razonSocialMatches = textoTotal.match(razonSocialRegex) || [];
@@ -158,48 +224,66 @@ document.getElementById('file-input').addEventListener('change', async (e) => {
         const guardarBtn = document.getElementById('guardar-btn');
         guardarBtn.style.display = 'inline-block';
 
-        if (razonSocialOrigen === 'No encontrada' || razonSocialDestino === 'No encontrada' || segundoCodigoLER === 'No encontrado' || ntMatches[0] === 'No encontrado') {
-            guardarBtn.disabled = true;
-        } else {
-            guardarBtn.disabled = false;
-        }
-
         guardarBtn.onclick = async () => {
-          const nuevoNT = ntMatches[0] || 'No encontrado';
+            if (razonSocialOrigen === 'No encontrada' || razonSocialDestino === 'No encontrada' || segundoCodigoLER === 'No encontrado' || ntMatches[0] === 'No encontrado') {
+                document.getElementById('modal-error').classList.remove('hidden');
+                document.getElementById('cerrar-modal-error').addEventListener('click', () => {
+                document.getElementById('modal-error').classList.add('hidden');
+                });
 
-          // Verificar si ya existe un registro con el mismo número de NT
-          const ntDuplicado = registros.some(r => r.nt === nuevoNT);
+                return; // No guardar el registro
+            }
 
-          if (ntDuplicado) {
-              alert(`Ya existe un registro con el número NT: ${nuevoNT}`);
-              return;
-          }
+            const nuevoNT = ntMatches[0] || 'No encontrado';
 
-          const fila = {
-              origen: razonSocialOrigen,
-              destino: razonSocialDestino,
-              ler: segundoCodigoLER,
-              inicio: inicioValidez,
-              fin: finValidez,
-              dias: diasTexto,
-              nt: nuevoNT
-          };
+            const ntDuplicado = registros.some(r => r.nt === nuevoNT);
 
-          const docRef = await db.collection(coleccionId).add(fila);
-          fila.id = docRef.id;
-          registros.push(fila);
-          registros.sort((a, b) => a.origen.localeCompare(b.origen));
-          actualizarTabla();
+            if (ntDuplicado) {
+                document.getElementById('modal-aviso-text').textContent = `Ya existe un registro con el número NT: ${nuevoNT}`;
+                document.getElementById('modal-aviso').classList.remove('hidden');
+                document.getElementById('cerrar-modal-aviso').addEventListener('click', () => {
+                document.getElementById('modal-aviso').classList.add('hidden');
+            });
 
-          guardarBtn.style.display = 'none';
-          resultado.textContent = '';
-      };
+                return;
+            }
+
+            const storageRef = firebase.storage().ref();
+            const pdfRef = storageRef.child(`pdfs/${file.name}`);
+            await pdfRef.put(file);
+            const pdfURL = await pdfRef.getDownloadURL();
+
+            const fila = {
+                origen: razonSocialOrigen,
+                destino: razonSocialDestino,
+                ler: segundoCodigoLER,
+                inicio: inicioValidez,
+                fin: finValidez,
+                dias: diasTexto,
+                nt: nuevoNT,
+                pdfURL: pdfURL
+            };
+
+            const docRef = await db.collection(coleccionId).add(fila);
+            fila.id = docRef.id;
+            registros.push(fila);
+            registros.sort((a, b) => a.origen.localeCompare(b.origen));
+            actualizarTabla();
+
+            guardarBtn.style.display = 'none';
+            resultado.textContent = '';
+        };
 
     };
 
     fileReader.readAsArrayBuffer(file);
 });
 
+
+
+
+
+//Modificación de la tabla para agregar el enlace al PDF
 function actualizarTabla() {
     const tbody = document.querySelector('#tabla-resultados tbody');
     tbody.innerHTML = '';
@@ -213,17 +297,47 @@ function actualizarTabla() {
             <td class="px-4 py-2">${r.fin}</td>
             <td class="px-4 py-2">${r.dias}</td>
             <td class="px-4 py-2">${r.nt}</td>
+            <td class="px-4 py-2">
+                ${r.pdfURL ? `<a href="${r.pdfURL}" target="_blank" class="text-blue-600">📄</a>` : 'No disponible'}
+            </td>
             <td class="px-4 py-2"><button onclick="eliminarRegistro(${index})" class="text-red-600">❌</button></td>
         `;
         tbody.appendChild(tr);
     });
 }
 
+
+
+
+
+// Filtrado de tabla
+document.getElementById('buscador').addEventListener('input', function () {
+    const filtro = this.value.toLowerCase();
+    const filas = document.querySelectorAll('#tabla-resultados tbody tr');
+
+    filas.forEach(fila => {
+        const textoFila = fila.innerText.toLowerCase();
+        if (textoFila.includes(filtro)) {
+            fila.style.display = ''; // Mostrar fila si el filtro coincide
+        } else {
+            fila.style.display = 'none'; // Ocultar fila si no coincide
+        }
+    });
+});
+
+
+
+
+
+//Exportar a Excel y PDF
 document.getElementById('exportar-excel').addEventListener('click', () => {
     const wb = XLSX.utils.book_new();
     
-    // Crear un nuevo array de registros sin la columna 'Acción', y con las propiedades en el orden correcto
-    const registrosSinAccion = registros.map(r => ({
+    // Crear array con registros visibles en la tabla
+    const registrosVisibles = registros.filter((r, index) => {
+        const fila = document.querySelectorAll('#tabla-resultados tbody tr')[index];
+        return fila.style.display !== 'none';
+    }).map(r => ({
         'Origen': r.origen,
         'Destino': r.destino,
         'Código LER': r.ler,
@@ -233,35 +347,33 @@ document.getElementById('exportar-excel').addEventListener('click', () => {
         'Número NT': r.nt
     }));
 
-    // Convertir los registros sin la columna 'Acción' a una hoja de Excel
-    const ws = XLSX.utils.json_to_sheet(registrosSinAccion);
+    const ws = XLSX.utils.json_to_sheet(registrosVisibles);
 
-    // Agregar la hoja al libro de trabajo
     XLSX.utils.book_append_sheet(wb, ws, 'Registros');
-
-    // Exportar el archivo Excel
     XLSX.writeFile(wb, 'registros.xlsx');
 });
 
 document.getElementById('exportar-pdf').addEventListener('click', () => {
     const { jsPDF } = window.jspdf;
-    const doc = new jsPDF('landscape'); // 'landscape' para orientación horizontal
+    const doc = new jsPDF('landscape');
 
-    // Definir las columnas de la tabla
     const tableColumn = ["Origen", "Destino", "LER", "Inicio", "Fin", "Días", "NT"];
     const tableRows = [];
 
-    // Recopilar los datos de los registros
-    registros.forEach(r => {
+    const registrosVisibles = registros.filter((r, index) => {
+        const fila = document.querySelectorAll('#tabla-resultados tbody tr')[index];
+        return fila.style.display !== 'none';
+    });
+
+    registrosVisibles.forEach(r => {
         const row = [r.origen, r.destino, r.ler, r.inicio, r.fin, r.dias, r.nt];
         tableRows.push(row);
     });
 
-    // Agregar la tabla al PDF en orientación horizontal
     doc.autoTable({
         head: [tableColumn],
         body: tableRows,
-        startY: 10, // La tabla comenzará un poco más abajo
+        startY: 10,
         theme: 'grid',
         columnStyles: {
             0: { halign: 'center' },
@@ -274,16 +386,49 @@ document.getElementById('exportar-pdf').addEventListener('click', () => {
         }
     });
 
-    // Exportar el PDF
     doc.save('registros.pdf');
 });
 
-document.getElementById('buscador').addEventListener('input', function () {
-    const filtro = this.value.toLowerCase();
-    const filas = document.querySelectorAll('#tabla-resultados tbody tr');
 
-    filas.forEach(fila => {
-      const textoFila = fila.innerText.toLowerCase();
-      fila.style.display = textoFila.includes(filtro) ? '' : 'none';
-    });
-  });
+
+
+
+//Modales
+document.addEventListener("DOMContentLoaded", () => {
+  const modalesHTML = `
+    <!-- Modal de error -->
+    <div id="modal-error" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 hidden">
+      <div class="bg-white rounded-2xl shadow-xl max-w-md w-full p-6 text-center animate-fade-in">
+        <h2 class="text-xl font-bold text-red-600 mb-4">No se puede guardar</h2>
+        <p class="text-gray-700">El PDF no cumple con todos los requisitos. Por favor, revisa el archivo antes de continuar.</p>
+        <button id="cerrar-modal-error" class="mt-6 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-xl transition">Cerrar</button>
+      </div>
+    </div>
+
+    <!-- Modal de aviso -->
+    <div id="modal-aviso" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 hidden">
+      <div class="bg-white rounded-2xl shadow-xl max-w-md w-full p-6 text-center animate-fade-in">
+        <h2 class="text-xl font-bold text-yellow-600 mb-4">Registro duplicado</h2>
+        <p id="modal-aviso-text" class="text-gray-700">Ya existe un registro con el número NT.</p>
+        <button id="cerrar-modal-aviso" class="mt-6 bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-xl transition">Cerrar</button>
+      </div>
+    </div>
+
+    <!-- Modal de contraseña -->
+    <div id="modal-password" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 hidden">
+      <div class="bg-white rounded-2xl shadow-xl max-w-md w-full p-6 text-center animate-fade-in">
+        <h2 class="text-xl font-bold text-blue-600 mb-4">Introduce la contraseña</h2>
+        <input id="input-password" type="password" class="w-full border border-gray-300 rounded-xl px-4 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="Contraseña">
+        <p id="error-password" class="text-red-600 text-sm mb-4 hidden">Contraseña incorrecta.</p>
+        <div class="flex justify-center gap-4">
+          <button id="cancelar-password" class="bg-gray-300 hover:bg-gray-400 text-gray-800 px-4 py-2 rounded-xl transition">Cancelar</button>
+          <button id="confirmar-password" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl transition">Confirmar</button>
+        </div>
+      </div>
+    </div>
+  `;
+
+  const container = document.createElement("div");
+  container.innerHTML = modalesHTML;
+  document.body.appendChild(container);
+});
