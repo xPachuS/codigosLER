@@ -213,7 +213,7 @@ function actualizarTabla() {
             <td class="px-4 py-2">${r.fin}</td>
             <td class="px-4 py-2">${r.dias}</td>
             <td class="px-4 py-2">${r.nt}</td>
-            <td class="px-4 py-2"><button onclick="eliminarRegistro(${index})" class="text-red-600 hover:underline">Eliminar</button></td>
+            <td class="px-4 py-2"><button onclick="eliminarRegistro(${index})" class="text-red-600">❌</button></td>
         `;
         tbody.appendChild(tr);
     });
