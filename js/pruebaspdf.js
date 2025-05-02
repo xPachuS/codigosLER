@@ -34,14 +34,31 @@ async function cargarRegistros() {
     setInterval(actualizarDiasRestantes, 24 * 60 * 60 * 1000); // 24 horas en milisegundos
 }
 
-function actualizarDiasRestantes() {
-    const fechaActual = new Date();
-    registros.forEach(r => {
-        const fechaFinValidez = new Date(r.fin.split('-').reverse().join('-')); // Asegúrate de que el formato de la fecha sea correcto
-        const diasRestantes = Math.ceil((fechaFinValidez - fechaActual) / (1000 * 60 * 60 * 24));
-        r.dias = diasRestantes >= 0 ? `${diasRestantes} días` : 'Caducada';
-    });
-    actualizarTabla(); // Actualizar la tabla visualmente
+window.addEventListener('DOMContentLoaded', () => {
+    cargarRegistros();
+    programarActualizacionDiaria();
+});
+
+function programarActualizacionDiaria() {
+    const ahora = new Date();
+    
+    // Hora local española (toma en cuenta horario de verano con Intl API)
+    const ahoraMadrid = new Date(ahora.toLocaleString("en-US", { timeZone: "Europe/Madrid" }));
+    
+    // Calcular milisegundos hasta la próxima medianoche (hora española)
+    const siguienteMedianoche = new Date(ahoraMadrid);
+    siguienteMedianoche.setHours(24, 0, 0, 0); // Próxima medianoche
+
+    const msHastaMedianoche = siguienteMedianoche - ahoraMadrid;
+
+    // Esperar hasta la próxima medianoche
+    setTimeout(() => {
+        actualizarDiasRestantes();
+
+        // Luego repetir cada 24h desde esa medianoche exacta
+        setInterval(actualizarDiasRestantes, 24 * 60 * 60 * 1000);
+
+    }, msHastaMedianoche);
 }
 
 
