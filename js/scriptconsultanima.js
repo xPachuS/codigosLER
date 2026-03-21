@@ -1,5 +1,5 @@
 const comunidades = [
-  { nombre: "Andalucía", bandera: "../img/n_andalucia.png", url: "https://www.juntadeandalucia.es/medioambiente/sira-buscador-publico/" },
+  { nombre: "Andalucía", bandera: "../img/n_andalucia.png", url: "https://www.juntadeandalucia.es/medioambiente/sira-buscador-publico" },
   { nombre: "Aragón", bandera: "../img/n_aragon.png", url: "https://aplicaciones2.aragon.es/pdr/pdr_pub/residuos/informacionAmbiental/busquedaNimas" },
   { nombre: "Asturias", bandera: "../img/n_asturias.png", url: "https://xpachus.github.io/codigosLER/html/consultanima.html" },
   { nombre: "Cantabria", bandera: "../img/n_cantabria.png", url: "https://siacan.cantabria.es/siacan/publico/PrepareBuscadorEmpresasGestoresView.do" },
