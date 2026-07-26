@@ -1,0 +1,53 @@
+/* Estilos específicos del inicio — requiere tokens.css cargado antes */
+
+.hero{background:var(--paper-alt); border-bottom:1px solid var(--line);}
+.hero-inner{
+  display:flex; align-items:center; justify-content:center; gap:220px;
+  padding:72px 0 56px; flex-wrap:wrap;
+}
+.hero-text{flex:1 1 420px; max-width:480px;}
+h1{line-height:1.12; margin:0 0 20px;}
+.hero p{color:var(--muted); font-size:1.05rem; max-width:46ch; margin:0 0 32px;}
+.hero-ctas{display:flex; gap:14px; flex-wrap:wrap;}
+
+/* Pila de fichas LER (elemento distintivo del hero) */
+.ticket-stack{position:relative; height:260px; flex:0 0 340px; width:340px;}
+.ticket{
+  position:absolute; width:280px; max-width:80vw; background:var(--paper);
+  border:1px solid var(--line); border-radius:10px; padding:16px 18px;
+  box-shadow:var(--shadow); left:50%;
+}
+.ticket::before{
+  content:""; position:absolute; left:-9px; top:50%; transform:translateY(-50%);
+  width:18px; height:18px; border-radius:50%; background:var(--paper-alt);
+  border:1px solid var(--line);
+}
+.t1{top:0; transform:translateX(-58%) rotate(-6deg); z-index:1;}
+.t2{top:64px; transform:translateX(-50%) rotate(2deg); z-index:2;}
+.t3{top:128px; transform:translateX(-42%) rotate(-3deg); z-index:3;}
+.ticket .code{font-size:1.4rem; font-weight:600; letter-spacing:.03em;}
+.ticket .desc{color:var(--muted); font-size:.82rem; margin-top:4px;}
+.ticket .hazard-tag{margin-top:8px;}
+
+.stats{border-bottom:1px solid var(--line);}
+.stats-inner{display:grid; grid-template-columns:repeat(4,1fr); gap:24px; padding:28px 0;}
+.stat{text-align:center;}
+.stat b{display:block; font-family:"IBM Plex Mono", monospace; font-size:1.5rem; font-weight:600;}
+.stat span{color:var(--muted); font-size:.82rem;}
+
+.modules{padding:64px 0 80px;}
+.modules h2{font-size:1.6rem; margin:0 0 6px;}
+.modules > .wrap > p{color:var(--muted); margin:0 0 36px;}
+.grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+
+@media (max-width:880px){
+  .hero-inner{flex-direction:column; padding-top:48px; text-align:center;}
+  .hero-text{max-width:520px;}
+  .hero-ctas{justify-content:center;}
+  .ticket-stack{height:220px; margin-top:12px;}
+  .grid{grid-template-columns:repeat(2,1fr);}
+  .stats-inner{grid-template-columns:repeat(2,1fr);}
+}
+@media (max-width:560px){
+  .grid{grid-template-columns:1fr;}
+}

@@ -1,0 +1,150 @@
+/* ============================================================
+   LER·NIMA — Sistema de diseño compartido
+   Cárgalo en TODAS las páginas antes del CSS específico de página.
+   ============================================================ */
+
+:root{
+  --ink:#16241D;
+  --paper:#FFFFFF;
+  --paper-alt:#EEF1EA;
+  --line:#D8DBD2;
+  --brand:#1F6F5C;
+  --brand-dark:#154E41;
+  --hazard:#C6742A;
+  --hazard-dark:#9C5B1F;
+  --muted:#5C6B60;
+  --radius:14px;
+  --shadow:0 12px 24px rgba(22,36,29,.07);
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth; scrollbar-gutter:stable;}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  *{animation-duration:.01ms !important; transition-duration:.01ms !important;}
+}
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"IBM Plex Sans", system-ui, -apple-system, sans-serif;
+  line-height:1.5;
+  min-height:100vh;
+}
+a{color:inherit;}
+img{max-width:100%; display:block;}
+.mono{font-family:"IBM Plex Mono", monospace;}
+.wrap{max-width:1120px; margin:0 auto; padding:0 24px;}
+:focus-visible{outline:3px solid var(--brand); outline-offset:2px;}
+
+/* Topbar (idéntica en todas las páginas) */
+.topbar{background:var(--ink); color:var(--paper-alt);}
+.topbar-inner{display:flex; align-items:center; justify-content:space-between; height:60px;}
+.logo{font-family:"IBM Plex Mono", monospace; font-weight:600; font-size:1.05rem; text-decoration:none; letter-spacing:.02em;}
+.logo span{color:var(--hazard);}
+.topnav{display:flex; gap:24px; font-size:.9rem;}
+.topnav a{text-decoration:none; opacity:.85; padding:6px 2px; border-bottom:1px solid transparent;}
+.topnav a:hover{opacity:1; border-color:var(--hazard);}
+
+/* Cabecera de página interior (usada por buscador, guía, consulta NIMA) */
+.page-head{background:var(--paper-alt); border-bottom:1px solid var(--line); padding:44px 0 32px;}
+.eyebrow{
+  font-family:"IBM Plex Mono", monospace; font-size:.78rem; font-weight:600;
+  letter-spacing:.08em; text-transform:uppercase; color:var(--brand-dark);
+  display:flex; align-items:center; gap:10px; margin-bottom:14px;
+}
+.eyebrow::before{content:""; width:22px; height:2px; background:var(--hazard);}
+.page-head h1{font-size:clamp(1.7rem,3.4vw,2.3rem); margin:0 0 8px; font-weight:700; letter-spacing:-.01em;}
+.page-head p{color:var(--muted); margin:0; max-width:60ch;}
+
+/* Botones */
+.btn{
+  display:inline-flex; align-items:center; gap:8px; padding:13px 22px;
+  border-radius:9px; font-weight:600; font-size:.95rem; text-decoration:none;
+  border:1px solid transparent; cursor:pointer; transition:transform .15s ease, background .15s ease, border-color .15s ease;
+  font-family:inherit;
+}
+.btn-primary{background:var(--brand); color:#fff;}
+.btn-primary:hover{background:var(--brand-dark); transform:translateY(-1px);}
+.btn-ghost{background:transparent; color:var(--ink); border-color:var(--line);}
+.btn-ghost:hover{border-color:var(--ink); transform:translateY(-1px);}
+.btn-hazard{background:var(--hazard); color:#fff;}
+.btn-hazard:hover{background:var(--hazard-dark); transform:translateY(-1px);}
+.btn:disabled{opacity:.5; cursor:not-allowed; transform:none;}
+
+/* Tarjeta base (módulos, comunidades, resultados) */
+.card{
+  display:block; text-decoration:none; color:var(--ink);
+  background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
+  padding:22px; transition:border-color .15s ease, transform .15s ease, box-shadow .15s ease;
+  text-align:left; width:100%; font-family:inherit;
+}
+.card:hover{border-color:var(--brand); transform:translateY(-2px); box-shadow:var(--shadow);}
+.card .num{font-family:"IBM Plex Mono", monospace; color:var(--muted); font-size:.8rem; font-weight:600;}
+.card h3{font-size:1.08rem; margin:10px 0 8px;}
+.card p{color:var(--muted); font-size:.9rem; margin:0 0 16px;}
+.card .go{font-size:.85rem; font-weight:600; color:var(--brand-dark); display:inline-flex; align-items:center; gap:6px;}
+.card .go svg{transition:transform .15s ease;}
+.card:hover .go svg{transform:translateX(3px);}
+
+/* Etiqueta peligroso / no peligroso, usada en varios listados */
+.hazard-tag{
+  font-size:.72rem; font-weight:600; display:inline-flex; align-items:center; gap:6px;
+  padding:4px 10px; border-radius:999px;
+}
+.hazard-tag.is-hazard{background:#F7E9DC; color:var(--hazard-dark);}
+.hazard-tag.is-safe{background:#E1EEE9; color:var(--brand-dark);}
+.dot{display:inline-block; width:8px; height:8px; border-radius:50%;}
+.dot-h{background:var(--hazard);}
+.dot-n{background:var(--brand);}
+
+/* Botón flotante "subir arriba" */
+.to-top{
+  position:fixed; bottom:24px; right:24px; width:48px; height:48px;
+  border-radius:10px; background:var(--ink); color:#fff; border:none;
+  display:flex; align-items:center; justify-content:center; font-size:1.4rem;
+  box-shadow:var(--shadow); cursor:pointer; z-index:50;
+  opacity:0; pointer-events:none; transition:opacity .2s ease, transform .2s ease;
+}
+.to-top.visible{opacity:1; pointer-events:auto;}
+.to-top:hover{transform:translateY(-2px);}
+
+/* Estado vacío / error, reutilizable */
+.empty-state{
+  text-align:center; color:var(--muted); padding:48px 20px; border:1px dashed var(--line);
+  border-radius:var(--radius); font-size:.95rem;
+}
+.empty-state.is-error{color:var(--hazard-dark); border-color:var(--hazard);}
+
+footer.site-footer{background:var(--ink); color:var(--paper-alt); padding:32px 0; margin-top:auto;}
+.footer-inner{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; font-size:.85rem;}
+.footer-inner a{text-decoration:underline; text-underline-offset:3px;}
+
+/* Volver al inicio (icono en páginas interiores) */
+.back-home{display:flex; justify-content:center; margin:56px 0 40px;}
+.back-home a{
+  display:inline-flex; align-items:center; justify-content:center; width:44px; height:44px;
+  border-radius:50%; border:1px solid var(--line); color:var(--ink); transition:border-color .15s ease, background .15s ease;
+}
+.back-home a:hover{border-color:var(--brand); background:var(--paper-alt);}
+
+@media (max-width:880px){
+  .topnav{gap:16px;}
+}
+
+/* Fuente "Nature" (decorativa) — convertida a WOFF2 y disponible en /font/
+   pero no forma parte del sistema base. Descoméntala si la quieres usar
+   puntualmente, p. ej. en el logotipo.
+@font-face{
+  font-family:'Nature';
+  src:url('../font/nature.woff2') format('woff2');
+  font-display:swap;
+}
+*/
+
+/* Utilidad: oculta visualmente pero mantiene accesible a lectores de pantalla */
+.visually-hidden{
+  position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+  overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
+}

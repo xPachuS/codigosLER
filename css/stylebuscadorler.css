@@ -1,0 +1,27 @@
+.search-main{padding:40px 0 100px;}
+
+.search-box input{
+  width:100%; font-size:1.05rem; padding:16px 18px; border-radius:10px;
+  border:1px solid var(--line); font-family:inherit; color:var(--ink);
+}
+.search-box input:focus{border-color:var(--brand); outline:none; box-shadow:0 0 0 3px rgba(31,111,92,.15);}
+
+.suggestion{margin:16px 2px 22px; color:var(--muted); font-size:.95rem;}
+.suggestion strong{color:var(--ink);}
+
+.filters{display:flex; gap:24px; flex-wrap:wrap; margin-bottom:20px;}
+.check{display:flex; align-items:center; gap:8px; font-size:.92rem; color:var(--ink); cursor:pointer;}
+.check input{width:16px; height:16px; accent-color:var(--brand);}
+
+.copy-actions{display:flex; gap:12px; flex-wrap:wrap; margin-bottom:32px;}
+
+.results{display:flex; flex-direction:column; gap:14px;}
+.result-item{
+  background:var(--paper); border:1px solid var(--line); border-left:5px solid var(--brand);
+  border-radius:10px; padding:18px 20px;
+}
+.result-item.is-hazard{border-left-color:var(--hazard);}
+.result-head{display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;}
+.result-head h2{font-size:1.1rem; margin:0; font-family:"IBM Plex Mono", monospace;}
+.result-item p{margin:8px 0 0; color:var(--ink); font-size:.95rem;}
+.result-item .cat{color:var(--muted); font-size:.82rem; margin-top:6px;}
