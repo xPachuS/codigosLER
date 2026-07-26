@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Búsqueda LER · LER·NIMA</title>
+<meta name="description" content="Busca cualquiera de los 833 códigos LER por descripción, código o palabra clave.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/stylebuscadorler.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a href="../index.html" class="logo">LER<span>·</span>NIMA</a>
+    <nav class="topnav" aria-label="Navegación principal">
+      <a href="../index.html#modulos">Módulos</a>
+      <a href="./info.html">Info</a>
+    </nav>
+  </div>
+</header>
+
+<section class="page-head">
+  <div class="wrap">
+    <p class="eyebrow">833 códigos disponibles</p>
+    <h1>Búsqueda de códigos LER</h1>
+    <p>Escribe una descripción, un código o una palabra clave. El resultado más probable aparece destacado arriba.</p>
+  </div>
+</section>
+
+<main class="wrap search-main">
+
+  <div class="search-box">
+    <label for="busqueda" class="visually-hidden">Buscar código LER</label>
+    <input type="text" id="busqueda" placeholder="Buscar por descripción, código LER, palabra clave…" autocomplete="off">
+  </div>
+
+  <div class="suggestion mono" id="sugerencia">
+    Código más probable: <strong id="codigoSugerido">Ninguno aún…</strong>
+  </div>
+
+  <div class="filters">
+    <label class="check">
+      <input type="checkbox" id="filtrarPeligrosos">
+      Solo residuos peligrosos
+    </label>
+    <label class="check">
+      <input type="checkbox" id="filtrarNoPeligrosos">
+      Solo residuos no peligrosos
+    </label>
+  </div>
+
+  <div class="copy-actions">
+    <button id="copiarPeligrosos" class="btn btn-hazard">Copiar LER peligrosos</button>
+    <button id="copiarNoPeligrosos" class="btn btn-primary">Copiar LER no peligrosos</button>
+  </div>
+
+  <div id="resultados" class="results" aria-live="polite"></div>
+
+  <nav class="back-home">
+    <a href="../index.html" aria-label="Volver al inicio">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0z"/>
+        <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708z"/>
+      </svg>
+    </a>
+  </nav>
+</main>
+
+<button id="btnSubirArriba" class="to-top" title="Volver arriba" aria-label="Volver arriba">↑</button>
+
+<script src="../js/common.js"></script>
+<script src="../js/scriptbuscadorler.js"></script>
+</body>
+</html>
