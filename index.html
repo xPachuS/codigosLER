@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inicio · LER·NIMA</title>
+<meta name="description" content="Consulta códigos LER, registros NIMA por comunidad autónoma y la guía de residuos del Listado Europeo de Residuos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./css/tokens.css">
+<link rel="stylesheet" href="./css/styleinicio.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a href="./index.html" class="logo">LER<span>·</span>NIMA</a>
+    <nav class="topnav" aria-label="Navegación principal">
+      <a href="#modulos">Módulos</a>
+      <a href="./html/info.html">Info</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-inner">
+    <div class="hero-text">
+      <p class="eyebrow">Listado Europeo de Residuos · 20 capítulos</p>
+      <h1>Toda la gestión documental de residuos, en un mismo sitio.</h1>
+      <p>Busca códigos LER, consulta el NIMA de tu comunidad autónoma y resuelve notificaciones de traslado sin salir de aquí.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="#modulos">Ver módulos</a>
+        <a class="btn btn-ghost" href="./html/buscadorler.html">Buscar un código LER</a>
+      </div>
+    </div>
+    <div class="ticket-stack" id="ticket-stack" aria-hidden="true"></div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="wrap stats-inner">
+    <div class="stat"><b class="mono">833</b><span>códigos LER</span></div>
+    <div class="stat"><b class="mono">20</b><span>capítulos oficiales</span></div>
+    <div class="stat"><b class="mono" style="color:var(--hazard-dark)">408</b><span>marcados peligrosos</span></div>
+    <div class="stat"><b class="mono" style="color:var(--brand-dark)">425</b><span>no peligrosos</span></div>
+  </div>
+</section>
+
+<main class="modules" id="modulos">
+  <div class="wrap">
+    <h2>Módulos</h2>
+    <p>Seis herramientas, un mismo sistema visual. Todas las tarjetas son pulsables al completo, también en móvil.</p>
+    <div class="grid" id="modules-grid"></div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <span class="mono">LER·NIMA v5.0</span>
+    <span>Alberto Ugena · Todos los derechos reservados</span>
+    <a href="./html/info.html">Notas de la versión</a>
+  </div>
+</footer>
+
+<script src="./js/common.js"></script>
+<script src="./js/scriptinicio.js"></script>
+</body>
+</html>
